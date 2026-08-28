@@ -1,7 +1,30 @@
 import { useState } from "react";
 import { nomComplet, trouverEleve, trouverMembre, trouverTuteur, PROCHAINES_ETAPES, ETAPES, typesDe } from "./aides.js";
 import { EtiquetteUrgence, EtiquetteStatut, Indicateur, EtiquetteES } from "./Etiquettes.jsx";
-import { X, FileText, Users, Shield, MessageSquare, Activity, Plus, Edit3, Mail, Phone } from "lucide-react";
+import { X, Shield, Edit3, Mail, Phone } from "lucide-react";
+
+const MOIS_COURTS = ["JAN", "FÉV", "MAR", "AVR", "MAI", "JUIN", "JUIL", "AOÛT", "SEP", "OCT", "NOV", "DÉC"];
+const dateEditoriale = (date, avecAnnee = true) => {
+  const [a, m, j] = date.slice(0, 10).split("-").map(Number);
+  return `${String(j).padStart(2, "0")} ${MOIS_COURTS[m - 1]}${avecAnnee ? ` ${a}` : ""}`;
+};
+
+// Le marqueur de section éditorial : le même que sur l'écran d'accueil.
+// Le premier (sansFilet) évite un double trait sous le bloc d'identité.
+function MarqueurSection({ no, titre, compte, sansFilet }) {
+  return (
+    <div className={`section-divider${sansFilet ? " no-line" : ""}`}>
+      <hr className="section-line" />
+      <h3 className="section-header">
+        <span className="section-number">{no}</span>
+        <span className="section-dash">—</span>
+        <span className="section-title">{titre}</span>
+        <span className="section-leader" aria-hidden="true"></span>
+        {compte && <span className="section-count">{compte}</span>}
+      </h3>
+    </div>
+  );
+}
 
 // La fiche complète d'un dossier : réservée à l'ERRÉ, à l'éducation
 // spécialisée et à la direction. Structure : identité, badges d'état,
@@ -83,10 +106,12 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           {s.caseEED && <span className="etiquette eed">Éducation spécialisée avisée</span>}
         </div>
 
-        <div className="ornement" aria-hidden="true">· · ·</div>
-
-        {/* 5. Le signalement, en bloc balayable. */}
-        <h3 className="section-fiche"><FileText size={14} strokeWidth={1.5} aria-hidden="true" /> Signalement</h3>
+        <MarqueurSection
+          no="01"
+          titre="Signalement"
+          sansFilet
+          compte={<><span className="fort">{nomComplet(auteur)}</span> · {dateEditoriale(s.date)}</>}
+        />
         <div className="bloc-contenu">
           <p><strong>Type(s) :</strong> {typesDe(s).join(", ")}</p>
           <p><strong>Raisons :</strong> {s.raisons}</p>
@@ -98,8 +123,11 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           </p>
         </div>
 
-        {/* La famille, en cartes de contact. */}
-        <h3 className="section-fiche"><Users size={14} strokeWidth={1.5} aria-hidden="true" /> Famille</h3>
+        <MarqueurSection
+          no="02"
+          titre="Famille"
+          compte={<><span className="fort">{eleve.famille.tuteurs.length}</span> contact{eleve.famille.tuteurs.length > 1 ? "s" : ""}</>}
+        />
         <div className="grille-tuteurs">
           {eleve.famille.tuteurs.map((tid) => {
             const t = trouverTuteur(db, tid);
@@ -115,8 +143,13 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           })}
         </div>
 
-        {/* Plan de sécurité et adaptations. */}
-        <h3 className="section-fiche"><Shield size={14} strokeWidth={1.5} aria-hidden="true" /> Plan de sécurité et adaptations</h3>
+        <MarqueurSection
+          no="03"
+          titre="Plan de sécurité et adaptations"
+          compte={(s.planSecurite || s.adaptations)
+            ? <span className="actif">Actif</span>
+            : <em>Aucun pour l'instant</em>}
+        />
         {planOuvert ? (
           <div className="zone-action" style={{ marginTop: 0 }}>
             <div className="champ">
@@ -150,11 +183,14 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           </>
         )}
 
-        {/* 6. Les observations, en ligne du temps. */}
-        <h3 className="section-fiche"><MessageSquare size={14} strokeWidth={1.5} aria-hidden="true" /> Observations des enseignants · {s.observations.length}</h3>
-        {s.observations.length === 0 ? (
-          <p className="fiche-meta">Aucune observation pour l'instant.</p>
-        ) : (
+        <MarqueurSection
+          no="04"
+          titre="Observations des enseignants"
+          compte={s.observations.length > 0
+            ? <><span className="fort">{s.observations.length}</span> observation{s.observations.length > 1 ? "s" : ""} · {dateEditoriale(s.observations[s.observations.length - 1].date, false)}</>
+            : <em>Aucune pour l'instant</em>}
+        />
+        {s.observations.length === 0 ? null : (
           <ol className="ligne-temps">
             {s.observations.map((o, i) => (
               <li key={i} className="lt-item">
@@ -169,11 +205,14 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           </ol>
         )}
 
-        {/* Les interventions, même ligne du temps, avec la pastille d'étape. */}
-        <h3 className="section-fiche"><Activity size={14} strokeWidth={1.5} aria-hidden="true" /> Interventions · {s.interventions.length}</h3>
-        {s.interventions.length === 0 ? (
-          <p className="fiche-meta">Aucune intervention pour l'instant.</p>
-        ) : (
+        <MarqueurSection
+          no="05"
+          titre="Interventions"
+          compte={s.interventions.length > 0
+            ? <><span className="fort">{s.interventions.length}</span> intervention{s.interventions.length > 1 ? "s" : ""} · <span className="fort">Étape {s.niveauIntervention}</span></>
+            : <em>Aucune pour l'instant</em>}
+        />
+        {s.interventions.length === 0 ? null : (
           <ol className="ligne-temps">
             {s.interventions.map((inter, i) => (
               <li key={i} className="lt-item">
@@ -195,8 +234,12 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
         ) : (
           <>
             {/* 7. La zone d'action : ajouter une intervention. */}
-            <div className="zone-action">
-              <h3 className="zone-action-titre"><Plus size={16} aria-hidden="true" /> Ajouter une intervention</h3>
+            <MarqueurSection
+              no="06"
+              titre="Ajouter une intervention"
+              compte={<em className="actif">Nouveau</em>}
+            />
+            <div className="zone-action" style={{ marginTop: 0 }}>
               <div className="filtres">
                 <div>
                   <label htmlFor="type-inter">Type</label>

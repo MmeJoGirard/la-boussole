@@ -25,6 +25,7 @@
   --lisere: transparent;
   --pale: #f5f7fa;
   --onglets-fond: #e9eef4;
+  --filet: #e5e7eb;
   --ok-fond: #a2c4db; --ok-encre: #153459; --ok-bord: transparent;
   --moyen-fond: #f5f7fa; --moyen-encre: #060709; --moyen-bord: rgba(6, 7, 9, 0.08);
   --haut-fond: #153459; --haut-encre: #ffffff; --haut-bord: transparent;
@@ -66,6 +67,7 @@
   --lisere: rgba(255, 255, 255, 0.06);
   --pale: #142335;
   --onglets-fond: #122031;
+  --filet: rgba(255, 255, 255, 0.1);
   --ok-fond: #24405e; --ok-encre: #a2c4db; --ok-bord: transparent;
   --moyen-fond: #16273c; --moyen-encre: #c9d4de; --moyen-bord: rgba(255, 255, 255, 0.12);
   --haut-fond: #a2c4db; --haut-encre: #0a1826; --haut-bord: transparent;
@@ -412,22 +414,38 @@ td .bouton.discret { font-size: 14px; }
 }
 .aiguille { transform-origin: 50% 50%; animation: rotation-aiguille 40s ease-in-out infinite; }
 @keyframes rotation-aiguille { to { transform: rotate(360deg); } }
-.groupe-profils {
-  margin-top: 40px;
-  border-top: 1px solid var(--lisere);
-  padding-top: 20px;
+.groupe-profils { margin-top: 16px; }
+.groupe-profils .section-divider { margin-top: 48px; }
+/* Marqueur de section éditorial, partagé entre l'accueil et les fiches :
+   filet, numéro bleu royal, titre en petites capitales, points de
+   suite, information méta à droite. */
+.section-divider { margin: 32px 0 20px; }
+.section-line { border: none; height: 1px; background: var(--filet); margin: 0 0 14px; }
+.section-divider.no-line .section-line { display: none; }
+.section-divider.no-line { margin-top: 24px; }
+.section-header {
+  display: flex; align-items: baseline; gap: 8px;
+  margin: 0; font-weight: 400; line-height: 1.4;
 }
-.chapitre {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
-  margin: 0 0 16px;
+.section-number {
+  color: var(--accent);
+  font-size: 13px; font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
-.chapitre-titre {
-  font-size: 22px;
-  font-weight: 600;
+.section-dash { color: var(--meta); font-size: 13px; }
+.section-title {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--encre-fort);
-  letter-spacing: -0.015em;
 }
-.chapitre-compte { font-size: 13px; color: var(--meta); white-space: nowrap; }
+.section-leader { flex: 1; min-width: 24px; border-bottom: 1px dotted var(--bordure); margin: 0 6px 4px; }
+.section-count {
+  font-size: 12px; color: var(--meta); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.section-count .fort { color: var(--encre-fort); font-weight: 500; font-style: normal; }
+.section-count .actif { color: var(--accent); font-weight: 500; }
+.section-count em { font-style: italic; }
 .compte-section { color: var(--meta); font-weight: 400; font-size: 12px; }
 .boutons-profils { display: flex; flex-wrap: wrap; gap: 12px; }
 .bouton-profil {

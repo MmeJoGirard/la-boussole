@@ -310,10 +310,16 @@ export default function App() {
         </div>
         {groupes.map((g, i) => (
           <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
-            <h3 className="chapitre">
-              <span className="chapitre-titre">{g.titre}</span>
-              <span className="chapitre-compte">{g.membres.length} personnes</span>
-            </h3>
+            <div className="section-divider">
+              <hr className="section-line" />
+              <h3 className="section-header">
+                <span className="section-number">{String(i + 1).padStart(2, "0")}</span>
+                <span className="section-dash">—</span>
+                <span className="section-title">{g.titre}</span>
+                <span className="section-leader" aria-hidden="true"></span>
+                <span className="section-count"><span className="fort">{g.membres.length}</span> personnes</span>
+              </h3>
+            </div>
             <div className="boutons-profils">
               {g.membres.map((m) => (
                 <button key={m.id} className="bouton-profil" onClick={() => connexion(m)}>
