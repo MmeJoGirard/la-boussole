@@ -1,8 +1,18 @@
 # La Boussole : données fictives et application de démonstration
 
 Plateforme de suivi des interventions pour élèves à risque.
+
+**Site web public : https://mmejogirard.github.io/la-boussole/**
 Plan complet du projet : https://claude.ai/code/artifact/ce7ad0ce-8789-42fe-8d4e-dad546e9e84b
-Démo en ligne (page privée, partageable depuis son menu) : https://claude.ai/code/artifact/04796f15-8c43-4f37-8aa7-85a7765d01a9
+
+Dépôt GitHub : https://github.com/MmeJoGirard/la-boussole (public).
+Pour mettre le site à jour après une modification :
+
+```bash
+npm run deploy
+```
+
+(Le `git push` sur main sauvegarde le code; c'est `npm run deploy` qui reconstruit et publie le site.)
 
 **Toutes les personnes dans ces fichiers sont inventées.** Aucun vrai nom, aucun vrai courriel (domaines fictifs : eleves-demo.ca, courriel-demo.ca, conseil-demo.ca).
 
