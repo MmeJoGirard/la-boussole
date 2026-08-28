@@ -5,6 +5,7 @@ import FicheDossier from "./FicheDossier.jsx";
 import TableauAudit from "./TableauAudit.jsx";
 import TableauDeBord from "./Graphiques.jsx";
 import Calendrier from "./Calendrier.jsx";
+import { FolderOpen, Inbox, TriangleAlert, Building2, CheckCircle2, ChevronDown, Download } from "lucide-react";
 
 // Un groupe de filtres à sélection multiple : des boutons qu'on active
 // ou désactive. Aucun bouton actif = tout est affiché.
@@ -121,19 +122,24 @@ export default function VueEquipe({ db, utilisateur, actions, direction }) {
 
       <div className="grille-cartes">
         <button className="carte-stat cliquable" onClick={() => allerAuxDossiers({ statut: "actifs" })}>
-          <div className="valeur">{stats.actifs}</div><div className="nom">Cycles actifs</div>
+          <span className="stat-icone"><FolderOpen size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{stats.actifs}</span><span className="nom">Cycles actifs</span>
         </button>
         <button className="carte-stat cliquable" onClick={() => allerAuxDossiers({ statut: "nouveau" })}>
-          <div className="valeur">{stats.nouveaux}</div><div className="nom">Nouveaux à traiter</div>
+          <span className="stat-icone"><Inbox size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{stats.nouveaux}</span><span className="nom">Nouveaux à traiter</span>
         </button>
         <button className="carte-stat cliquable" onClick={() => allerAuxDossiers({ statut: "actifs", urgences: [3, 4] })}>
-          <div className="valeur">{stats.urgents}</div><div className="nom">Urgence 3 et plus</div>
+          <span className="stat-icone"><TriangleAlert size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{stats.urgents}</span><span className="nom">Urgence 3 et plus</span>
         </button>
         <button className="carte-stat cliquable" onClick={() => allerAuxDossiers({ statut: "transfere_direction" })}>
-          <div className="valeur">{stats.transferes}</div><div className="nom">À la direction</div>
+          <span className="stat-icone"><Building2 size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{stats.transferes}</span><span className="nom">À la direction</span>
         </button>
         <button className="carte-stat cliquable" onClick={() => allerAuxDossiers({ statut: "clos" })}>
-          <div className="valeur">{stats.clos}</div><div className="nom">Cycles clos</div>
+          <span className="stat-icone"><CheckCircle2 size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{stats.clos}</span><span className="nom">Cycles clos</span>
         </button>
       </div>
 
@@ -150,12 +156,12 @@ export default function VueEquipe({ db, utilisateur, actions, direction }) {
         <>
           <div className="panneau">
             <button
-              className="bouton discret"
+              className="bouton-legende"
               aria-expanded={legendeOuverte}
               onClick={() => setLegendeOuverte(!legendeOuverte)}
-              style={{ padding: 0 }}
             >
-              {legendeOuverte ? "Masquer" : "Afficher"} la légende des étapes du suivi
+              Légende des étapes du suivi
+              <ChevronDown size={16} strokeWidth={1.5} aria-hidden="true" />
             </button>
             {legendeOuverte && (
               <ol className="liste-etapes">
@@ -186,7 +192,9 @@ export default function VueEquipe({ db, utilisateur, actions, direction }) {
                 {Object.entries(STATUTS).map(([cle, nom]) => <option key={cle} value={cle}>{nom}</option>)}
               </select>
             </div>
-            <button className="bouton secondaire" onClick={exporter}>Exporter vers Excel</button>
+            <button className="bouton secondaire" onClick={exporter}>
+              <Download size={15} strokeWidth={1.5} aria-hidden="true" /> Exporter vers Excel
+            </button>
           </div>
           <div className="filtres">
             <FiltreMultiple

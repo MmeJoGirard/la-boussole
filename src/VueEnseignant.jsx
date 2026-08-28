@@ -3,6 +3,7 @@ import { nomComplet, coursDe, elevesDe, signalementsDe, ETAPES } from "./aides.j
 import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 import FormulaireSignalement from "./FormulaireSignalement.jsx";
 import ProfilEleve from "./ProfilEleve.jsx";
+import { Users, Activity, FileText, MessageSquarePlus, ChevronDown } from "lucide-react";
 
 // Vue enseignant : tableau de bord, puis « tous mes élèves »,
 // classés par année, cours et groupe.
@@ -45,10 +46,22 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
       </p>
 
       <div className="grille-cartes">
-        <div className="carte-stat"><div className="valeur">{mesEleves.length}</div><div className="nom">Mes élèves</div></div>
-        <div className="carte-stat"><div className="valeur">{suivisActifs.length}</div><div className="nom">Avec un suivi actif</div></div>
-        <div className="carte-stat"><div className="valeur">{mesSignalements.length}</div><div className="nom">Mes signalements actifs</div></div>
-        <div className="carte-stat"><div className="valeur">{elevesAContribuer.length}</div><div className="nom">À contribuer</div></div>
+        <div className="carte-stat">
+          <span className="stat-icone"><Users size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{mesEleves.length}</span><span className="nom">Mes élèves</span>
+        </div>
+        <div className="carte-stat">
+          <span className="stat-icone"><Activity size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{suivisActifs.length}</span><span className="nom">Avec un suivi actif</span>
+        </div>
+        <div className="carte-stat">
+          <span className="stat-icone"><FileText size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{mesSignalements.length}</span><span className="nom">Mes signalements actifs</span>
+        </div>
+        <div className="carte-stat">
+          <span className="stat-icone"><MessageSquarePlus size={18} strokeWidth={1.5} aria-hidden="true" /></span>
+          <span className="valeur">{elevesAContribuer.length}</span><span className="nom">À contribuer</span>
+        </div>
       </div>
 
       {elevesAContribuer.length > 0 && (
@@ -66,12 +79,12 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
 
       <div className="panneau">
         <button
-          className="bouton discret"
+          className="bouton-legende"
           aria-expanded={legendeOuverte}
           onClick={() => setLegendeOuverte(!legendeOuverte)}
-          style={{ padding: 0 }}
         >
-          {legendeOuverte ? "Masquer" : "Afficher"} les étapes du suivi
+          Étapes du suivi
+          <ChevronDown size={16} strokeWidth={1.5} aria-hidden="true" />
         </button>
         {legendeOuverte && (
           <ol className="liste-etapes">

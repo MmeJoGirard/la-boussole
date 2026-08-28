@@ -7,6 +7,7 @@ import {
 import VueEnseignant from "./VueEnseignant.jsx";
 import VueEquipe from "./VueEquipe.jsx";
 import BoiteCourriels from "./BoiteCourriels.jsx";
+import { Mail, RotateCcw, LogOut } from "lucide-react";
 
 let compteurDemo = 0;
 
@@ -279,8 +280,8 @@ export default function App() {
           bleu moyen pour l'ERRÉ et l'éducation spécialisée, bleu foncé pour la direction.
         </div>
         {groupes.map((g) => (
-          <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
-            <h3>{g.titre}</h3>
+          <section key={g.titre} className="groupe-profils">
+            <h3><span className={`point-role ${roleClasse(g.membres[0])}`} aria-hidden="true" /> {g.titre}</h3>
             <div className="boutons-profils">
               {g.membres.map((m) => (
                 <button key={m.id} className="bouton-profil" onClick={() => connexion(m)}>
@@ -300,15 +301,22 @@ export default function App() {
 
   return (
     <>
-      <header className={`entete ${roleClasse(utilisateur)}`}>
+      <header className="entete">
         <span className="marque"><span aria-hidden="true">🧭</span> La Boussole</span>
-        <span className="role">{nomComplet(utilisateur)} · {ROLES[utilisateur.role]}</span>
+        <span className="role">
+          <span className={`point-role ${roleClasse(utilisateur)}`} aria-hidden="true" />
+          {nomComplet(utilisateur)} · {ROLES[utilisateur.role]}
+        </span>
         <span className="pousse">
           <button className="bouton-entete" onClick={() => setBoiteOuverte(true)}>
-            Courriels simulés ({courriels.length})
+            <Mail size={15} strokeWidth={1.5} aria-hidden="true" /> Courriels simulés ({courriels.length})
           </button>
-          <button className="bouton-entete" onClick={reinitialiser}>Réinitialiser la démo</button>
-          <button className="bouton-entete" onClick={deconnexion}>Se déconnecter</button>
+          <button className="bouton-entete" onClick={reinitialiser}>
+            <RotateCcw size={15} strokeWidth={1.5} aria-hidden="true" /> Réinitialiser la démo
+          </button>
+          <button className="bouton-entete" onClick={deconnexion}>
+            <LogOut size={15} strokeWidth={1.5} aria-hidden="true" /> Se déconnecter
+          </button>
         </span>
       </header>
       <div className="page">

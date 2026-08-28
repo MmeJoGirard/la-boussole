@@ -1,318 +1,491 @@
-/* Boussole : palette bleu et gris, moderne et professionnelle. */
+/* La Boussole : système visuel premium.
+   Typographie Inter (400 / 600 seulement), fond #FAFAFA, surfaces blanches,
+   primaire ardoise #0F172A, accents chauds discrets, profondeur par ombres
+   étagées plutôt que par bordures. Grille d'espacement de 8 px. */
 :root {
-  --bleu: #1f4e8c;
-  --bleu-fonce: #16406f;
-  --bleu-pale: #e4edf8;
-  --fond: #f4f6f9;
+  --fond: #fafafa;
   --surface: #ffffff;
-  --encre: #1b2430;
-  --gris: #46586c; /* assez foncé pour un contraste d'au moins 7:1 sur blanc */
-  --ligne: #d7dfe9;
-  --ok-fond: #e1f0e6; --ok-encre: #1f6b3a;
-  --moyen-fond: #fcefd9; --moyen-encre: #8a5a12;
-  --haut-fond: #f9e2e0; --haut-encre: #a0342c;
-  --eed-fond: #e9e4f8; --eed-encre: #4c3a8c;
+  --primaire: #0f172a;
+  --primaire-doux: #1e293b;
+  --encre: #0f172a;
+  --texte: #4b5563;
+  --secondaire: #64748b;
+  --sourdine: #94a3b8;
+  --bordure: #e5e7eb;
+  --pale: #f1f5f9;
+  --accent-chaud: #dd7b4e;
+  --ok-fond: #eaf3ee; --ok-encre: #2e6b4f;
+  --moyen-fond: #f7efe1; --moyen-encre: #8a6420;
+  --haut-fond: #f9ebe8; --haut-encre: #b0432f;
+  --eed-fond: #ededf7; --eed-encre: #55519b;
+  --ombre-repos: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
+  --ombre-survol: 0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.05);
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--fond);
-  color: var(--encre);
-  font-family: "Public Sans", "Segoe UI", -apple-system, sans-serif;
-  font-size: 16px; /* taille de base d'au moins 16 px pour la lisibilité */
+  color: var(--texte);
+  font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   line-height: 1.6;
 }
-h1, h2, h3, h4 { font-family: "Archivo", "Public Sans", sans-serif; line-height: 1.2; }
-h1 { font-size: 22px; margin: 0; }
-h2 { font-size: 20px; margin: 0 0 4px; }
-h3 { font-size: 16px; margin: 18px 0 8px; }
+h1, h2, h3, h4 { color: var(--encre); line-height: 1.25; margin: 0; }
+h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 24px 0 8px; }
 button { font: inherit; cursor: pointer; }
-a { color: var(--bleu); }
+a { color: var(--encre); }
 
-/* Accessibilité : focus toujours visible. */
-:focus-visible { outline: 3px solid var(--bleu); outline-offset: 2px; border-radius: 4px; }
+/* Accessibilité : focus visible mais élégant. */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px rgba(15, 23, 42, 0.35);
+  border-radius: 8px;
+}
 
-/* ---- Entête ---- */
+/* ---- Entête : verre dépoli clair ---- */
 .entete {
-  background: var(--bleu);
-  color: #fff;
-  padding: 10px 16px;
-}
-/* Code couleur des rôles : bleu pâle enseignants (texte foncé pour le
-   contraste), bleu moyen ERRÉ et éducation spécialisée, bleu foncé direction. */
-.entete.role-enseignant { background: #cfe1f5; color: #14395f; }
-.entete.role-enseignant .role { background: rgba(20, 57, 95, 0.12); }
-.entete.role-enseignant .bouton-entete {
-  background: rgba(20, 57, 95, 0.06);
-  color: #14395f;
-  border-color: rgba(20, 57, 95, 0.45);
-}
-.entete.role-enseignant .bouton-entete:hover { background: rgba(20, 57, 95, 0.14); }
-.entete.role-equipe { background: #3d6fb0; }
-.entete.role-direction { background: #16406f; }
-.entete {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bordure);
+  color: var(--encre);
+  padding: 12px 32px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 10;
 }
-.entete .marque { display: flex; align-items: center; gap: 8px; font-family: "Archivo", sans-serif; font-weight: 700; font-size: 18px; }
-.entete .role { background: rgba(255,255,255,0.18); border-radius: 999px; padding: 2px 12px; font-size: 13px; }
+.entete .marque {
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.01em;
+  color: var(--encre);
+}
+.entete .role {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--pale);
+  color: #475569;
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 13px;
+}
+/* Le code couleur des rôles vit dans une pastille discrète :
+   bleu pâle enseignants, bleu moyen ERRÉ/ES, bleu foncé direction. */
+.point-role { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
+.point-role.role-enseignant { background: #9db7dc; }
+.point-role.role-equipe { background: #4a6fa5; }
+.point-role.role-direction { background: #0f172a; }
 .entete .pousse { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
 .bouton-entete {
-  background: rgba(255,255,255,0.14);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 13.5px;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface);
+  color: var(--encre);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 13px;
+  transition: background var(--transition), box-shadow var(--transition);
 }
-.bouton-entete:hover { background: rgba(255,255,255,0.26); }
+.bouton-entete:hover { background: #f9fafb; box-shadow: var(--ombre-repos); }
 
 /* ---- Mise en page ---- */
-.page { max-width: 1080px; margin: 0 auto; padding: 20px 16px 64px; }
-.sous-titre { color: var(--gris); margin: 2px 0 16px; }
-.grille-cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0 20px; }
-.carte-stat {
-  background: var(--surface);
-  border: 1px solid var(--ligne);
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-.carte-stat .valeur { font-family: "Archivo", sans-serif; font-size: 26px; font-weight: 700; color: var(--bleu); font-variant-numeric: tabular-nums; }
-.carte-stat .nom { font-size: 13px; color: var(--gris); text-transform: uppercase; letter-spacing: 0.05em; }
+.page { max-width: 1120px; margin: 0 auto; padding: 48px 32px 96px; }
+.sous-titre { color: var(--secondaire); margin: 2px 0 24px; }
 
+/* ---- Cartes de statistiques ---- */
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin: 16px 0 32px;
+}
+.carte-stat {
+  position: relative;
+  background: var(--surface);
+  border: none;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--ombre-repos);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.carte-stat .valeur {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--encre);
+  font-variant-numeric: tabular-nums;
+}
+.carte-stat .nom {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--encre);
+  opacity: 0.55;
+}
+.stat-icone {
+  position: absolute; top: 24px; right: 24px;
+  color: var(--encre); opacity: 0.4;
+  display: inline-flex;
+}
+.carte-stat.cliquable {
+  text-align: left; cursor: pointer; font: inherit;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.carte-stat.cliquable:hover {
+  box-shadow: var(--ombre-survol);
+  transform: translateY(-2px) scale(1.005);
+}
+
+/* ---- Panneaux ---- */
 .panneau {
   background: var(--surface);
-  border: 1px solid var(--ligne);
+  border: none;
+  border-radius: 16px;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+  box-shadow: var(--ombre-repos);
+}
+.callout-note {
+  background: var(--fond);
   border-radius: 12px;
-  padding: 16px 18px;
-  margin-bottom: 16px;
+  padding: 16px 20px;
+  color: #475569;
+  margin: 0 0 24px;
 }
 
 /* ---- Filtres ---- */
-.filtres { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 14px; }
-.filtres label, .champ label { display: block; font-size: 13px; font-weight: 600; color: var(--gris); margin-bottom: 3px; }
+.filtres { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 16px; }
+.filtres label, .champ label {
+  display: block;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--encre); opacity: 0.55;
+  margin-bottom: 6px;
+}
 select, input[type="text"], input[type="search"], textarea {
   font: inherit;
-  border: 1px solid var(--ligne);
-  border-radius: 8px;
-  padding: 7px 10px;
-  background: #fff;
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  padding: 8px 12px;
+  background: var(--surface);
   color: var(--encre);
   max-width: 100%;
+  transition: box-shadow var(--transition);
 }
+select:hover, input:hover, textarea:hover { box-shadow: var(--ombre-repos); }
 textarea { width: 100%; resize: vertical; }
 
 /* ---- Tableaux ---- */
-.defile { overflow-x: auto; border: 1px solid var(--ligne); border-radius: 10px; background: var(--surface); }
-table { border-collapse: collapse; width: 100%; font-size: 15px; }
-th {
-  text-align: left; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em;
-  color: var(--gris); background: var(--bleu-pale);
-  padding: 10px 12px; border-bottom: 1px solid var(--ligne); white-space: nowrap;
+.defile {
+  overflow-x: auto;
+  border: none;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--ombre-repos);
 }
-td { padding: 10px 12px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th {
+  text-align: left;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--sourdine);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--pale);
+  white-space: nowrap;
+  background: var(--surface);
+}
+td { padding: 12px 16px; border-bottom: 1px solid var(--pale); vertical-align: top; color: var(--texte); }
 tr:last-child td { border-bottom: none; }
 .num { font-variant-numeric: tabular-nums; }
 
 /* ---- Étiquettes ---- */
 .etiquette {
-  display: inline-block; border-radius: 999px; padding: 2px 10px;
-  font-size: 12.5px; font-weight: 600; white-space: nowrap;
+  display: inline-block; border-radius: 999px; padding: 3px 12px;
+  font-size: 12px; font-weight: 500; white-space: nowrap;
 }
 .etiquette.ok { background: var(--ok-fond); color: var(--ok-encre); }
 .etiquette.moyen { background: var(--moyen-fond); color: var(--moyen-encre); }
 .etiquette.haut { background: var(--haut-fond); color: var(--haut-encre); }
-.etiquette.neutre { background: var(--ligne); color: var(--gris); }
+.etiquette.neutre { background: var(--pale); color: var(--secondaire); }
 .etiquette.eed { background: var(--eed-fond); color: var(--eed-encre); }
 .pastille {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 22px; height: 22px; padding: 0 6px;
-  border-radius: 999px; background: var(--bleu); color: #fff;
-  font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+  min-width: 24px; height: 24px; padding: 0 7px;
+  border-radius: 999px; background: var(--primaire); color: #fff;
+  font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
 }
 
 /* ---- Boutons ---- */
 .bouton {
-  background: var(--bleu); color: #fff; border: none;
-  border-radius: 8px; padding: 8px 16px; font-weight: 600; font-size: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--primaire); color: #fff; border: none;
+  border-radius: 10px; padding: 9px 18px; font-weight: 600; font-size: 14px;
+  transition: background var(--transition), box-shadow var(--transition);
 }
-.bouton:hover { background: var(--bleu-fonce); }
-.bouton.secondaire { background: var(--surface); color: var(--bleu); border: 1px solid var(--bleu); }
-.bouton.secondaire:hover { background: var(--bleu-pale); }
-.bouton.discret { background: none; border: none; color: var(--bleu); padding: 4px 6px; text-decoration: underline; font-weight: 600; font-size: 13.5px; }
-.bouton.danger { background: var(--surface); color: var(--haut-encre); border: 1px solid var(--haut-encre); }
+.bouton:hover { background: var(--primaire-doux); box-shadow: var(--ombre-repos); }
+.bouton.secondaire {
+  background: var(--surface); color: var(--encre);
+  border: 1px solid var(--bordure); font-weight: 600;
+}
+.bouton.secondaire:hover { background: #f9fafb; box-shadow: var(--ombre-repos); }
+.bouton.discret {
+  background: none; border: none; color: var(--encre);
+  padding: 4px 6px; font-weight: 600; font-size: 13px;
+  text-decoration: none; border-radius: 8px;
+  transition: background var(--transition);
+}
+.bouton.discret:hover { background: var(--pale); }
+.bouton.danger {
+  background: var(--surface); color: var(--haut-encre);
+  border: 1px solid #ecccc5; font-weight: 600;
+}
 .bouton.danger:hover { background: var(--haut-fond); }
-.rangee-boutons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.rangee-boutons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+/* Le bouton qui déplie la légende des étapes. */
+.bouton-legende {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: none; padding: 4px 0;
+  color: var(--encre); font-weight: 600; font-size: 14px;
+}
+.bouton-legende svg { transition: transform var(--transition); color: var(--sourdine); }
+.bouton-legende[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 /* ---- Formulaires ---- */
-.champ { margin-bottom: 14px; }
-.aide { display: block; font-size: 13.5px; color: var(--gris); margin-top: 3px; }
+.champ { margin-bottom: 16px; }
+.aide { display: block; font-size: 13px; color: var(--secondaire); margin-top: 4px; }
 .avertissement {
   background: var(--haut-fond); color: var(--haut-encre);
-  border-left: 4px solid var(--haut-encre);
-  border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; font-size: 14px;
+  border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
 .info {
-  background: var(--bleu-pale); color: var(--bleu-fonce);
-  border-left: 4px solid var(--bleu);
-  border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; font-size: 14px;
+  background: var(--pale); color: #475569;
+  border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
-.case { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; }
-.case input { margin-top: 4px; width: 16px; height: 16px; }
-.case span { font-size: 14.5px; }
+.case { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; }
+.case input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primaire); }
+.case span { font-size: 14px; }
+.legende-champ {
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--encre); opacity: 0.55;
+  margin-bottom: 6px; padding: 0;
+}
 
 /* ---- Écran de connexion ---- */
-.connexion { max-width: 720px; margin: 40px auto; padding: 0 16px; }
+.connexion { max-width: 760px; margin: 64px auto; padding: 0 32px; }
 .connexion .logo { font-size: 40px; }
-.connexion h1 { font-size: 30px; margin: 6px 0; }
-.groupe-profils { margin-top: 20px; }
-.groupe-profils h3 { margin-bottom: 8px; color: var(--gris); text-transform: uppercase; font-size: 12.5px; letter-spacing: 0.06em; }
+.connexion h1 { font-size: 32px; letter-spacing: -0.02em; margin: 8px 0; }
+.groupe-profils {
+  margin-top: 32px;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 24px 32px;
+  box-shadow: var(--ombre-repos);
+}
+.groupe-profils h3 {
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 0 16px;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--encre); opacity: 0.55;
+}
 .boutons-profils { display: flex; flex-wrap: wrap; gap: 8px; }
 .bouton-profil {
-  background: var(--surface); border: 1px solid var(--ligne); border-radius: 10px;
-  padding: 8px 14px; text-align: left; font-size: 14px;
+  background: var(--fond);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--encre);
+  font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.bouton-profil:hover { border-color: var(--bleu); background: var(--bleu-pale); }
-.bouton-profil .detail { display: block; font-size: 13px; color: var(--gris); }
+.bouton-profil:hover { background: var(--pale); box-shadow: var(--ombre-repos); transform: translateY(-1px); }
+.bouton-profil .detail { display: block; font-size: 12px; font-weight: 400; color: var(--secondaire); }
 
 /* ---- Fenêtre modale ---- */
 .voile {
-  position: fixed; inset: 0; background: rgba(20, 30, 44, 0.55);
+  position: fixed; inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex; align-items: flex-start; justify-content: center;
-  padding: 32px 16px; z-index: 50; overflow-y: auto;
+  padding: 48px 24px; z-index: 50; overflow-y: auto;
 }
 .modale {
-  background: var(--fond); border-radius: 14px; max-width: 760px; width: 100%;
-  padding: 20px; box-shadow: 0 18px 50px rgba(0,0,0,0.3);
+  background: var(--fond);
+  border-radius: 16px;
+  max-width: 780px; width: 100%;
+  padding: 32px;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08), 0 24px 64px rgba(15, 23, 42, 0.12);
 }
-.modale-entete { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.modale-entete { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
 .modale-entete h2 { flex: 1; }
 .fermer {
-  background: var(--surface); border: 1px solid var(--ligne); border-radius: 8px;
-  width: 34px; height: 34px; font-size: 16px; line-height: 1;
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: 10px;
+  width: 36px; height: 36px; font-size: 15px; line-height: 1;
+  color: var(--secondaire);
+  transition: background var(--transition);
 }
+.fermer:hover { background: #f9fafb; color: var(--encre); }
 
 /* ---- Courriels simulés ---- */
 .courriel {
-  background: var(--surface); border: 1px solid var(--ligne); border-radius: 10px;
-  padding: 12px 14px; margin-bottom: 10px;
+  background: var(--surface);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--ombre-repos);
 }
-.courriel .meta { font-size: 12.5px; color: var(--gris); margin-bottom: 4px; }
-.courriel .objet { font-weight: 700; margin-bottom: 4px; }
-.courriel .corps { font-size: 14px; white-space: pre-wrap; }
+.courriel .meta { font-size: 12px; color: var(--sourdine); margin-bottom: 4px; }
+.courriel .objet { font-weight: 600; color: var(--encre); margin-bottom: 4px; }
+.courriel .corps { font-size: 13px; white-space: pre-wrap; }
 
 /* ---- Historique dans une fiche ---- */
 .journal { list-style: none; padding: 0; margin: 8px 0; }
-.journal li { border-left: 3px solid var(--bleu-pale); padding: 4px 0 4px 12px; margin-bottom: 8px; }
-.journal .qui { font-weight: 600; font-size: 13.5px; }
-.journal .quand { color: var(--gris); font-size: 12.5px; }
+.journal li { border-left: 2px solid var(--bordure); padding: 4px 0 4px 14px; margin-bottom: 12px; }
+.journal .qui { font-weight: 600; color: var(--encre); font-size: 13.5px; }
+.journal .quand { color: var(--sourdine); font-size: 12px; }
 
-/* ---- Onglets (direction) ---- */
-.onglets { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-.onglet {
-  background: var(--surface); border: 1px solid var(--ligne); border-radius: 999px;
-  padding: 7px 16px; font-size: 14px; font-weight: 600; color: var(--gris);
+/* ---- Onglets : « segmented control » ---- */
+.onglets {
+  display: inline-flex; gap: 4px;
+  background: var(--pale);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
-.onglet[aria-selected="true"] { background: var(--bleu); border-color: var(--bleu); color: #fff; }
-
-/* ---- Code couleur des rôles à l'écran de connexion ---- */
-.groupe-profils { border-left: 5px solid var(--ligne); padding-left: 14px; border-radius: 3px; }
-.groupe-profils.role-enseignant { border-left-color: #9dbfe6; }
-.groupe-profils.role-enseignant .bouton-profil { background: #e9f1fa; }
-.groupe-profils.role-equipe { border-left-color: #3d6fb0; }
-.groupe-profils.role-equipe .bouton-profil { background: #dbe7f4; }
-.groupe-profils.role-direction { border-left-color: #16406f; }
-.groupe-profils.role-direction .bouton-profil { background: #ccdcef; }
-
-/* ---- Cartes de totaux cliquables ---- */
-.carte-stat.cliquable { text-align: left; cursor: pointer; font: inherit; }
-.carte-stat.cliquable:hover { border-color: var(--bleu); background: var(--bleu-pale); }
+.onglet {
+  background: none; border: none; border-radius: 8px;
+  padding: 7px 18px; font-size: 14px; font-weight: 600;
+  color: var(--secondaire);
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+.onglet:hover { color: var(--encre); }
+.onglet[aria-selected="true"] {
+  background: var(--surface);
+  color: var(--encre);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 2px 8px rgba(15, 23, 42, 0.04);
+}
 
 /* ---- Filtres à sélection multiple ---- */
 .filtre-multiple { border: none; padding: 0; margin: 0; }
-.legende-champ { font-size: 13px; font-weight: 600; color: var(--gris); margin-bottom: 4px; padding: 0; }
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip-filtre {
   background: var(--surface);
-  border: 1px solid var(--ligne);
+  border: 1px solid var(--bordure);
   border-radius: 999px;
-  padding: 5px 13px;
-  font-size: 13.5px;
+  padding: 5px 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--gris);
+  color: var(--secondaire);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
-.chip-filtre:hover { border-color: var(--bleu); }
+.chip-filtre:hover { color: var(--encre); background: #f9fafb; }
 .chip-filtre[aria-pressed="true"] {
-  background: var(--bleu);
-  border-color: var(--bleu);
+  background: var(--primaire);
+  border-color: var(--primaire);
   color: #fff;
 }
 
-/* ---- Légende des étapes du suivi ---- */
-.liste-etapes { margin: 10px 0 0; padding-left: 20px; }
-.liste-etapes li { margin-bottom: 6px; font-size: 14.5px; }
+/* ---- Légende des étapes ---- */
+.liste-etapes { margin: 12px 0 0; padding-left: 20px; }
+.liste-etapes li { margin-bottom: 8px; font-size: 14px; }
+.liste-etapes strong { color: var(--encre); }
 
 /* ---- Calendrier ---- */
-.calendrier-entete { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
-.calendrier { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendrier-entete { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.calendrier { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
 .calendrier-jour-nom {
-  text-align: center; font-size: 12.5px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.05em; color: var(--gris);
-  padding: 4px 0;
+  text-align: center;
+  font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--sourdine);
+  padding: 6px 0;
 }
 .calendrier-case {
   background: var(--fond);
-  border: 1px solid var(--ligne);
-  border-radius: 8px;
-  min-height: 64px;
-  padding: 6px;
+  border: none;
+  border-radius: 12px;
+  min-height: 68px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
   font: inherit;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.calendrier-case.vide { background: none; border: none; }
-.calendrier-case:not(.vide):hover { border-color: var(--bleu); background: var(--bleu-pale); }
-.calendrier-case[aria-pressed="true"] { border: 2px solid var(--bleu); background: var(--bleu-pale); }
-.calendrier-numero { font-size: 13.5px; font-weight: 600; color: var(--gris); }
+.calendrier-case.vide { background: none; }
+.calendrier-case:not(.vide):hover { background: var(--pale); box-shadow: var(--ombre-repos); transform: translateY(-1px); }
+.calendrier-case[aria-pressed="true"] { background: var(--surface); box-shadow: inset 0 0 0 2px var(--primaire), var(--ombre-repos); }
+.calendrier-numero { font-size: 13px; font-weight: 600; color: var(--secondaire); }
 .calendrier-points { display: flex; gap: 4px; flex-wrap: wrap; }
 .point-evenement {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 20px; height: 20px; padding: 0 5px;
+  min-width: 20px; height: 20px; padding: 0 6px;
   border-radius: 999px; color: #fff;
-  font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+  font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums;
 }
-.legende-calendrier { display: flex; gap: 18px; margin-bottom: 10px; }
+.legende-calendrier { display: flex; gap: 20px; margin-bottom: 12px; }
 .legende-calendrier li { padding: 0; }
-@media (max-width: 640px) {
-  .calendrier-case { min-height: 48px; padding: 4px; }
-  .point-evenement { min-width: 16px; height: 16px; font-size: 10.5px; }
-}
 
 /* ---- Graphiques du tableau de bord ---- */
-.grille-graphiques { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.grille-graphiques { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 .graphique { margin: 0; }
-.graphique figcaption { margin-bottom: 10px; }
-.graphique figcaption strong { font-family: "Archivo", sans-serif; font-size: 15px; }
-.donut-ligne { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.donut-total { font-family: "Archivo", sans-serif; font-size: 26px; font-weight: 700; fill: var(--encre); }
-.donut-libelle { font-size: 11px; fill: var(--gris); }
-.legende { list-style: none; padding: 0; margin: 0; flex: 1; min-width: 150px; }
-.legende li { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13.5px; }
-.pastille-couleur { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-.legende-nom { flex: 1; }
-.legende-valeur { color: var(--gris); font-weight: 600; }
-.barre-valeur { font-size: 12px; font-weight: 600; fill: var(--encre); font-variant-numeric: tabular-nums; }
-.barre-nom { font-size: 11.5px; fill: var(--gris); }
+.graphique figcaption { margin-bottom: 16px; }
+.graphique figcaption strong { font-size: 15px; font-weight: 600; color: var(--encre); letter-spacing: -0.01em; }
+.donut-ligne { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.donut-total { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; fill: var(--encre); }
+.donut-libelle { font-size: 10px; fill: var(--sourdine); letter-spacing: 0.08em; text-transform: uppercase; }
+.legende { list-style: none; padding: 0; margin: 0; flex: 1; min-width: 160px; }
+.legende li { display: flex; align-items: center; gap: 10px; padding: 4px 0; font-size: 13px; }
+.pastille-couleur { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.legende-nom { flex: 1; color: var(--texte); }
+.legende-valeur { color: var(--secondaire); font-weight: 600; }
+.barre-valeur { font-size: 12px; font-weight: 400; fill: var(--encre); font-variant-numeric: tabular-nums; }
+.barre-nom { font-size: 11px; fill: var(--sourdine); }
+
+/* Animation de dessin des graphiques au chargement. */
+@keyframes apparaitre-segment {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+.graphique svg path, .graphique svg circle {
+  transform-origin: center;
+  animation: apparaitre-segment 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.graphique svg path:nth-of-type(2) { animation-delay: 80ms; }
+.graphique svg path:nth-of-type(3) { animation-delay: 160ms; }
+.graphique svg path:nth-of-type(4) { animation-delay: 240ms; }
+.graphique svg path:nth-of-type(5) { animation-delay: 320ms; }
+.graphique svg path:nth-of-type(6) { animation-delay: 400ms; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
 
 @media (max-width: 640px) {
-  body { font-size: 15px; }
-  .page { padding: 14px 10px 48px; }
-  th, td { padding: 8px 9px; }
+  .page { padding: 24px 16px 64px; }
+  .entete { padding: 10px 16px; }
+  .carte-stat { padding: 24px; }
+  .carte-stat .valeur { font-size: 36px; }
+  th, td { padding: 10px 12px; }
+  .calendrier-case { min-height: 50px; padding: 5px; border-radius: 8px; }
+  .point-evenement { min-width: 16px; height: 16px; font-size: 10px; }
 }

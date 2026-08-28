@@ -1,11 +1,12 @@
 // Graphiques du tableau de bord : dessinés en SVG, sans librairie externe.
 // Palette validée pour l'accessibilité (daltonisme) avec le vérificateur
-// du guide de visualisation : ordre fixe bleu, orange, sarcelle, jaune.
+// du guide de visualisation : ordre fixe bleu profond, terracotta,
+// sarcelle sauge, or sable.
 import { trouverEleve, STATUTS, TYPES_SIGNALEMENT, typesDe } from "./aides.js";
 
-const CATEGORIEL = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"];
-// Rampe ordinale bleue (urgence 0 à 4), du plus pâle au plus foncé.
-const ORDINAL_BLEU = ["#86b6ef", "#5598e7", "#2a78d6", "#1c5cab", "#0d366b"];
+const CATEGORIEL = ["#2F5AA8", "#DD7B4E", "#0D9488", "#C9922E"];
+// Rampe ordinale monochrome (urgence 0 à 4), du plus pâle au plus foncé.
+const ORDINAL_BLEU = ["#9DA9BB", "#7B8BA1", "#5A6E87", "#3A526D", "#1E3A55"];
 
 // Un segment d'anneau (donut) entre deux angles, en coordonnées SVG.
 function arc(cx, cy, r1, r2, a0, a1) {
@@ -36,10 +37,10 @@ export function Donut({ titre, note, donnees }) {
       <div className="donut-ligne">
         <svg viewBox="0 0 160 160" width="150" height="150" aria-hidden="true">
           {segments.length === 1 ? (
-            <circle cx="80" cy="80" r="55" fill="none" stroke={segments[0].couleur} strokeWidth="28" />
+            <circle cx="80" cy="80" r="59" fill="none" stroke={segments[0].couleur} strokeWidth="18" />
           ) : (
             segments.map((s) => (
-              <path key={s.nom} d={arc(80, 80, 41, 69, s.a0, s.a1)} fill={s.couleur} stroke="#ffffff" strokeWidth="2">
+              <path key={s.nom} d={arc(80, 80, 50, 68, s.a0, s.a1)} fill={s.couleur} stroke="#ffffff" strokeWidth="2">
                 <title>{`${s.nom} : ${s.valeur} (${Math.round((s.valeur / total) * 100)} %)`}</title>
               </path>
             ))
@@ -67,7 +68,7 @@ export function Barres({ titre, note, donnees }) {
   const max = Math.max(1, ...donnees.map((d) => d.valeur));
   const largeur = 320, hauteur = 170, basY = 140, hautY = 26;
   const pas = largeur / donnees.length;
-  const largeurBarre = Math.min(40, pas * 0.55);
+  const largeurBarre = Math.min(32, pas * 0.45);
   const barre = (x, y, l, h, r) =>
     h <= r
       ? `M ${x} ${basY} L ${x} ${y} L ${x + l} ${y} L ${x + l} ${basY} Z`
@@ -80,9 +81,9 @@ export function Barres({ titre, note, donnees }) {
       </figcaption>
       <svg viewBox={`0 0 ${largeur} ${hauteur}`} style={{ width: "100%", height: "auto" }} aria-hidden="true">
         {[0.5, 1].map((f) => (
-          <line key={f} x1="0" x2={largeur} y1={basY - (basY - hautY) * f} y2={basY - (basY - hautY) * f} stroke="#e3e8ee" strokeWidth="1" />
+          <line key={f} x1="0" x2={largeur} y1={basY - (basY - hautY) * f} y2={basY - (basY - hautY) * f} stroke="#f1f5f9" strokeWidth="1" />
         ))}
-        <line x1="0" x2={largeur} y1={basY} y2={basY} stroke="#c6cfda" strokeWidth="1" />
+        <line x1="0" x2={largeur} y1={basY} y2={basY} stroke="#e5e7eb" strokeWidth="1" />
         {donnees.map((d, i) => {
           const h = (d.valeur / max) * (basY - hautY);
           const x = i * pas + (pas - largeurBarre) / 2;
@@ -120,7 +121,7 @@ export default function TableauDeBord({ db }) {
   const parAnnee = [7, 8, 9, 10, 11, 12].map((a) => ({
     nom: `${a}e`,
     valeur: signalements.filter((s) => trouverEleve(db, s.eleveId).annee === a).length,
-    couleur: "#1f4e8c",
+    couleur: "#334155",
   }));
 
   const parUrgence = db.echelleUrgence.map((n) => ({
@@ -133,7 +134,7 @@ export default function TableauDeBord({ db }) {
 
   return (
     <>
-      <p className="sous-titre">
+      <p className="callout-note">
         Tous les signalements de l'année scolaire ({signalements.length}), cycles actifs et clos,
         dont {eed} avec la case ES cochée.
       </p>

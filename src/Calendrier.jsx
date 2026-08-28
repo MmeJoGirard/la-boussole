@@ -5,8 +5,8 @@ import { nomComplet, trouverEleve } from "./aides.js";
 // interventions. Cliquer sur une journée affiche son détail.
 // Couleurs reprises de la palette validée des graphiques :
 // bleu = signalements, sarcelle = interventions.
-const COULEUR_SIGNALEMENT = "#2a78d6";
-const COULEUR_INTERVENTION = "#1baf7a";
+const COULEUR_SIGNALEMENT = "#2F5AA8";
+const COULEUR_INTERVENTION = "#0D9488";
 
 const MOIS = [
   "janvier", "février", "mars", "avril", "mai", "juin",
