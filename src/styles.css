@@ -1,82 +1,86 @@
-/* La Boussole : système visuel premium.
-   Typographie Inter (400 / 600 seulement), fond #FAFAFA, surfaces blanches,
-   primaire ardoise #0F172A, accents chauds discrets, profondeur par ombres
-   étagées plutôt que par bordures. Grille d'espacement de 8 px. */
+/* La Boussole : identité signature « cahier d'école et carte de navigation ».
+   Trois voix typographiques : Fraunces pour les titres, Inter pour le corps,
+   JetBrains Mono pour les chiffres. Papier ivoire chaud, un seul accent :
+   le cuivre de la boussole ancienne. */
 :root {
-  --fond: #f1f5f9;            /* fond de page : vrai gris bleuté */
-  --surface: #ffffff;          /* grandes cartes : blanc pur */
-  --carte-interne: #f8fafc;    /* cartes internes : deuxième couche */
-  --encre-fort: #030712;       /* titres : presque noir */
-  --meta: #64748b;             /* métadonnées : plancher, jamais plus pâle */
-  --primaire: #0f172a;
-  --primaire-doux: #1e293b;
-  --encre: #0f172a;
-  --texte: #1f2937; /* environ 14:1 sur blanc */
-  --secondaire: #334155; /* environ 10:1 sur blanc */
-  --sourdine: #475569; /* environ 7,5:1 sur blanc */
-  --bordure: #d8dee7;
-  --pale: #f1f5f9;
-  --accent-chaud: #dd7b4e;
-  --ok-fond: #dcfce7; --ok-encre: #166534; --ok-bord: #86efac;
-  --moyen-fond: #fef3c7; --moyen-encre: #92400e; --moyen-bord: #fcd34d;
-  --haut-fond: #fee2e2; --haut-encre: #991b1b; --haut-bord: #fca5a5;
-  --eed-fond: #ededf7; --eed-encre: #55519b; --eed-bord: #c9c5ec;
-  --pill-fond: #eff6ff; --pill-encre: #1e40af;
-  --sur-primaire: #ffffff;
-  --verre: rgba(255, 255, 255, 0.8);
-  --voile-fond: rgba(15, 23, 42, 0.4);
-  --anneau: rgba(15, 23, 42, 0.35);
-  --info-fond: #eff6ff;
-  --info-bord: #3b82f6;
-  --info-titre: #1e3a8a;
-  --onglets-fond: #e7edf4;
-  --bordure-bouton: #cbd5e1;
-  --lisere: #e2e8f0;
-  --ombre-repos: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
-  --ombre-survol: 0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.05);
+  --fond: #f4f1ea;             /* papier ivoire */
+  --surface: #fdfcf8;          /* blanc cassé des cartes */
+  --carte-interne: #f7f3ea;    /* deuxième couche, papier plus dense */
+  --encre-fort: #1c1917;       /* noir chaud d'encre */
+  --encre: #1c1917;
+  --texte: #292524;
+  --secondaire: #44403c;
+  --sourdine: #57534e;
+  --meta: #78716c;             /* gris chaud, plancher des gris */
+  --accent: #7c3f00;           /* cuivre : LA couleur signature */
+  --accent-doux: rgba(124, 63, 0, 0.12);
+  --primaire: #1c1917;
+  --primaire-doux: #33302b;
+  --sur-primaire: #fdfcf8;
+  --bordure: #dcd6cc;
+  --bordure-bouton: #c9c1b4;
+  --lisere: #e7e5e4;
+  --pale: #eee9df;
+  --onglets-fond: #e9e3d8;
+  --ok-fond: #e9efdf; --ok-encre: #2d5016; --ok-bord: #b7c89a;
+  --moyen-fond: #f7ecd4; --moyen-encre: #8a5a12; --moyen-bord: #ddc07a;
+  --haut-fond: #f7e7e4; --haut-encre: #a13333; --haut-bord: #d9a9a0;
+  --eed-fond: #e6ebf2; --eed-encre: #2c4a6e; --eed-bord: #b9c6d8;
+  --pill-fond: #e6ebf2; --pill-encre: #2c4a6e;
+  --verre: rgba(244, 241, 234, 0.85);
+  --voile-fond: rgba(28, 25, 23, 0.45);
+  --anneau: rgba(124, 63, 0, 0.35);
+  --info-fond: #fdfcf8;
+  --info-bord: #7c3f00;
+  --info-titre: #7c3f00;
+  --texture: radial-gradient(ellipse at top, #fdfcf8 0%, #f4f1ea 100%);
+  --ombre-repos: 0 1px 3px rgba(28, 25, 23, 0.06), 0 8px 24px rgba(28, 25, 23, 0.04);
+  --ombre-survol: 0 2px 4px rgba(28, 25, 23, 0.07), 0 12px 24px rgba(28, 25, 23, 0.06);
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- Thème sombre (activé par le bouton de l'entête) ---- */
+/* ---- Thème sombre : la carte de navigation nocturne ---- */
 :root[data-theme="sombre"] {
-  --fond: #0b1220;
-  --surface: #16202e;
-  --primaire: #e2e8f0;
-  --primaire-doux: #cbd5e1;
-  --encre: #f1f5f9;
-  --texte: #d7dee8;
-  --secondaire: #b3c0d0;
-  --sourdine: #8ea0b5;
-  --bordure: #334155;
-  --pale: #1e2a3a;
-  --sur-primaire: #0b1220;
-  --verre: rgba(11, 18, 32, 0.8);
-  --voile-fond: rgba(2, 6, 12, 0.65);
-  --anneau: rgba(226, 232, 240, 0.5);
-  --lisere: rgba(255, 255, 255, 0.07);
-  --ok-fond: #14351f; --ok-encre: #86efac; --ok-bord: #14532d;
-  --moyen-fond: #362a0c; --moyen-encre: #fcd34d; --moyen-bord: #92400e;
-  --haut-fond: #3b1414; --haut-encre: #fca5a5; --haut-bord: #7f1d1d;
-  --eed-fond: #262148; --eed-encre: #b7b1f2; --eed-bord: #4c46a1;
-  --pill-fond: #1c2c4a; --pill-encre: #93c5fd;
-  --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
-  --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.25);
-  --carte-interne: #1b2634;
-  --encre-fort: #f8fafc;
-  --meta: #8ea0b5;
-  --info-fond: #142138;
-  --info-bord: #60a5fa;
-  --info-titre: #bfdbfe;
-  --onglets-fond: #1a2534;
-  --bordure-bouton: #3e4c61;
+  --fond: #171310;
+  --surface: #201b17;
+  --carte-interne: #29221c;
+  --encre-fort: #faf5ec;
+  --encre: #f0eae0;
+  --texte: #ded6c9;
+  --secondaire: #c4baab;
+  --sourdine: #a69b8b;
+  --meta: #8f857a;
+  --accent: #c98a4b;
+  --accent-doux: rgba(201, 138, 75, 0.16);
+  --primaire: #f0eae0;
+  --primaire-doux: #ded6c9;
+  --sur-primaire: #171310;
+  --bordure: #3f362d;
+  --bordure-bouton: #4a4036;
+  --lisere: rgba(255, 244, 225, 0.09);
+  --pale: #2a231d;
+  --onglets-fond: #251f19;
+  --ok-fond: #22301a; --ok-encre: #a9c98f; --ok-bord: #44582f;
+  --moyen-fond: #362b12; --moyen-encre: #e0be76; --moyen-bord: #8a5a12;
+  --haut-fond: #3d211c; --haut-encre: #e09383; --haut-bord: #7a3a2e;
+  --eed-fond: #1e2a3b; --eed-encre: #9db8d9; --eed-bord: #3a5170;
+  --pill-fond: #1e2a3b; --pill-encre: #9db8d9;
+  --verre: rgba(23, 19, 16, 0.85);
+  --voile-fond: rgba(5, 4, 3, 0.6);
+  --anneau: rgba(201, 138, 75, 0.5);
+  --info-fond: #201b17;
+  --info-bord: #c98a4b;
+  --info-titre: #c98a4b;
+  --texture: radial-gradient(ellipse at top, #201b17 0%, #171310 100%);
+  --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.35), 0 12px 24px rgba(0, 0, 0, 0.3);
 }
-:root[data-theme="sombre"] .groupe-profils.role-direction .bouton-profil { border-left-color: #cbd5e1; }
-:root[data-theme="sombre"] .point-role.role-direction { background: #e2e8f0; }
+:root[data-theme="sombre"] .point-role.role-direction { background: #7e9cc0; }
 
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--fond);
+  background: var(--texture) fixed, var(--fond);
   color: var(--texte);
   font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
   font-size: 14px;
@@ -84,9 +88,16 @@ body {
   line-height: 1.6;
 }
 h1, h2, h3, h4 { color: var(--encre-fort); line-height: 1.25; margin: 0; }
-h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
-h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+h1, h2 { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.03em; }
+h1 { font-size: 22px; }
+h2 { font-size: 24px; margin-bottom: 4px; }
 h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 24px 0 8px; }
+/* Les chiffres parlent en JetBrains Mono, alignés au dixième de trait. */
+.num, .carte-stat .valeur, .donut-total, .pastille, .point-evenement,
+.legende-valeur, .barre-valeur, .compte-section, .chapitre-compte {
+  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
 button { font: inherit; cursor: pointer; }
 a { color: var(--encre); }
 
@@ -115,8 +126,9 @@ a { color: var(--encre); }
 }
 .entete .marque {
   display: flex; align-items: center; gap: 8px;
-  font-weight: 600; font-size: 16px; letter-spacing: -0.01em;
-  color: var(--encre);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500; font-size: 18px; letter-spacing: -0.02em;
+  color: var(--encre-fort);
 }
 .entete .role {
   display: inline-flex; align-items: center; gap: 8px;
@@ -129,23 +141,30 @@ a { color: var(--encre); }
 /* Le code couleur des rôles vit dans une pastille discrète :
    bleu pâle enseignants, bleu moyen ERRÉ/ES, bleu foncé direction. */
 .point-role { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
-.point-role.role-enseignant { background: #3b82f6; }
-.point-role.role-equipe { background: #6366f1; }
-.point-role.role-direction { background: #1e293b; }
+.point-role.role-enseignant { background: #7c3f00; }
+.point-role.role-equipe { background: #2d5016; }
+.point-role.role-direction { background: #2c4a6e; }
+:root[data-theme="sombre"] .point-role.role-enseignant { background: #c98a4b; }
+:root[data-theme="sombre"] .point-role.role-equipe { background: #7fa35b; }
 .entete .pousse { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
 .bouton-entete {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--surface);
-  color: var(--encre);
-  border: 1px solid var(--bordure-bouton);
-  border-radius: 10px;
-  padding: 7px 14px;
+  background: none;
+  color: var(--sourdine);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
   font-size: 13px;
   font-weight: 500;
-  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+  transition: color var(--transition);
 }
-.bouton-entete svg { stroke-width: 2; }
-.bouton-entete:hover { background: var(--pale); border-color: var(--sourdine); }
+.bouton-entete svg { stroke-width: 1.5; }
+.bouton-entete:hover {
+  color: var(--encre-fort);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
 
 /* ---- Mise en page ---- */
 .page { max-width: 1120px; margin: 0 auto; padding: 48px 32px 96px; }
@@ -200,8 +219,8 @@ a { color: var(--encre); }
 }
 /* Une carte-filtre active est clairement marquée. */
 .carte-stat.cliquable[aria-pressed="true"] {
-  border-color: var(--primaire);
-  box-shadow: inset 0 0 0 1px var(--primaire), var(--ombre-repos);
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent), var(--ombre-repos);
 }
 
 /* ---- Panneaux ---- */
@@ -243,8 +262,8 @@ select, input[type="text"], input[type="search"], textarea {
 }
 select:hover, input:hover, textarea:hover { box-shadow: var(--ombre-repos); }
 select:focus-visible, input:focus-visible, textarea:focus-visible {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-doux);
 }
 textarea { width: 100%; resize: vertical; min-height: 96px; }
 
@@ -347,10 +366,21 @@ td .bouton.discret { font-size: 14px; }
 }
 .info {
   background: var(--info-fond); color: var(--secondaire);
-  border-left: 3px solid var(--info-bord);
-  border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 12px 0; font-size: 14px;
+  border-left: 2px solid var(--info-bord);
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.7;
+  box-shadow: var(--ombre-repos);
 }
-.info strong { color: var(--info-titre); }
+.info::before { content: "◆"; display: block; color: var(--accent); font-size: 10px; margin-bottom: 6px; }
+.info strong {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--info-titre);
+}
 .case { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; }
 .case input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primaire); }
 .case span { font-size: 14px; }
@@ -364,43 +394,93 @@ td .bouton.discret { font-size: 14px; }
 /* ---- Écran de connexion ---- */
 .connexion { max-width: 760px; margin: 64px auto; padding: 0 32px; }
 .connexion .logo { font-size: 40px; }
-.connexion h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; margin: 8px 0; }
-.connexion .sous-titre { font-size: 16px; }
+.connexion h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(44px, 8vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 12px 0 8px;
+}
+.connexion h1 em, .marque em { font-style: italic; }
+.connexion .sous-titre {
+  font-size: 12px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.15em;
+  color: var(--meta);
+}
+.aiguille { transform-origin: 50% 50%; animation: rotation-aiguille 40s ease-in-out infinite; }
+@keyframes rotation-aiguille { to { transform: rotate(360deg); } }
 .groupe-profils {
   margin-top: 40px;
-  background: var(--surface);
-  border: 1px solid var(--lisere);
-  border-radius: 16px;
-  padding: 24px 32px;
-  box-shadow: var(--ombre-repos);
+  border-top: 1px solid var(--lisere);
+  padding-top: 20px;
 }
-.groupe-profils h3 {
-  display: flex; align-items: center; gap: 8px;
+.chapitre {
+  display: flex; align-items: baseline; gap: 10px;
   margin: 0 0 16px;
-  font-size: 12px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  color: var(--encre);
 }
-.compte-section { color: var(--meta); font-weight: 400; }
+.chapitre-no {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.chapitre-titre {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--encre-fort);
+  letter-spacing: -0.02em;
+}
+.points-suite { flex: 1; border-bottom: 1px dotted var(--bordure-bouton); margin: 0 4px 6px; }
+.chapitre-compte { font-size: 12px; color: var(--meta); white-space: nowrap; }
+.compte-section { color: var(--meta); font-weight: 400; font-size: 12px; }
 .boutons-profils { display: flex; flex-wrap: wrap; gap: 12px; }
 .bouton-profil {
-  background: var(--carte-interne);
+  position: relative;
+  background: var(--surface);
   border: 1px solid var(--lisere);
-  border-left-width: 3px;
-  border-radius: 10px;
-  padding: 12px 16px;
+  border-radius: 6px;
+  padding: 20px;
+  padding-right: 32px;
   text-align: left;
-  font-size: 16px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 17px;
   color: var(--encre-fort);
-  font-weight: 600;
-  transition: box-shadow var(--transition), transform var(--transition);
+  font-weight: 500;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
-.bouton-profil:hover { box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08); transform: translateY(-1px); }
-.bouton-profil .detail { display: block; font-size: 13px; font-weight: 400; color: var(--meta); margin-top: 4px; }
-/* 5. La barre de couleur du rôle, à gauche de chaque carte. */
-.groupe-profils.role-enseignant .bouton-profil { border-left-color: #3b82f6; }
-.groupe-profils.role-equipe .bouton-profil { border-left-color: #6366f1; }
-.groupe-profils.role-direction .bouton-profil { border-left-color: #1e293b; }
+.bouton-profil:hover {
+  box-shadow: var(--ombre-survol);
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+.bouton-profil .detail {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  color: var(--meta);
+  margin-top: 4px;
+}
+/* Le rôle : un point discret en haut à droite de chaque fiche. */
+.bouton-profil::after {
+  content: "";
+  position: absolute; top: 12px; right: 12px;
+  width: 6px; height: 6px; border-radius: 999px;
+}
+.groupe-profils.role-enseignant .bouton-profil::after { background: #7c3f00; }
+.groupe-profils.role-equipe .bouton-profil::after { background: #2d5016; }
+.groupe-profils.role-direction .bouton-profil::after { background: #2c4a6e; }
+:root[data-theme="sombre"] .groupe-profils.role-enseignant .bouton-profil::after { background: #c98a4b; }
+:root[data-theme="sombre"] .groupe-profils.role-equipe .bouton-profil::after { background: #7fa35b; }
+:root[data-theme="sombre"] .groupe-profils.role-direction .bouton-profil::after { background: #7e9cc0; }
 
 /* ---- Fenêtre modale ---- */
 .voile {
@@ -482,7 +562,7 @@ td .bouton.discret { font-size: 14px; }
 .lt-point {
   position: absolute; left: 0; top: 5px;
   width: 10px; height: 10px; border-radius: 999px;
-  background: #3b82f6;
+  background: var(--accent);
   box-shadow: 0 0 0 3px var(--surface);
 }
 .lt-entete { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -566,9 +646,9 @@ td .bouton.discret { font-size: 14px; }
 }
 .chip-filtre:hover { color: var(--encre); background: var(--pale); }
 .chip-filtre[aria-pressed="true"] {
-  background: var(--primaire);
-  border-color: var(--primaire);
-  color: var(--sur-primaire);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fdfcf8;
 }
 
 /* ---- Légende des étapes ---- */
@@ -601,7 +681,7 @@ td .bouton.discret { font-size: 14px; }
 }
 .calendrier-case.vide { background: none; }
 .calendrier-case:not(.vide):hover { background: var(--pale); box-shadow: var(--ombre-repos); transform: translateY(-1px); }
-.calendrier-case[aria-pressed="true"] { background: var(--surface); box-shadow: inset 0 0 0 2px var(--primaire), var(--ombre-repos); }
+.calendrier-case[aria-pressed="true"] { background: var(--surface); box-shadow: inset 0 0 0 2px var(--accent), var(--ombre-repos); }
 .calendrier-numero { font-size: 13px; font-weight: 600; color: var(--secondaire); }
 .calendrier-points { display: flex; gap: 4px; flex-wrap: wrap; }
 .point-evenement {
@@ -703,7 +783,7 @@ td .bouton.discret { font-size: 14px; }
 .legende li { display: flex; align-items: center; gap: 10px; padding: 4px 0; font-size: 13px; }
 .pastille-couleur { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
 .legende-nom { flex: 1; color: var(--texte); }
-.legende-valeur { color: var(--secondaire); font-weight: 600; }
+.legende-valeur { color: var(--secondaire); font-weight: 600; white-space: nowrap; }
 .barre-valeur { font-size: 12px; font-weight: 400; fill: var(--encre); font-variant-numeric: tabular-nums; }
 .barre-nom { font-size: 11px; fill: var(--sourdine); }
 
@@ -728,6 +808,23 @@ td .bouton.discret { font-size: 14px; }
 .graphique svg path:nth-of-type(6) { animation-delay: 400ms; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+}
+
+/* ---- Signatures : devise et ornements ---- */
+.devise {
+  margin-top: 64px;
+  text-align: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--meta);
+}
+.ornement {
+  text-align: center;
+  color: var(--bordure-bouton);
+  letter-spacing: 10px;
+  margin: 24px 0;
+  font-size: 12px;
 }
 
 @media (max-width: 640px) {

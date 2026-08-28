@@ -67,7 +67,8 @@ Ce qu'elle contient, en mode démonstration (choix de profil au lieu du SSO, cou
 - **Chronologie** (ERRÉ, éducation spécialisée et direction) : ligne du temps verticale de tous les événements de l'année, regroupés par journée, du plus récent au plus ancien.
 - **Vue direction** : tout ce qui précède, plus le journal d'audit complet et les suggestions de courriel aux parents.
 - **Réactif** : téléphone, tablette, ordinateur.
-- **Deux thèmes** : clair et sombre, bascule dans l'entête, choix mémorisé par le navigateur. Chaque thème a sa propre palette de graphiques, validée pour le daltonisme sur sa propre surface.
+- **Deux thèmes** : clair (papier ivoire) et sombre (carte de navigation nocturne), bascule dans l'entête, choix mémorisé par le navigateur. Chaque thème a sa propre palette de graphiques, validée pour le daltonisme sur sa propre surface.
+- **Identité signature** : trois voix typographiques (Fraunces pour les titres, Inter pour le corps, JetBrains Mono pour les chiffres), accent unique cuivre #7C3F00, aiguille de boussole qui tourne lentement à côté du wordmark, chapitres à points de suite sur l'écran d'accueil, devise en pied de page.
 
 ## Prochaine étape (phase 2 du plan)
 

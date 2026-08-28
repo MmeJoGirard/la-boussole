@@ -5,12 +5,13 @@
 import { trouverEleve, STATUTS, TYPES_SIGNALEMENT, typesDe } from "./aides.js";
 
 // Chaque thème a sa propre palette, validée sur sa propre surface.
-const CATEGORIEL_CLAIR = ["#2F5AA8", "#DD7B4E", "#0D9488", "#C9922E"];
+const CATEGORIEL_CLAIR = ["#3568A8", "#C2621F", "#0D9488", "#BE8322"];
 const CATEGORIEL_SOMBRE = ["#5588DB", "#D0764A", "#1D9D8F", "#B8892F"];
 // Rampe ordinale monochrome (urgence 0 à 4) : le niveau 4 est toujours
 // le plus visible (le plus foncé en clair, le plus clair en sombre).
-const ORDINAL_CLAIR = ["#9DA9BB", "#7B8BA1", "#5A6E87", "#3A526D", "#1E3A55"];
-const ORDINAL_SOMBRE = ["#54657D", "#71839B", "#8FA0B6", "#AFBDCF", "#D3DCE8"];
+// Rampe sépia : les bruns d'encre ancienne, du pâle au profond.
+const ORDINAL_CLAIR = ["#BCA684", "#9C8560", "#7B6442", "#584427", "#362810"];
+const ORDINAL_SOMBRE = ["#6B5637", "#8A7150", "#A98D6B", "#C7AC8A", "#E3D3B5"];
 
 // Un segment d'anneau (donut) entre deux angles, en coordonnées SVG.
 function arc(cx, cy, r1, r2, a0, a1) {
@@ -127,7 +128,7 @@ export default function TableauDeBord({ db, sombre }) {
   const parAnnee = [7, 8, 9, 10, 11, 12].map((a) => ({
     nom: `${a}e`,
     valeur: signalements.filter((s) => trouverEleve(db, s.eleveId).annee === a).length,
-    couleur: sombre ? "#AFBDCF" : "#334155",
+    couleur: sombre ? "#C7AC8A" : "#584427",
   }));
 
   const parUrgence = db.echelleUrgence.map((n) => ({

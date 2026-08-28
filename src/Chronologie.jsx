@@ -4,7 +4,7 @@ import { nomComplet, trouverEleve, trouverMembre } from "./aides.js";
 // La chronologie : tous les événements de l'année scolaire sur une ligne
 // du temps verticale, du plus récent au plus ancien.
 const COULEURS = {
-  clair: { signalement: "#2F5AA8", intervention: "#0D9488" },
+  clair: { signalement: "#3568A8", intervention: "#0D9488" },
   sombre: { signalement: "#5588DB", intervention: "#1D9D8F" },
 };
 

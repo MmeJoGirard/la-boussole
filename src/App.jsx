@@ -11,6 +11,19 @@ import { Mail, RotateCcw, LogOut, Moon, Sun } from "lucide-react";
 
 let compteurDemo = 0;
 
+// L'aiguille de la boussole : elle tourne un tour complet en 40 secondes,
+// presque imperceptiblement (et reste immobile si la personne préfère
+// réduire les animations).
+function Aiguille({ taille = 20 }) {
+  return (
+    <svg className="aiguille" width={taille} height={taille} viewBox="0 0 24 24" aria-hidden="true">
+      <polygon points="12,1.5 15,12 12,10.2 9,12" fill="var(--accent)" />
+      <polygon points="12,22.5 9,12 12,13.8 15,12" fill="var(--sourdine)" />
+      <circle cx="12" cy="12" r="1.6" fill="var(--encre-fort)" />
+    </svg>
+  );
+}
+
 export default function App() {
   const [db, setDb] = useState(() => structuredClone(donneesInitiales));
   const [utilisateur, setUtilisateur] = useState(null);
@@ -284,22 +297,24 @@ export default function App() {
     return (
       <main className="connexion">
         <div style={{ display: "flex", justifyContent: "flex-end" }}>{boutonTheme}</div>
-        <div className="logo" aria-hidden="true">🧭</div>
-        <h1>La Boussole</h1>
+        <div className="logo"><Aiguille taille={44} /></div>
+        <h1>La <em>Boussole</em></h1>
         <p className="sous-titre">
           Suivi des interventions · {db.ecole.nom} · {db.ecole.anneeScolaire}, semestre {db.ecole.semestre}
         </p>
         <div className="info">
           <strong>Mode démonstration.</strong> Choisissez un profil pour explorer la plateforme.
           En production, la connexion se fera avec le compte Google Workspace du conseil (connexion unique).
-          Toutes les personnes sont fictives. Code couleur : bleu vif pour les enseignant·e·s,
-          indigo pour l'ERRÉ et l'éducation spécialisée, ardoise foncé pour la direction.
+          Toutes les personnes sont fictives. Code couleur : cuivre pour les enseignant·e·s,
+          vert forêt pour l'ERRÉ et l'éducation spécialisée, bleu ardoise pour la direction.
         </div>
-        {groupes.map((g) => (
+        {groupes.map((g, i) => (
           <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
-            <h3>
-              <span className={`point-role ${roleClasse(g.membres[0])}`} aria-hidden="true" /> {g.titre}
-              <span className="compte-section"> · {g.membres.length}</span>
+            <h3 className="chapitre">
+              <span className="chapitre-no">{String(i + 1).padStart(2, "0")} —</span>
+              <span className="chapitre-titre">{g.titre}</span>
+              <span className="points-suite" aria-hidden="true"></span>
+              <span className="chapitre-compte">{g.membres.length} personnes</span>
             </h3>
             <div className="boutons-profils">
               {g.membres.map((m) => (
@@ -314,6 +329,7 @@ export default function App() {
             </div>
           </section>
         ))}
+        <footer className="devise">Faite pour orienter, non pour classer.</footer>
       </main>
     );
   }
@@ -321,7 +337,7 @@ export default function App() {
   return (
     <>
       <header className="entete">
-        <span className="marque"><span aria-hidden="true">🧭</span> La Boussole</span>
+        <span className="marque"><Aiguille taille={18} /> La <em>Boussole</em></span>
         <span className="role">
           <span className={`point-role ${roleClasse(utilisateur)}`} aria-hidden="true" />
           {nomComplet(utilisateur)} · {ROLES[utilisateur.role]}
@@ -346,6 +362,7 @@ export default function App() {
           <VueEquipe db={db} utilisateur={utilisateur} actions={actions} direction={estDirection(utilisateur)} sombre={sombre} />
         )}
       </div>
+      <footer className="devise">Faite pour orienter, non pour classer.</footer>
       {boiteOuverte && <BoiteCourriels courriels={courriels} fermer={() => setBoiteOuverte(false)} />}
     </>
   );

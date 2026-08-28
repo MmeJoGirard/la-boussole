@@ -83,7 +83,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           {s.caseEED && <span className="etiquette eed">Éducation spécialisée avisée</span>}
         </div>
 
-        <hr className="fiche-sep" />
+        <div className="ornement" aria-hidden="true">· · ·</div>
 
         {/* 5. Le signalement, en bloc balayable. */}
         <h3 className="section-fiche"><FileText size={14} strokeWidth={1.5} aria-hidden="true" /> Signalement</h3>

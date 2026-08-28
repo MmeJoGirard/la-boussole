@@ -6,7 +6,7 @@ import { nomComplet, trouverEleve } from "./aides.js";
 // Couleurs reprises de la palette validée des graphiques :
 // bleu = signalements, sarcelle = interventions.
 const COULEURS = {
-  clair: { signalement: "#2F5AA8", intervention: "#0D9488" },
+  clair: { signalement: "#3568A8", intervention: "#0D9488" },
   sombre: { signalement: "#5588DB", intervention: "#1D9D8F" },
 };
 
