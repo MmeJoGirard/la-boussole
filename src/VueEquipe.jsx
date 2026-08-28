@@ -33,7 +33,7 @@ function FiltreMultiple({ titre, options, actives, basculer }) {
   );
 }
 
-// Vue partagée par l'équipe (ERRÉ + éducation spécialisée) et la direction.
+// Vue partagée par l'équipe (ERRÉ + service à l'intention des élèves en difficulté) et la direction.
 // La direction a en plus l'onglet Journal d'audit.
 export default function VueEquipe({ db, utilisateur, actions, direction, sombre }) {
   const [onglet, setOnglet] = useState("bord");
@@ -170,13 +170,17 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
               Légende des étapes du suivi
               <ChevronDown size={16} strokeWidth={1.5} aria-hidden="true" />
             </button>
-            {legendeOuverte && (
+            {legendeOuverte && (<>
+              <p className="aide" style={{ marginBottom: 8 }}>
+                Les trois étapes s'inscrivent dans l'approche de la discipline progressive :
+                intervenir tôt, graduellement, et documenter chaque geste.
+              </p>
               <ol className="liste-etapes">
                 {ETAPES.map((e) => (
                   <li key={e.n}><strong>{e.nom}.</strong> {e.description}</li>
                 ))}
               </ol>
-            )}
+            </>)}
           </div>
           <TableauDeBord db={db} sombre={sombre} />
         </>

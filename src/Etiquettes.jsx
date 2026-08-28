@@ -31,5 +31,5 @@ export function EtiquetteEtape({ n }) {
 }
 
 export function EtiquetteES() {
-  return <span className="etiquette eed" title="Élève identifié ES (éducation spécialisée)">ES</span>;
+  return <span className="etiquette eed" title="Élève identifié ES (service à l'intention des élèves en difficulté)">ES</span>;
 }

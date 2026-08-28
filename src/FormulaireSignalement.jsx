@@ -95,9 +95,9 @@ export default function FormulaireSignalement({ db, utilisateur, actions, eleveI
             <input id="es" type="checkbox" checked={caseEED} onChange={(e) => setCaseEED(e.target.checked)} />
             <span>
               <label htmlFor="es" style={{ display: "inline", color: "inherit" }}>
-                <strong>Élève identifié ES</strong> (éducation spécialisée)
+                <strong>Élève identifié ES</strong> (service à l'intention des élèves en difficulté)
               </label>
-              <span className="aide">Si cochée, un courriel est envoyé automatiquement à l'équipe d'éducation spécialisée. {eleve?.eed ? "Précochée : cet élève est identifié ES au dossier." : ""}</span>
+              <span className="aide">Si cochée, un courriel est envoyé automatiquement à l'équipe du service à l'intention des élèves en difficulté. {eleve?.eed ? "Précochée : cet élève est identifié ES au dossier." : ""}</span>
             </span>
           </div>
         </fieldset>
@@ -182,7 +182,7 @@ export default function FormulaireSignalement({ db, utilisateur, actions, eleveI
         {erreur && <div className="avertissement" role="alert">{erreur}</div>}
         <div className="info">
           À l'envoi : courriel automatique aux ERRÉ, à la direction et aux enseignants de l'élève
-          {caseEED ? ", ainsi qu'à l'équipe d'éducation spécialisée (case ES cochée)" : ""}. Tout est consigné dans l'audit.
+          {caseEED ? ", ainsi qu'à l'équipe du service à l'intention des élèves en difficulté (case ES cochée)" : ""}. Tout est consigné dans l'audit.
         </div>
         <div className="rangee-boutons">
           <button type="submit" className="bouton">Envoyer le signalement</button>

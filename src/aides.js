@@ -10,7 +10,7 @@ export const nomComplet = (p) => `${p.prenom} ${p.nom}`;
 export const ROLES = {
   enseignant: "Enseignant·e",
   erre: "ERRÉ",
-  educ_specialisee: "Éducation spécialisée",
+  educ_specialisee: "Service à l'intention des élèves en difficulté",
   direction: "Direction",
   direction_adjointe: "Direction adjointe",
 };
@@ -52,7 +52,7 @@ export const ETAPES = [
 // Un signalement peut avoir plusieurs types cochés.
 export const typesDe = (s) => s.types || (s.type ? [s.type] : []);
 
-// L'équipe qui traite les dossiers : ERRÉ + éducation spécialisée.
+// L'équipe qui traite les dossiers : ERRÉ + service à l'intention des élèves en difficulté.
 export const estEquipe = (membre) => membre.role === "erre" || membre.role === "educ_specialisee";
 export const estDirection = (membre) => membre.role === "direction" || membre.role === "direction_adjointe";
 

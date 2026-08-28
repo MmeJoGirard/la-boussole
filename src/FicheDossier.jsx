@@ -103,7 +103,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
             Étape {s.niveauIntervention}
           </span>
           <Indicateur caVa={s.indicateurCaVa} equipe />
-          {s.caseEED && <span className="etiquette eed">Éducation spécialisée avisée</span>}
+          {s.caseEED && <span className="etiquette eed" title="Le service à l'intention des élèves en difficulté a été avisé par courriel">ES avisé</span>}
         </div>
 
         <MarqueurSection
@@ -314,7 +314,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
               <div className="zone-action">
                 <h3 className="zone-action-titre"><Shield size={16} aria-hidden="true" /> Clore le cycle d'intervention</h3>
                 <p className="aide">
-                  Réservé à l'ERRÉ, à l'éducation spécialisée et à la direction. La note de clôture est obligatoire;
+                  Réservé à l'ERRÉ, au service à l'intention des élèves en difficulté et à la direction. La note de clôture est obligatoire;
                   l'enseignant·e qui a fait le signalement en est avisé·e par courriel.
                 </p>
                 <div className="champ">

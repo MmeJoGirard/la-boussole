@@ -125,7 +125,7 @@ export default function App() {
       messages.push({
         a: educSpec.map((p) => p.courriel),
         objet: `La Boussole : signalement d'un élève ES (${nomComplet(eleve)})`,
-        corps: `La case ES (éducation spécialisée) a été cochée pour ce signalement.\n${corps}`,
+        corps: `La case ES (service à l'intention des élèves en difficulté) a été cochée pour ce signalement.\n${corps}`,
       });
     }
     envoyer(messages);
@@ -134,7 +134,7 @@ export default function App() {
       ajouterAudit(
         { ...bd, signalements: [...bd.signalements, nouveau] },
         "signalement_cree",
-        `Signalement ${nouveau.id} créé pour ${nomComplet(eleve)}${formulaire.caseEED ? " (case ES cochée, éducation spécialisée avisée)" : ""}.`,
+        `Signalement ${nouveau.id} créé pour ${nomComplet(eleve)}${formulaire.caseEED ? " (case ES cochée, service à l'intention des élèves en difficulté avisé)" : ""}.`,
         utilisateur.id
       )
     );
@@ -246,7 +246,7 @@ export default function App() {
     );
   };
 
-  // « Fermer un cycle » : seuls l'ERRÉ, l'éducation spécialisée et la
+  // « Fermer un cycle » : seuls l'ERRÉ, le service à l'intention des élèves en difficulté et la
   // direction peuvent clore, avec une note de clôture obligatoire.
   const cloreCycle = (signId, note) => {
     const s = db.signalements.find((x) => x.id === signId);
@@ -293,7 +293,7 @@ export default function App() {
   if (!utilisateur) {
     const groupes = [
       { titre: "Enseignant·e·s", membres: db.personnel.filter((p) => p.role === "enseignant") },
-      { titre: "ERRÉ et éducation spécialisée", membres: db.personnel.filter((p) => estEquipe(p)) },
+      { titre: "ERRÉ et service à l'intention des élèves en difficulté", membres: db.personnel.filter((p) => estEquipe(p)) },
       { titre: "Direction", membres: db.personnel.filter((p) => estDirection(p)) },
     ];
     return (
@@ -308,7 +308,7 @@ export default function App() {
           <strong>Mode démonstration.</strong> Choisissez un profil pour explorer la plateforme.
           En production, la connexion se fera avec le compte Google Workspace du conseil (connexion unique).
           Toutes les personnes sont fictives. Code couleur : bleu glacier pour les
-          enseignant·e·s, bleu royal pour l'ERRÉ et l'éducation spécialisée, noir pour la direction.
+          enseignant·e·s, bleu royal pour l'ERRÉ et le service à l'intention des élèves en difficulté, noir pour la direction.
         </div>
         {groupes.map((g, i) => (
           <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
@@ -335,7 +335,10 @@ export default function App() {
             </div>
           </section>
         ))}
-        <footer className="devise">Faite pour orienter, non pour classer.</footer>
+        <footer className="devise">
+        Faite pour orienter, non pour classer.
+        <span className="edia">Équité · Diversité · Inclusion · Appartenance</span>
+      </footer>
       </main>
     );
   }
@@ -368,7 +371,10 @@ export default function App() {
           <VueEquipe db={db} utilisateur={utilisateur} actions={actions} direction={estDirection(utilisateur)} sombre={sombre} />
         )}
       </div>
-      <footer className="devise">Faite pour orienter, non pour classer.</footer>
+      <footer className="devise">
+        Faite pour orienter, non pour classer.
+        <span className="edia">Équité · Diversité · Inclusion · Appartenance</span>
+      </footer>
       {boiteOuverte && <BoiteCourriels courriels={courriels} fermer={() => setBoiteOuverte(false)} />}
     </>
   );

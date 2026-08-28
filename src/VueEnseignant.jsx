@@ -205,13 +205,17 @@ export default function VueEnseignant({ db, utilisateur, actions, sombre }) {
               Étapes du suivi
               <ChevronDown size={16} strokeWidth={1.5} aria-hidden="true" />
             </button>
-            {legendeOuverte && (
+            {legendeOuverte && (<>
+              <p className="aide" style={{ marginBottom: 8 }}>
+                Les trois étapes s'inscrivent dans l'approche de la discipline progressive :
+                intervenir tôt, graduellement, et documenter chaque geste.
+              </p>
               <ol className="liste-etapes">
                 {ETAPES.map((e) => (
                   <li key={e.n}><strong>{e.nom}.</strong> {e.description}</li>
                 ))}
               </ol>
-            )}
+            </>)}
           </div>
         </>
       )}
