@@ -20,7 +20,10 @@ const JOURS = ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"];
 // pour éviter les surprises de fuseau horaire.
 const decouper = (date) => date.slice(0, 10).split("-").map(Number);
 
-export default function Calendrier({ db, ouvrirDossier, sombre }) {
+// eleveIds : limite aux élèves donnés (vue enseignant).
+// confidentiel : cache les interventions et le niveau d'urgence
+// (l'enseignant sait qu'un signalement existe, sans le détail du dossier).
+export default function Calendrier({ db, ouvrirDossier, sombre, eleveIds = null, confidentiel = false }) {
   const COULEUR_SIGNALEMENT = COULEURS[sombre ? "sombre" : "clair"].signalement;
   const COULEUR_INTERVENTION = COULEURS[sombre ? "sombre" : "clair"].intervention;
   // Tous les événements datés, regroupés par jour.
@@ -32,24 +35,28 @@ export default function Calendrier({ db, ouvrirDossier, sombre }) {
       parJour.get(jour).push(ev);
     };
     for (const s of db.signalements) {
+      if (eleveIds && !eleveIds.includes(s.eleveId)) continue;
       const eleve = trouverEleve(db, s.eleveId);
       ajouter(s.date, {
         genre: "signalement",
         signId: s.id,
+        eleveId: s.eleveId,
         libelle: `Signalement · ${nomComplet(eleve)} (${eleve.groupe})`,
-        detail: `Urgence ${s.niveauUrgence} (${s.urgenceLibelle})`,
+        detail: confidentiel ? "" : `Urgence ${s.niveauUrgence} (${s.urgenceLibelle})`,
       });
+      if (confidentiel) continue;
       for (const inter of s.interventions) {
         ajouter(inter.date, {
           genre: "intervention",
           signId: s.id,
+          eleveId: s.eleveId,
           libelle: `${inter.type} · ${nomComplet(eleve)} (${eleve.groupe})`,
           detail: `Étape ${inter.niveau}`,
         });
       }
     }
     return parJour;
-  }, [db]);
+  }, [db, eleveIds, confidentiel]);
 
   // Mois affiché au départ : le plus récent qui contient des événements.
   const [moisCourant, setMoisCourant] = useState(() => {
@@ -102,7 +109,7 @@ export default function Calendrier({ db, ouvrirDossier, sombre }) {
       </p>
       <ul className="legende legende-calendrier" aria-hidden="true">
         <li><span className="pastille-couleur" style={{ background: COULEUR_SIGNALEMENT }} /> <span className="legende-nom">Signalements</span></li>
-        <li><span className="pastille-couleur" style={{ background: COULEUR_INTERVENTION }} /> <span className="legende-nom">Interventions</span></li>
+        {!confidentiel && <li><span className="pastille-couleur" style={{ background: COULEUR_INTERVENTION }} /> <span className="legende-nom">Interventions</span></li>}
       </ul>
 
       <div className="panneau" style={{ padding: "10px" }}>
@@ -145,7 +152,7 @@ export default function Calendrier({ db, ouvrirDossier, sombre }) {
                 <span className="pastille-couleur" style={{ background: ev.genre === "signalement" ? COULEUR_SIGNALEMENT : COULEUR_INTERVENTION, marginRight: "6px" }} aria-hidden="true" />
                 <span className="qui">{ev.libelle}</span>{" "}
                 <span className="quand">{ev.detail}</span>{" "}
-                <button className="bouton discret" onClick={() => ouvrirDossier(ev.signId)}>Ouvrir le dossier</button>
+                <button className="bouton discret" onClick={() => ouvrirDossier(ev)}>{confidentiel ? "Ouvrir le profil" : "Ouvrir le dossier"}</button>
               </li>
             ))}
           </ul>

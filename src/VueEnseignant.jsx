@@ -4,6 +4,7 @@ import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 import FormulaireSignalement from "./FormulaireSignalement.jsx";
 import ProfilEleve from "./ProfilEleve.jsx";
 import { Users, Activity, FileText, MessageSquarePlus, ChevronDown } from "lucide-react";
+import Calendrier from "./Calendrier.jsx";
 
 const VUES = {
   tous: "Tous mes élèves",
@@ -14,7 +15,7 @@ const VUES = {
 
 // Vue enseignant : un tableau de bord dont chaque carte filtre la liste,
 // puis « mes élèves » classés par année, cours et groupe.
-export default function VueEnseignant({ db, utilisateur, actions }) {
+export default function VueEnseignant({ db, utilisateur, actions, sombre }) {
   const mesCours = coursDe(db, utilisateur);
   const mesEleves = useMemo(() => elevesDe(db, utilisateur), [db, utilisateur]);
 
@@ -26,6 +27,7 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
   const [formulaire, setFormulaire] = useState(null); // null | {eleve?}
   const [profil, setProfil] = useState(null);
   const [legendeOuverte, setLegendeOuverte] = useState(false);
+  const [onglet, setOnglet] = useState("liste");
 
   const dossierActif = (eleve) => signalementsDe(db, eleve.id).find((s) => s.statut !== "clos");
 
@@ -113,6 +115,21 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
         </div>
       )}
 
+      <div className="onglets" role="tablist">
+        <button role="tab" aria-selected={onglet === "liste"} className="onglet" onClick={() => setOnglet("liste")}>Mes élèves</button>
+        <button role="tab" aria-selected={onglet === "calendrier"} className="onglet" onClick={() => setOnglet("calendrier")}>Calendrier</button>
+      </div>
+
+      {onglet === "calendrier" ? (
+        <Calendrier
+          db={db}
+          sombre={sombre}
+          eleveIds={mesEleves.map((e) => e.id)}
+          confidentiel
+          ouvrirDossier={(ev) => setProfil(db.eleves.find((x) => x.id === ev.eleveId))}
+        />
+      ) : (
+      <>
       <div className="panneau">
         <button
           className="bouton-legende"
@@ -203,6 +220,8 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
           </tbody>
         </table>
       </div>
+      </>
+      )}
 
       {formulaire && (
         <FormulaireSignalement

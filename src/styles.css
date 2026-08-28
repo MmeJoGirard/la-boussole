@@ -520,6 +520,71 @@ td .bouton.discret { font-size: 14px; }
 .legende-calendrier { display: flex; gap: 20px; margin-bottom: 12px; }
 .legende-calendrier li { padding: 0; }
 
+/* ---- Vue Kanban ---- */
+.kanban {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(250px, 1fr);
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.kanban-colonne {
+  background: var(--onglets-fond);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 160px;
+}
+.kanban-titre {
+  margin: 0 0 4px;
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--encre);
+}
+.kanban-carte {
+  background: var(--surface);
+  border: 1px solid var(--lisere);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: left;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.kanban-carte:hover { box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08); transform: translateY(-1px); }
+.kanban-nom { font-weight: 600; color: var(--encre-fort); font-size: 14.5px; }
+.kanban-meta { font-size: 12.5px; color: var(--meta); }
+.kanban-etiquettes { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---- Chronologie ---- */
+.chronologie { list-style: none; margin: 0; padding: 0; position: relative; }
+.chronologie::before {
+  content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--lisere);
+}
+.chrono-jour {
+  position: relative;
+  margin: 20px 0 6px; padding-left: 28px;
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--encre);
+}
+.chronologie > li:first-child .chrono-jour { margin-top: 0; }
+.chrono-liste { list-style: none; margin: 0; padding: 0; }
+.chrono-ev { position: relative; padding: 6px 0 6px 28px; }
+.chrono-point {
+  position: absolute; left: 1px; top: 12px;
+  width: 14px; height: 14px; border-radius: 999px;
+  border: 3px solid var(--surface);
+}
+.chrono-titre { font-weight: 600; color: var(--encre-fort); }
+.chrono-detail { color: var(--secondaire); margin-left: 6px; }
+
 /* ---- Graphiques du tableau de bord ---- */
 .grille-graphiques { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
 .graphique { margin: 0; }

@@ -5,6 +5,8 @@ import FicheDossier from "./FicheDossier.jsx";
 import TableauAudit from "./TableauAudit.jsx";
 import TableauDeBord from "./Graphiques.jsx";
 import Calendrier from "./Calendrier.jsx";
+import Kanban from "./Kanban.jsx";
+import Chronologie from "./Chronologie.jsx";
 import { FolderOpen, Inbox, TriangleAlert, Building2, CheckCircle2, ChevronDown, Download } from "lucide-react";
 
 // Un groupe de filtres à sélection multiple : des boutons qu'on active
@@ -145,8 +147,10 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
 
       <div className="onglets" role="tablist">
         <button role="tab" aria-selected={onglet === "bord"} className="onglet" onClick={() => setOnglet("bord")}>Tableau de bord</button>
+        <button role="tab" aria-selected={onglet === "kanban"} className="onglet" onClick={() => setOnglet("kanban")}>Kanban</button>
         <button role="tab" aria-selected={onglet === "dossiers"} className="onglet" onClick={() => setOnglet("dossiers")}>Dossiers</button>
         <button role="tab" aria-selected={onglet === "calendrier"} className="onglet" onClick={() => setOnglet("calendrier")}>Calendrier</button>
+        <button role="tab" aria-selected={onglet === "chronologie"} className="onglet" onClick={() => setOnglet("chronologie")}>Chronologie</button>
         {direction && (
           <button role="tab" aria-selected={onglet === "audit"} className="onglet" onClick={() => setOnglet("audit")}>Journal d'audit</button>
         )}
@@ -173,8 +177,12 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
           </div>
           <TableauDeBord db={db} sombre={sombre} />
         </>
+      ) : onglet === "kanban" ? (
+        <Kanban db={db} ouvrirDossier={setDossierOuvert} />
       ) : onglet === "calendrier" ? (
-        <Calendrier db={db} ouvrirDossier={setDossierOuvert} sombre={sombre} />
+        <Calendrier db={db} ouvrirDossier={(ev) => setDossierOuvert(ev.signId)} sombre={sombre} />
+      ) : onglet === "chronologie" ? (
+        <Chronologie db={db} ouvrirDossier={setDossierOuvert} sombre={sombre} />
       ) : onglet === "audit" && direction ? (
         <TableauAudit db={db} />
       ) : (

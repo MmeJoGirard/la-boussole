@@ -341,7 +341,7 @@ export default function App() {
       </header>
       <div className="page">
         {utilisateur.role === "enseignant" ? (
-          <VueEnseignant db={db} utilisateur={utilisateur} actions={actions} />
+          <VueEnseignant db={db} utilisateur={utilisateur} actions={actions} sombre={sombre} />
         ) : (
           <VueEquipe db={db} utilisateur={utilisateur} actions={actions} direction={estDirection(utilisateur)} sombre={sombre} />
         )}
