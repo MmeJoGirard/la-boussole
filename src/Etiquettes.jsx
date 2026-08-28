@@ -19,9 +19,9 @@ export function EtiquetteStatut({ statut }) {
 }
 
 // L'indicateur visible : formulation différente selon le public.
-// Enseignants : « Ça va / Ça ne va pas ». Équipe et direction : « Ça va / À risque · suivi ».
+// Enseignants : « Ça va / À risque ». Équipe et direction : « Ça va / À risque · suivi ».
 export function Indicateur({ caVa, equipe }) {
-  const libelle = caVa ? "Ça va" : equipe ? "À risque · suivi" : "Ça ne va pas";
+  const libelle = caVa ? "Ça va" : equipe ? "À risque · suivi" : "À risque";
   return <span className={`etiquette ${caVa ? "ok" : "haut"}`}>{libelle}</span>;
 }
 

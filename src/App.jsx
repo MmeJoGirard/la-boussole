@@ -184,7 +184,7 @@ export default function App() {
       signId,
       (s) => ({ ...s, indicateurCaVa: caVa }),
       "indicateur_modifie",
-      `Indicateur du dossier ${signId} : ${caVa ? "ça va" : "ça ne va pas"}.`
+      `Indicateur du dossier ${signId} : ${caVa ? "ça va" : "à risque"}.`
     );
   };
 

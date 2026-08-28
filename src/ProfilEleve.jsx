@@ -4,7 +4,7 @@ import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 
 // Le profil d'un élève, vu par un enseignant : identité, famille,
 // NOMBRE de signalements, et pour chaque dossier actif, seulement
-// l'indicateur « ça va / ça ne va pas » et ses propres commentaires.
+// l'indicateur « ça va / à risque » et ses propres commentaires.
 // Le détail complet reste réservé à l'équipe et à la direction.
 export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer }) {
   const dossiers = signalementsDe(db, eleve.id);

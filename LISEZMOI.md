@@ -35,7 +35,7 @@ node generer-donnees.mjs
 | `tuteurs` | 87 | Deux parents, familles monoparentales, familles recomposées, avec liens vers les élèves |
 | `personnel` | 28 | 20 enseignants (français, maths, histoire, géo, éduc phys, arts), 2 ERRÉ, 3 éducation spécialisée, 1 direction, 2 adjoints |
 | `cours` | 36 | Le lien groupe-matière-enseignant. Les élèves de 7e-8e ont 5 enseignants, ceux de 9e-12e ont 4 membres du personnel |
-| `signalements` | 20 | 10 de niveau 1, 6 de niveau 2, 4 de niveau 3, avec statuts variés (nouveau, pris en charge, transféré direction, clos), l'indicateur « ça va / ça ne va pas », des observations de collègues et des interventions datées |
+| `signalements` | 20 | 10 de niveau 1, 6 de niveau 2, 4 de niveau 3, avec statuts variés (nouveau, pris en charge, transféré direction, clos), l'indicateur « ça va / à risque », des observations de collègues et des interventions datées |
 | `audit` | 74 | Connexions, créations de signalements et interventions, horodatées |
 
 ## Décisions reflétées dans les données
@@ -59,7 +59,7 @@ Puis ouvrir http://localhost:5321
 
 Ce qu'elle contient, en mode démonstration (choix de profil au lieu du SSO, courriels simulés dans la boîte de l'entête) :
 
-- **Vue enseignant** : tableau de bord personnel (mes élèves, suivis actifs, mes signalements, « à contribuer »), alerte quand un collègue signale un de mes élèves, légende des étapes du suivi, liste des élèves avec nombre de signalements et indicateur « ça va / ça ne va pas ». L'enseignant·e qui a signalé peut mettre à jour son signalement (étape 2 : parents contactés, suivi fait, note). Confidentialité : un enseignant voit seulement ses propres commentaires, jamais le détail du dossier.
+- **Vue enseignant** : tableau de bord personnel (mes élèves, suivis actifs, mes signalements, « à contribuer »), alerte quand un collègue signale un de mes élèves, légende des étapes du suivi, liste des élèves avec nombre de signalements et indicateur « ça va / à risque ». L'enseignant·e qui a signalé peut mettre à jour son signalement (étape 2 : parents contactés, suivi fait, note). Confidentialité : un enseignant voit seulement ses propres commentaires, jamais le détail du dossier.
 - **Formulaire de signalement** : nom prérempli avec le compte, menus déroulants (cours, groupe, élève), types multiples (cases à cocher), niveau d'urgence 0 à 4 avec descriptions, case ES (précochée si l'élève est identifié ES) qui déclenche un courriel automatique à l'éducation spécialisée.
 - **Vue ERRÉ / éducation spécialisée** : tableau de bord visuel (diagrammes circulaires par type et par statut, barres par année et par niveau d'urgence, totaux), filtres à sélection multiple (élève, année, étape, urgence, statut), export vers Excel (CSV), cartes de totaux cliquables, fiche complète du dossier avec plan de sécurité et adaptations, interventions par étape (1 à 3, avec légende), indicateur « À risque · suivi », transfert à la direction, clôture de cycle avec note obligatoire. Les couleurs des graphiques sont validées pour le daltonisme avec le vérificateur du guide de visualisation.
 - **Calendrier** (ERRÉ, éducation spécialisée et direction) : vue mensuelle des signalements et des interventions, navigation entre les mois, détail cliquable de chaque journée avec lien direct vers le dossier.
