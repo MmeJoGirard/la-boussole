@@ -18,26 +18,32 @@ const dateLisible = (date) => {
   return `${j} ${MOIS[m - 1]} ${a}`;
 };
 
-export default function Chronologie({ db, ouvrirDossier, sombre }) {
+// eleveIds : limite aux élèves donnés (vue enseignant).
+// confidentiel : seulement les signalements, sans urgence ni auteur.
+export default function Chronologie({ db, ouvrirDossier, sombre, eleveIds = null, confidentiel = false, libelleAction = "Ouvrir le dossier" }) {
   const couleurs = COULEURS[sombre ? "sombre" : "clair"];
 
   const jours = useMemo(() => {
     const evenements = [];
     for (const s of db.signalements) {
+      if (eleveIds && !eleveIds.includes(s.eleveId)) continue;
       const eleve = trouverEleve(db, s.eleveId);
       const auteur = trouverMembre(db, s.auteurId);
       evenements.push({
         date: s.date.slice(0, 10),
         genre: "signalement",
         signId: s.id,
+        eleveId: s.eleveId,
         titre: `Signalement · ${nomComplet(eleve)} (${eleve.groupe})`,
-        detail: `Par ${nomComplet(auteur)} · urgence ${s.niveauUrgence} (${s.urgenceLibelle})`,
+        detail: confidentiel ? "" : `Par ${nomComplet(auteur)} · urgence ${s.niveauUrgence} (${s.urgenceLibelle})`,
       });
+      if (confidentiel) continue;
       for (const inter of s.interventions) {
         evenements.push({
           date: inter.date.slice(0, 10),
           genre: "intervention",
           signId: s.id,
+          eleveId: s.eleveId,
           titre: `${inter.type} · ${nomComplet(eleve)} (${eleve.groupe})`,
           detail: `Étape ${inter.niveau} · ${nomComplet(trouverMembre(db, inter.responsableId))}`,
         });
@@ -52,7 +58,7 @@ export default function Chronologie({ db, ouvrirDossier, sombre }) {
       else parJour.push({ date: ev.date, evenements: [ev] });
     }
     return parJour;
-  }, [db]);
+  }, [db, eleveIds, confidentiel]);
 
   const total = jours.reduce((somme, j) => somme + j.evenements.length, 0);
 
@@ -63,7 +69,7 @@ export default function Chronologie({ db, ouvrirDossier, sombre }) {
       </p>
       <ul className="legende legende-calendrier" aria-hidden="true">
         <li><span className="pastille-couleur" style={{ background: couleurs.signalement }} /> <span className="legende-nom">Signalements</span></li>
-        <li><span className="pastille-couleur" style={{ background: couleurs.intervention }} /> <span className="legende-nom">Interventions</span></li>
+        {!confidentiel && <li><span className="pastille-couleur" style={{ background: couleurs.intervention }} /> <span className="legende-nom">Interventions</span></li>}
       </ul>
       <div className="panneau">
         <ol className="chronologie">
@@ -76,7 +82,7 @@ export default function Chronologie({ db, ouvrirDossier, sombre }) {
                     <span className="chrono-point" style={{ background: couleurs[ev.genre] }} aria-hidden="true" />
                     <span className="chrono-titre">{ev.titre}</span>
                     <span className="chrono-detail">{ev.detail}</span>
-                    <button className="bouton discret" onClick={() => ouvrirDossier(ev.signId)}>Ouvrir le dossier</button>
+                    <button className="bouton discret" onClick={() => ouvrirDossier(ev)}>{libelleAction}</button>
                   </li>
                 ))}
               </ul>

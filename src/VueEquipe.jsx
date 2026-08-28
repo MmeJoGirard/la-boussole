@@ -7,6 +7,7 @@ import TableauDeBord from "./Graphiques.jsx";
 import Calendrier from "./Calendrier.jsx";
 import Kanban from "./Kanban.jsx";
 import Chronologie from "./Chronologie.jsx";
+import ListeAFaire, { tachesEquipe } from "./ListeAFaire.jsx";
 import { FolderOpen, Inbox, TriangleAlert, Building2, CheckCircle2, ChevronDown, Download } from "lucide-react";
 
 // Un groupe de filtres à sélection multiple : des boutons qu'on active
@@ -62,6 +63,7 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
       .sort((a, b) => b.s.niveauUrgence - a.s.niveauUrgence || a.s.date.localeCompare(b.s.date));
   }, [db, fAnnees, fEtapes, fUrgences, fStatut, fEleve]);
 
+  const taches = tachesEquipe(db, utilisateur, direction);
   const actifs = db.signalements.filter((s) => s.statut !== "clos");
   const stats = {
     actifs: actifs.length,
@@ -147,6 +149,7 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
 
       <div className="onglets" role="tablist">
         <button role="tab" aria-selected={onglet === "bord"} className="onglet" onClick={() => setOnglet("bord")}>Tableau de bord</button>
+        <button role="tab" aria-selected={onglet === "afaire"} className="onglet" onClick={() => setOnglet("afaire")}>À faire{taches.length > 0 ? ` · ${taches.length}` : ""}</button>
         <button role="tab" aria-selected={onglet === "kanban"} className="onglet" onClick={() => setOnglet("kanban")}>Kanban</button>
         <button role="tab" aria-selected={onglet === "dossiers"} className="onglet" onClick={() => setOnglet("dossiers")}>Dossiers</button>
         <button role="tab" aria-selected={onglet === "calendrier"} className="onglet" onClick={() => setOnglet("calendrier")}>Calendrier</button>
@@ -177,12 +180,19 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
           </div>
           <TableauDeBord db={db} sombre={sombre} />
         </>
+      ) : onglet === "afaire" ? (
+        <ListeAFaire
+          db={db}
+          taches={taches}
+          libelleAction="Ouvrir le dossier"
+          surAction={(t) => setDossierOuvert(t.signId)}
+        />
       ) : onglet === "kanban" ? (
         <Kanban db={db} ouvrirDossier={setDossierOuvert} />
       ) : onglet === "calendrier" ? (
         <Calendrier db={db} ouvrirDossier={(ev) => setDossierOuvert(ev.signId)} sombre={sombre} />
       ) : onglet === "chronologie" ? (
-        <Chronologie db={db} ouvrirDossier={setDossierOuvert} sombre={sombre} />
+        <Chronologie db={db} ouvrirDossier={(ev) => setDossierOuvert(ev.signId)} sombre={sombre} />
       ) : onglet === "audit" && direction ? (
         <TableauAudit db={db} />
       ) : (
