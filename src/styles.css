@@ -374,12 +374,22 @@ td .bouton.discret { font-size: 14px; }
 /* Les boîtes du formulaire de signalement : une ligne verticale bleu
    glacier guide la lecture, les numéros royaux jalonnent les champs. */
 .groupe-form {
+  position: relative;
   border: none;
-  border-left: 3px solid var(--glacier);
   background: var(--carte-interne);
-  border-radius: 0 12px 12px 0;
-  padding: 16px 20px 12px 21px;
+  border-radius: 16px;
+  padding: 16px 20px 12px 28px;
   margin: 0 0 16px;
+}
+/* La ligne verticale de guidage vit à l'intérieur de la boîte arrondie,
+   en petite barre aux bouts ronds. */
+.groupe-form::before {
+  content: "";
+  position: absolute;
+  left: 12px; top: 16px; bottom: 16px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--glacier);
 }
 .groupe-form .champ:last-child { margin-bottom: 4px; }
 .no-champ {
