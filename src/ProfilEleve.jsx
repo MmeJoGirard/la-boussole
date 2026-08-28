@@ -6,7 +6,8 @@ import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 // NOMBRE de signalements, et pour chaque dossier actif, seulement
 // l'indicateur « ça va / à risque » et ses propres commentaires.
 // Le détail complet reste réservé à l'équipe et à la direction.
-export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer }) {
+// Le bouton « Faire un signalement » ouvre le formulaire prérempli.
+export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, signaler }) {
   const dossiers = signalementsDe(db, eleve.id);
   const actifs = dossiers.filter((s) => s.statut !== "clos");
   const [textes, setTextes] = useState({});
@@ -44,6 +45,11 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer })
         <p className="sous-titre">
           {eleve.annee}e année · groupe {eleve.groupe} · {eleve.anneeScolaire}, semestre {eleve.semestre} · {eleve.courriel}
         </p>
+        {signaler && (
+          <div className="rangee-boutons" style={{ marginTop: 0, marginBottom: 16 }}>
+            <button className="bouton" onClick={signaler}>Faire un signalement pour {eleve.prenom}</button>
+          </div>
+        )}
 
         <div className="grille-cartes">
           <div className="carte-stat">

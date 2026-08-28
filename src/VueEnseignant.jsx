@@ -5,23 +5,29 @@ import FormulaireSignalement from "./FormulaireSignalement.jsx";
 import ProfilEleve from "./ProfilEleve.jsx";
 import { Users, Activity, FileText, MessageSquarePlus, ChevronDown } from "lucide-react";
 
-// Vue enseignant : tableau de bord, puis « tous mes élèves »,
-// classés par année, cours et groupe.
+const VUES = {
+  tous: "Tous mes élèves",
+  suivi: "Élèves avec un suivi actif",
+  miens: "Élèves que j'ai signalés",
+  contribuer: "Élèves où je peux contribuer",
+};
+
+// Vue enseignant : un tableau de bord dont chaque carte filtre la liste,
+// puis « mes élèves » classés par année, cours et groupe.
 export default function VueEnseignant({ db, utilisateur, actions }) {
   const mesCours = coursDe(db, utilisateur);
   const mesEleves = useMemo(() => elevesDe(db, utilisateur), [db, utilisateur]);
 
+  const [vue, setVue] = useState("tous"); // choisie en cliquant une carte
   const [filtreGroupe, setFiltreGroupe] = useState("tous");
+  const [fEtape, setFEtape] = useState("toutes");
+  const [fCycles, setFCycles] = useState("tous");
   const [recherche, setRecherche] = useState("");
   const [formulaire, setFormulaire] = useState(null); // null | {eleve?}
   const [profil, setProfil] = useState(null);
   const [legendeOuverte, setLegendeOuverte] = useState(false);
 
-  const groupes = [...new Set(mesCours.map((c) => c.groupe))].sort();
-  const visibles = mesEleves
-    .filter((e) => filtreGroupe === "tous" || e.groupe === filtreGroupe)
-    .filter((e) => nomComplet(e).toLowerCase().includes(recherche.toLowerCase()))
-    .sort((a, b) => a.annee - b.annee || a.groupe.localeCompare(b.groupe) || a.nom.localeCompare(b.nom));
+  const dossierActif = (eleve) => signalementsDe(db, eleve.id).find((s) => s.statut !== "clos");
 
   // Un dossier « à contribuer » : signalé par un collègue, encore à risque,
   // et je n'ai pas encore ajouté mon observation.
@@ -34,34 +40,64 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
         !s.observations.some((o) => o.auteurId === utilisateur.id)
     );
 
-  const suivisActifs = mesEleves.filter((e) => signalementsDe(db, e.id).some((s) => s.statut !== "clos"));
+  const suivisActifs = mesEleves.filter((e) => dossierActif(e));
   const elevesAContribuer = mesEleves.filter(aContribuer);
-  const mesSignalements = db.signalements.filter((s) => s.auteurId === utilisateur.id && s.statut !== "clos");
+  const mesSignales = mesEleves.filter((e) =>
+    signalementsDe(db, e.id).some((s) => s.statut !== "clos" && s.auteurId === utilisateur.id)
+  );
+
+  const groupes = [...new Set(mesCours.map((c) => c.groupe))].sort();
+  const visibles = mesEleves
+    .filter((e) => {
+      if (vue === "suivi") return dossierActif(e);
+      if (vue === "miens") return mesSignales.includes(e);
+      if (vue === "contribuer") return aContribuer(e);
+      return true;
+    })
+    .filter((e) => filtreGroupe === "tous" || e.groupe === filtreGroupe)
+    .filter((e) => {
+      if (fEtape === "toutes") return true;
+      const actif = dossierActif(e);
+      return actif && actif.niveauIntervention === Number(fEtape);
+    })
+    .filter((e) => {
+      if (fCycles === "tous") return true;
+      const n = signalementsDe(db, e.id).length;
+      if (fCycles === "0") return n === 0;
+      if (fCycles === "1") return n === 1;
+      return n >= 2; // « 2+ »
+    })
+    .filter((e) => nomComplet(e).toLowerCase().includes(recherche.toLowerCase()))
+    .sort((a, b) => a.annee - b.annee || a.groupe.localeCompare(b.groupe) || a.nom.localeCompare(b.nom));
+
+  // Cliquer une carte applique sa vue; recliquer la même la retire.
+  const choisirVue = (v) => setVue(vue === v ? "tous" : v);
 
   return (
     <>
       <h2>Mon tableau de bord</h2>
       <p className="sous-titre">
-        {utilisateur.matiere} · {mesCours.map((c) => `${c.groupe}`).join(", ")}
+        {utilisateur.matiere} · {mesCours.map((c) => `${c.groupe}`).join(", ")} ·
+        cliquez une carte pour filtrer la liste
       </p>
 
       <div className="grille-cartes">
-        <div className="carte-stat">
+        <button className="carte-stat cliquable" aria-pressed={vue === "tous"} onClick={() => setVue("tous")}>
           <span className="stat-icone"><Users size={18} strokeWidth={1.5} aria-hidden="true" /></span>
           <span className="valeur">{mesEleves.length}</span><span className="nom">Mes élèves</span>
-        </div>
-        <div className="carte-stat">
+        </button>
+        <button className="carte-stat cliquable" aria-pressed={vue === "suivi"} onClick={() => choisirVue("suivi")}>
           <span className="stat-icone"><Activity size={18} strokeWidth={1.5} aria-hidden="true" /></span>
           <span className="valeur">{suivisActifs.length}</span><span className="nom">Avec un suivi actif</span>
-        </div>
-        <div className="carte-stat">
+        </button>
+        <button className="carte-stat cliquable" aria-pressed={vue === "miens"} onClick={() => choisirVue("miens")}>
           <span className="stat-icone"><FileText size={18} strokeWidth={1.5} aria-hidden="true" /></span>
-          <span className="valeur">{mesSignalements.length}</span><span className="nom">Mes signalements actifs</span>
-        </div>
-        <div className="carte-stat">
+          <span className="valeur">{mesSignales.length}</span><span className="nom">Mes signalements actifs</span>
+        </button>
+        <button className="carte-stat cliquable" aria-pressed={vue === "contribuer"} onClick={() => choisirVue("contribuer")}>
           <span className="stat-icone"><MessageSquarePlus size={18} strokeWidth={1.5} aria-hidden="true" /></span>
           <span className="valeur">{elevesAContribuer.length}</span><span className="nom">À contribuer</span>
-        </div>
+        </button>
       </div>
 
       {elevesAContribuer.length > 0 && (
@@ -95,7 +131,7 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
         )}
       </div>
 
-      <h2>Mes élèves</h2>
+      <h2>{VUES[vue]}</h2>
       <div className="filtres">
         <div>
           <label htmlFor="groupe">Groupe</label>
@@ -105,21 +141,44 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
           </select>
         </div>
         <div>
+          <label htmlFor="f-etape">Étape du suivi</label>
+          <select id="f-etape" value={fEtape} onChange={(e) => setFEtape(e.target.value)}>
+            <option value="toutes">Toutes</option>
+            {ETAPES.map((e) => <option key={e.n} value={e.n}>{e.nom}</option>)}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="f-cycles">Nombre de cycles</label>
+          <select id="f-cycles" value={fCycles} onChange={(e) => setFCycles(e.target.value)}>
+            <option value="tous">Tous</option>
+            <option value="0">Aucun</option>
+            <option value="1">1 cycle</option>
+            <option value="2+">2 cycles et plus</option>
+          </select>
+        </div>
+        <div>
           <label htmlFor="recherche">Rechercher</label>
           <input id="recherche" type="search" value={recherche} onChange={(e) => setRecherche(e.target.value)} placeholder="Nom de l'élève" />
         </div>
         <button className="bouton" onClick={() => setFormulaire({})}>Signaler un élève</button>
       </div>
 
+      <p className="sous-titre" aria-live="polite">
+        {visibles.length} élève{visibles.length > 1 ? "s" : ""} affiché{visibles.length > 1 ? "s" : ""}.
+      </p>
+
       <div className="defile">
         <table>
           <thead>
             <tr>
               <th>Élève</th><th>Année</th><th>Groupe</th>
-              <th className="num">Signalements</th><th>Suivi</th><th></th>
+              <th className="num">Cycles</th><th>Étape</th><th>Suivi</th><th></th>
             </tr>
           </thead>
           <tbody>
+            {visibles.length === 0 && (
+              <tr><td colSpan="7" style={{ color: "var(--secondaire)" }}>Aucun élève ne correspond aux filtres.</td></tr>
+            )}
             {visibles.map((e) => {
               const dossiers = signalementsDe(db, e.id);
               const actif = dossiers.find((s) => s.statut !== "clos");
@@ -132,6 +191,7 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
                   <td className="num">{e.annee}e</td>
                   <td>{e.groupe}</td>
                   <td className="num">{dossiers.length > 0 ? <span className="pastille">{dossiers.length}</span> : "0"}</td>
+                  <td>{actif ? <span className="etiquette neutre">Étape {actif.niveauIntervention}</span> : ""}</td>
                   <td>
                     {actif ? <Indicateur caVa={actif.indicateurCaVa} /> : <span className="etiquette neutre">Aucun suivi</span>}
                     {aContribuer(e) && <> <span className="etiquette moyen">À contribuer</span></>}
@@ -152,7 +212,14 @@ export default function VueEnseignant({ db, utilisateur, actions }) {
         />
       )}
       {profil && (
-        <ProfilEleve db={db} eleve={db.eleves.find((e) => e.id === profil.id)} utilisateur={utilisateur} actions={actions} fermer={() => setProfil(null)} />
+        <ProfilEleve
+          db={db}
+          eleve={db.eleves.find((e) => e.id === profil.id)}
+          utilisateur={utilisateur}
+          actions={actions}
+          fermer={() => setProfil(null)}
+          signaler={() => { const e = profil; setProfil(null); setFormulaire({ eleve: e }); }}
+        />
       )}
     </>
   );

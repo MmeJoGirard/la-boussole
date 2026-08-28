@@ -196,6 +196,11 @@ a { color: var(--encre); }
   box-shadow: var(--ombre-survol);
   transform: translateY(-2px) scale(1.005);
 }
+/* Une carte-filtre active est clairement marquée. */
+.carte-stat.cliquable[aria-pressed="true"] {
+  border-color: var(--primaire);
+  box-shadow: inset 0 0 0 1px var(--primaire), var(--ombre-repos);
+}
 
 /* ---- Panneaux ---- */
 .panneau {
@@ -293,10 +298,17 @@ tr:last-child td { border-bottom: none; }
 .bouton.discret {
   background: none; border: none; color: var(--encre);
   padding: 4px 6px; font-weight: 600; font-size: 13px;
-  text-decoration: none; border-radius: 8px;
-  transition: background var(--transition);
+  border-radius: 8px;
+  /* Un soulignement discret rend le cliquable évident. */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--sourdine);
+  text-decoration-thickness: 1px;
+  transition: background var(--transition), text-decoration-color var(--transition);
 }
-.bouton.discret:hover { background: var(--pale); }
+.bouton.discret:hover { background: var(--pale); text-decoration-color: var(--encre); }
+/* Le nom d'un élève dans une liste : un vrai lien, taille du texte courant. */
+td .bouton.discret { font-size: 14px; }
 .bouton.danger {
   background: var(--surface); color: var(--haut-encre);
   border: 1px solid #ecccc5; font-weight: 600;
