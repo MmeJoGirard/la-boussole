@@ -3,8 +3,11 @@
    primaire ardoise #0F172A, accents chauds discrets, profondeur par ombres
    étagées plutôt que par bordures. Grille d'espacement de 8 px. */
 :root {
-  --fond: #fafafa;
-  --surface: #ffffff;
+  --fond: #f1f5f9;            /* fond de page : vrai gris bleuté */
+  --surface: #ffffff;          /* grandes cartes : blanc pur */
+  --carte-interne: #f8fafc;    /* cartes internes : deuxième couche */
+  --encre-fort: #030712;       /* titres : presque noir */
+  --meta: #64748b;             /* métadonnées : plancher, jamais plus pâle */
   --primaire: #0f172a;
   --primaire-doux: #1e293b;
   --encre: #0f172a;
@@ -22,8 +25,13 @@
   --verre: rgba(255, 255, 255, 0.8);
   --voile-fond: rgba(15, 23, 42, 0.4);
   --anneau: rgba(15, 23, 42, 0.35);
-  --lisere: transparent;
-  --ombre-repos: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
+  --info-fond: #eff6ff;
+  --info-bord: #3b82f6;
+  --info-titre: #1e3a8a;
+  --onglets-fond: #e7edf4;
+  --bordure-bouton: #cbd5e1;
+  --lisere: #e2e8f0;
+  --ombre-repos: 0 1px 3px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.04);
   --ombre-survol: 0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.05);
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -51,7 +59,16 @@
   --eed-fond: #262148; --eed-encre: #b7b1f2;
   --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
   --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.25);
+  --carte-interne: #1b2634;
+  --encre-fort: #f8fafc;
+  --meta: #8ea0b5;
+  --info-fond: #142138;
+  --info-bord: #60a5fa;
+  --info-titre: #bfdbfe;
+  --onglets-fond: #1a2534;
+  --bordure-bouton: #3e4c61;
 }
+:root[data-theme="sombre"] .groupe-profils.role-direction .bouton-profil { border-left-color: #cbd5e1; }
 :root[data-theme="sombre"] .point-role.role-direction { background: #e2e8f0; }
 
 * { box-sizing: border-box; }
@@ -64,9 +81,9 @@ body {
   font-weight: 400;
   line-height: 1.6;
 }
-h1, h2, h3, h4 { color: var(--encre); line-height: 1.25; margin: 0; }
-h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
-h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+h1, h2, h3, h4 { color: var(--encre-fort); line-height: 1.25; margin: 0; }
+h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; }
+h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
 h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 24px 0 8px; }
 button { font: inherit; cursor: pointer; }
 a { color: var(--encre); }
@@ -110,21 +127,23 @@ a { color: var(--encre); }
 /* Le code couleur des rôles vit dans une pastille discrète :
    bleu pâle enseignants, bleu moyen ERRÉ/ES, bleu foncé direction. */
 .point-role { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
-.point-role.role-enseignant { background: #9db7dc; }
-.point-role.role-equipe { background: #4a6fa5; }
-.point-role.role-direction { background: #0f172a; }
+.point-role.role-enseignant { background: #3b82f6; }
+.point-role.role-equipe { background: #6366f1; }
+.point-role.role-direction { background: #1e293b; }
 .entete .pousse { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
 .bouton-entete {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--surface);
   color: var(--encre);
-  border: 1px solid var(--bordure);
+  border: 1px solid var(--bordure-bouton);
   border-radius: 10px;
   padding: 7px 14px;
   font-size: 13px;
-  transition: background var(--transition), box-shadow var(--transition);
+  font-weight: 500;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.bouton-entete:hover { background: var(--pale); box-shadow: var(--ombre-repos); }
+.bouton-entete svg { stroke-width: 2; }
+.bouton-entete:hover { background: var(--pale); border-color: var(--sourdine); }
 
 /* ---- Mise en page ---- */
 .page { max-width: 1120px; margin: 0 auto; padding: 48px 32px 96px; }
@@ -159,11 +178,10 @@ a { color: var(--encre); }
 }
 .carte-stat .nom {
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--encre);
-  opacity: 0.9;
 }
 .stat-icone {
   position: absolute; top: 24px; right: 24px;
@@ -201,9 +219,9 @@ a { color: var(--encre); }
 .filtres { display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 16px; }
 .filtres label, .champ label {
   display: block;
-  font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.9;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--encre);
   margin-bottom: 6px;
 }
 select, input[type="text"], input[type="search"], textarea {
@@ -303,26 +321,30 @@ tr:last-child td { border-bottom: none; }
   border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
 .info {
-  background: var(--pale); color: var(--secondaire);
-  border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
+  background: var(--info-fond); color: var(--secondaire);
+  border-left: 3px solid var(--info-bord);
+  border-radius: 0 12px 12px 0; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
+.info strong { color: var(--info-titre); }
 .case { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; }
 .case input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primaire); }
 .case span { font-size: 14px; }
 .legende-champ {
-  font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.9;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--encre);
   margin-bottom: 6px; padding: 0;
 }
 
 /* ---- Écran de connexion ---- */
 .connexion { max-width: 760px; margin: 64px auto; padding: 0 32px; }
 .connexion .logo { font-size: 40px; }
-.connexion h1 { font-size: 32px; letter-spacing: -0.02em; margin: 8px 0; }
+.connexion h1 { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; margin: 8px 0; }
+.connexion .sous-titre { font-size: 16px; }
 .groupe-profils {
-  margin-top: 32px;
+  margin-top: 40px;
   background: var(--surface);
+  border: 1px solid var(--lisere);
   border-radius: 16px;
   padding: 24px 32px;
   box-shadow: var(--ombre-repos);
@@ -330,24 +352,30 @@ tr:last-child td { border-bottom: none; }
 .groupe-profils h3 {
   display: flex; align-items: center; gap: 8px;
   margin: 0 0 16px;
-  font-size: 11px; font-weight: 500;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.9;
-}
-.boutons-profils { display: flex; flex-wrap: wrap; gap: 8px; }
-.bouton-profil {
-  background: var(--fond);
-  border: none;
-  border-radius: 10px;
-  padding: 10px 16px;
-  text-align: left;
-  font-size: 14px;
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
   color: var(--encre);
-  font-weight: 600;
-  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
 }
-.bouton-profil:hover { background: var(--pale); box-shadow: var(--ombre-repos); transform: translateY(-1px); }
-.bouton-profil .detail { display: block; font-size: 12px; font-weight: 400; color: var(--secondaire); }
+.compte-section { color: var(--meta); font-weight: 400; }
+.boutons-profils { display: flex; flex-wrap: wrap; gap: 12px; }
+.bouton-profil {
+  background: var(--carte-interne);
+  border: 1px solid var(--lisere);
+  border-left-width: 3px;
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 16px;
+  color: var(--encre-fort);
+  font-weight: 600;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.bouton-profil:hover { box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08); transform: translateY(-1px); }
+.bouton-profil .detail { display: block; font-size: 13px; font-weight: 400; color: var(--meta); margin-top: 4px; }
+/* 5. La barre de couleur du rôle, à gauche de chaque carte. */
+.groupe-profils.role-enseignant .bouton-profil { border-left-color: #3b82f6; }
+.groupe-profils.role-equipe .bouton-profil { border-left-color: #6366f1; }
+.groupe-profils.role-direction .bouton-profil { border-left-color: #1e293b; }
 
 /* ---- Fenêtre modale ---- */
 .voile {
@@ -399,7 +427,7 @@ tr:last-child td { border-bottom: none; }
 /* ---- Onglets : « segmented control » ---- */
 .onglets {
   display: inline-flex; gap: 4px;
-  background: var(--pale);
+  background: var(--onglets-fond);
   border-radius: 12px;
   padding: 4px;
   margin-bottom: 24px;
@@ -454,8 +482,8 @@ tr:last-child td { border-bottom: none; }
   padding: 6px 0;
 }
 .calendrier-case {
-  background: var(--fond);
-  border: none;
+  background: var(--carte-interne);
+  border: 1px solid var(--lisere);
   border-radius: 12px;
   min-height: 68px;
   padding: 8px;

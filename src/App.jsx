@@ -292,12 +292,15 @@ export default function App() {
         <div className="info">
           <strong>Mode démonstration.</strong> Choisissez un profil pour explorer la plateforme.
           En production, la connexion se fera avec le compte Google Workspace du conseil (connexion unique).
-          Toutes les personnes sont fictives. Code couleur : bleu pâle pour les enseignant·e·s,
-          bleu moyen pour l'ERRÉ et l'éducation spécialisée, bleu foncé pour la direction.
+          Toutes les personnes sont fictives. Code couleur : bleu vif pour les enseignant·e·s,
+          indigo pour l'ERRÉ et l'éducation spécialisée, ardoise foncé pour la direction.
         </div>
         {groupes.map((g) => (
-          <section key={g.titre} className="groupe-profils">
-            <h3><span className={`point-role ${roleClasse(g.membres[0])}`} aria-hidden="true" /> {g.titre}</h3>
+          <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
+            <h3>
+              <span className={`point-role ${roleClasse(g.membres[0])}`} aria-hidden="true" /> {g.titre}
+              <span className="compte-section"> · {g.membres.length}</span>
+            </h3>
             <div className="boutons-profils">
               {g.membres.map((m) => (
                 <button key={m.id} className="bouton-profil" onClick={() => connexion(m)}>
