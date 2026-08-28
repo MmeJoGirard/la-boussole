@@ -4,7 +4,8 @@ import { STATUTS } from "./aides.js";
 
 export function EtiquetteUrgence({ niveau, echelle }) {
   const info = echelle.find((e) => e.niveau === niveau);
-  const classe = niveau <= 1 ? "ok" : niveau === 2 ? "moyen" : "haut";
+  // Le rouge est réservé au signal réellement critique (urgence 3 et 4).
+  const classe = niveau <= 1 ? "neutre" : niveau === 2 ? "ok" : "rouge";
   return (
     <span className={`etiquette ${classe}`} title={info?.indicateurs || ""}>
       {niveau} · {info ? info.libelle : "?"}

@@ -298,22 +298,20 @@ export default function App() {
       <main className="connexion">
         <div style={{ display: "flex", justifyContent: "flex-end" }}>{boutonTheme}</div>
         <div className="logo"><Aiguille taille={44} /></div>
-        <h1>La <em>Boussole</em></h1>
+        <h1>La Boussole</h1>
         <p className="sous-titre">
           Suivi des interventions · {db.ecole.nom} · {db.ecole.anneeScolaire}, semestre {db.ecole.semestre}
         </p>
         <div className="info">
           <strong>Mode démonstration.</strong> Choisissez un profil pour explorer la plateforme.
           En production, la connexion se fera avec le compte Google Workspace du conseil (connexion unique).
-          Toutes les personnes sont fictives. Code couleur : cuivre pour les enseignant·e·s,
-          vert forêt pour l'ERRÉ et l'éducation spécialisée, bleu ardoise pour la direction.
+          Toutes les personnes sont fictives. Code couleur : bleu glacier pour les
+          enseignant·e·s, bleu royal pour l'ERRÉ et l'éducation spécialisée, noir pour la direction.
         </div>
         {groupes.map((g, i) => (
           <section key={g.titre} className={`groupe-profils ${roleClasse(g.membres[0])}`}>
             <h3 className="chapitre">
-              <span className="chapitre-no">{String(i + 1).padStart(2, "0")} —</span>
               <span className="chapitre-titre">{g.titre}</span>
-              <span className="points-suite" aria-hidden="true"></span>
               <span className="chapitre-compte">{g.membres.length} personnes</span>
             </h3>
             <div className="boutons-profils">
@@ -337,7 +335,7 @@ export default function App() {
   return (
     <>
       <header className="entete">
-        <span className="marque"><Aiguille taille={18} /> La <em>Boussole</em></span>
+        <span className="marque"><Aiguille taille={18} /> La Boussole</span>
         <span className="role">
           <span className={`point-role ${roleClasse(utilisateur)}`} aria-hidden="true" />
           {nomComplet(utilisateur)} · {ROLES[utilisateur.role]}

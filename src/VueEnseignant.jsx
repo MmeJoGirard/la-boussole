@@ -125,7 +125,7 @@ export default function VueEnseignant({ db, utilisateur, actions, sombre }) {
 
   // Deux graphiques sûrs pour l'enseignant : ils n'utilisent que ce
   // qu'il ou elle voit déjà (ses élèves, l'étape des suivis actifs).
-  const couleurBarre = sombre ? "#C7AC8A" : "#584427";
+  const couleurBarre = sombre ? "#6FA3D8" : "#20599A";
   const parGroupe = groupes.map((g) => ({
     nom: g,
     valeur: mesEleves.filter((e) => e.groupe === g).length,

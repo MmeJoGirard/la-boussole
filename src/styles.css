@@ -1,101 +1,111 @@
-/* La Boussole : identité signature « cahier d'école et carte de navigation ».
-   Trois voix typographiques : Fraunces pour les titres, Inter pour le corps,
-   JetBrains Mono pour les chiffres. Papier ivoire chaud, un seul accent :
-   le cuivre de la boussole ancienne. */
+/* La Boussole : identité Apple — clarté institutionnelle.
+   Une seule famille (Inter, 400/500/600), palette stricte de bleus :
+   royal #20599A (10 % : actions), marine #153459 (ponctuation d'autorité),
+   glacier #A2C4DB (fonds doux), argent #A1AAAC (métadonnées),
+   noir profond #060709 (texte), blanc et gris pâle (60 % : surfaces). */
 :root {
-  --fond: #f4f1ea;             /* papier ivoire */
-  --surface: #fdfcf8;          /* blanc cassé des cartes */
-  --carte-interne: #f7f3ea;    /* deuxième couche, papier plus dense */
-  --encre-fort: #1c1917;       /* noir chaud d'encre */
-  --encre: #1c1917;
-  --texte: #292524;
-  --secondaire: #44403c;
-  --sourdine: #57534e;
-  --meta: #78716c;             /* gris chaud, plancher des gris */
-  --accent: #7c3f00;           /* cuivre : LA couleur signature */
-  --accent-doux: rgba(124, 63, 0, 0.12);
-  --primaire: #1c1917;
-  --primaire-doux: #33302b;
-  --sur-primaire: #fdfcf8;
-  --bordure: #dcd6cc;
-  --bordure-bouton: #c9c1b4;
-  --lisere: #e7e5e4;
-  --pale: #eee9df;
-  --onglets-fond: #e9e3d8;
-  --ok-fond: #e9efdf; --ok-encre: #2d5016; --ok-bord: #b7c89a;
-  --moyen-fond: #f7ecd4; --moyen-encre: #8a5a12; --moyen-bord: #ddc07a;
-  --haut-fond: #f7e7e4; --haut-encre: #a13333; --haut-bord: #d9a9a0;
-  --eed-fond: #e6ebf2; --eed-encre: #2c4a6e; --eed-bord: #b9c6d8;
-  --pill-fond: #e6ebf2; --pill-encre: #2c4a6e;
-  --verre: rgba(244, 241, 234, 0.85);
-  --voile-fond: rgba(28, 25, 23, 0.45);
-  --anneau: rgba(124, 63, 0, 0.35);
-  --info-fond: #fdfcf8;
-  --info-bord: #7c3f00;
-  --info-titre: #7c3f00;
-  --texture: radial-gradient(ellipse at top, #fdfcf8 0%, #f4f1ea 100%);
-  --ombre-repos: 0 1px 3px rgba(28, 25, 23, 0.06), 0 8px 24px rgba(28, 25, 23, 0.04);
-  --ombre-survol: 0 2px 4px rgba(28, 25, 23, 0.07), 0 12px 24px rgba(28, 25, 23, 0.06);
+  --fond: #f5f7fa;
+  --surface: #ffffff;
+  --carte-interne: #f5f7fa;
+  --encre-fort: #060709;
+  --encre: #060709;
+  --texte: #060709;
+  --secondaire: #3e4953;
+  --sourdine: #6d7880;
+  --meta: #a1aaac;
+  --accent: #20599a;
+  --marine: #153459;
+  --glacier: #a2c4db;
+  --glacier-doux: #e4edf4;
+  --primaire: #060709;
+  --primaire-doux: #20599a;
+  --sur-primaire: #ffffff;
+  --bordure: rgba(6, 7, 9, 0.12);
+  --bordure-bouton: rgba(6, 7, 9, 0.12);
+  --lisere: transparent;
+  --pale: #f5f7fa;
+  --onglets-fond: #e9eef4;
+  --ok-fond: #a2c4db; --ok-encre: #153459; --ok-bord: transparent;
+  --moyen-fond: #f5f7fa; --moyen-encre: #060709; --moyen-bord: rgba(6, 7, 9, 0.08);
+  --haut-fond: #153459; --haut-encre: #ffffff; --haut-bord: transparent;
+  --rouge-fond: #fee2e2; --rouge-encre: #991b1b;
+  --eed-fond: #e4edf4; --eed-encre: #153459; --eed-bord: transparent;
+  --pill-fond: #e4edf4; --pill-encre: #153459;
+  --verre: rgba(255, 255, 255, 0.8);
+  --voile-fond: rgba(6, 7, 9, 0.4);
+  --anneau: rgba(32, 89, 154, 0.2);
+  --anneau-champ: rgba(32, 89, 154, 0.15);
+  --info-fond: #e4edf4;
+  --info-bord: transparent;
+  --info-titre: #153459;
+  --ombre-repos: 0 1px 2px rgba(6, 7, 9, 0.04), 0 4px 16px rgba(6, 7, 9, 0.03);
+  --ombre-survol: 0 2px 4px rgba(6, 7, 9, 0.06), 0 12px 32px rgba(6, 7, 9, 0.06);
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- Thème sombre : la carte de navigation nocturne ---- */
+/* ---- Thème sombre : marine profond, même retenue ---- */
 :root[data-theme="sombre"] {
-  --fond: #171310;
-  --surface: #201b17;
-  --carte-interne: #29221c;
-  --encre-fort: #faf5ec;
-  --encre: #f0eae0;
-  --texte: #ded6c9;
-  --secondaire: #c4baab;
-  --sourdine: #a69b8b;
-  --meta: #8f857a;
-  --accent: #c98a4b;
-  --accent-doux: rgba(201, 138, 75, 0.16);
-  --primaire: #f0eae0;
-  --primaire-doux: #ded6c9;
-  --sur-primaire: #171310;
-  --bordure: #3f362d;
-  --bordure-bouton: #4a4036;
-  --lisere: rgba(255, 244, 225, 0.09);
-  --pale: #2a231d;
-  --onglets-fond: #251f19;
-  --ok-fond: #22301a; --ok-encre: #a9c98f; --ok-bord: #44582f;
-  --moyen-fond: #362b12; --moyen-encre: #e0be76; --moyen-bord: #8a5a12;
-  --haut-fond: #3d211c; --haut-encre: #e09383; --haut-bord: #7a3a2e;
-  --eed-fond: #1e2a3b; --eed-encre: #9db8d9; --eed-bord: #3a5170;
-  --pill-fond: #1e2a3b; --pill-encre: #9db8d9;
-  --verre: rgba(23, 19, 16, 0.85);
-  --voile-fond: rgba(5, 4, 3, 0.6);
-  --anneau: rgba(201, 138, 75, 0.5);
-  --info-fond: #201b17;
-  --info-bord: #c98a4b;
-  --info-titre: #c98a4b;
-  --texture: radial-gradient(ellipse at top, #201b17 0%, #171310 100%);
-  --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
-  --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.35), 0 12px 24px rgba(0, 0, 0, 0.3);
+  --fond: #060b12;
+  --surface: #0f1b2b;
+  --carte-interne: #16273c;
+  --encre-fort: #f2f6fa;
+  --encre: #e9eef3;
+  --texte: #e9eef3;
+  --secondaire: #b9c4ce;
+  --sourdine: #93a2ae;
+  --meta: #8794a0;
+  --accent: #6fa3d8;
+  --marine: #a2c4db;
+  --glacier: #a2c4db;
+  --glacier-doux: #1b3049;
+  --primaire: #e9eef3;
+  --primaire-doux: #6fa3d8;
+  --sur-primaire: #060b12;
+  --bordure: rgba(255, 255, 255, 0.14);
+  --bordure-bouton: rgba(255, 255, 255, 0.14);
+  --lisere: rgba(255, 255, 255, 0.06);
+  --pale: #142335;
+  --onglets-fond: #122031;
+  --ok-fond: #24405e; --ok-encre: #a2c4db; --ok-bord: transparent;
+  --moyen-fond: #16273c; --moyen-encre: #c9d4de; --moyen-bord: rgba(255, 255, 255, 0.12);
+  --haut-fond: #a2c4db; --haut-encre: #0a1826; --haut-bord: transparent;
+  --rouge-fond: #3b1414; --rouge-encre: #fca5a5;
+  --eed-fond: #1b3049; --eed-encre: #a2c4db; --eed-bord: transparent;
+  --pill-fond: #1b3049; --pill-encre: #a2c4db;
+  --verre: rgba(6, 11, 18, 0.8);
+  --voile-fond: rgba(0, 0, 0, 0.55);
+  --anneau: rgba(111, 163, 216, 0.35);
+  --anneau-champ: rgba(111, 163, 216, 0.25);
+  --info-fond: #142639;
+  --info-bord: transparent;
+  --info-titre: #a2c4db;
+  --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.3);
 }
-:root[data-theme="sombre"] .point-role.role-direction { background: #7e9cc0; }
+:root[data-theme="sombre"] .point-role.role-direction { background: #f2f6fa; }
 
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--texture) fixed, var(--fond);
+  background: var(--fond);
   color: var(--texte);
-  font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
-  font-size: 14px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 h1, h2, h3, h4 { color: var(--encre-fort); line-height: 1.25; margin: 0; }
-h1, h2 { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.03em; }
+h1, h2 { font-weight: 600; letter-spacing: -0.02em; }
 h1 { font-size: 22px; }
-h2 { font-size: 24px; margin-bottom: 4px; }
-h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 24px 0 8px; }
-/* Les chiffres parlent en JetBrains Mono, alignés au dixième de trait. */
+h2 { font-size: 32px; line-height: 1.15; margin-bottom: 4px; }
+h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; margin: 24px 0 8px; }
+/* Chiffres tabulaires partout : alignements parfaits. */
 .num, .carte-stat .valeur, .donut-total, .pastille, .point-evenement,
 .legende-valeur, .barre-valeur, .compte-section, .chapitre-compte {
-  font-family: "JetBrains Mono", ui-monospace, Menlo, monospace;
   font-variant-numeric: tabular-nums;
 }
 button { font: inherit; cursor: pointer; }
@@ -104,8 +114,8 @@ a { color: var(--encre); }
 /* Accessibilité : focus visible mais élégant. */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--anneau);
-  border-radius: 8px;
+  box-shadow: 0 0 0 4px var(--anneau);
+  border-radius: 10px;
 }
 
 /* ---- Entête : verre dépoli clair ---- */
@@ -126,8 +136,7 @@ a { color: var(--encre); }
 }
 .entete .marque {
   display: flex; align-items: center; gap: 8px;
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500; font-size: 18px; letter-spacing: -0.02em;
+  font-weight: 600; font-size: 16px; letter-spacing: -0.01em;
   color: var(--encre-fort);
 }
 .entete .role {
@@ -141,11 +150,10 @@ a { color: var(--encre); }
 /* Le code couleur des rôles vit dans une pastille discrète :
    bleu pâle enseignants, bleu moyen ERRÉ/ES, bleu foncé direction. */
 .point-role { width: 8px; height: 8px; border-radius: 999px; flex-shrink: 0; }
-.point-role.role-enseignant { background: #7c3f00; }
-.point-role.role-equipe { background: #2d5016; }
-.point-role.role-direction { background: #2c4a6e; }
-:root[data-theme="sombre"] .point-role.role-enseignant { background: #c98a4b; }
-:root[data-theme="sombre"] .point-role.role-equipe { background: #7fa35b; }
+.point-role.role-enseignant { background: #a2c4db; }
+.point-role.role-equipe { background: #20599a; }
+.point-role.role-direction { background: #060709; }
+:root[data-theme="sombre"] .point-role.role-equipe { background: #6fa3d8; }
 .entete .pousse { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
 .bouton-entete {
   display: inline-flex; align-items: center; gap: 6px;
@@ -168,7 +176,7 @@ a { color: var(--encre); }
 
 /* ---- Mise en page ---- */
 .page { max-width: 1120px; margin: 0 auto; padding: 48px 32px 96px; }
-.sous-titre { color: var(--secondaire); margin: 2px 0 24px; }
+.sous-titre { color: var(--sourdine); margin: 2px 0 24px; }
 
 /* ---- Cartes de statistiques ---- */
 .grille-cartes {
@@ -254,16 +262,17 @@ select, input[type="text"], input[type="search"], textarea {
   font: inherit;
   border: 1px solid var(--bordure);
   border-radius: 10px;
-  padding: 8px 12px;
+  padding: 12px 14px;
   background: var(--surface);
   color: var(--encre);
   max-width: 100%;
-  transition: box-shadow var(--transition);
+  transition: box-shadow var(--transition), border-color var(--transition);
 }
+input::placeholder, textarea::placeholder { color: var(--meta); }
 select:hover, input:hover, textarea:hover { box-shadow: var(--ombre-repos); }
 select:focus-visible, input:focus-visible, textarea:focus-visible {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-doux);
+  box-shadow: 0 0 0 4px var(--anneau-champ);
 }
 textarea { width: 100%; resize: vertical; min-height: 96px; }
 
@@ -297,6 +306,7 @@ tr:last-child td { border-bottom: none; }
   border: 1px solid transparent;
 }
 .etiquette.ok { background: var(--ok-fond); color: var(--ok-encre); border-color: var(--ok-bord); }
+.etiquette.rouge { background: var(--rouge-fond); color: var(--rouge-encre); }
 .etiquette.moyen { background: var(--moyen-fond); color: var(--moyen-encre); border-color: var(--moyen-bord); }
 .etiquette.haut { background: var(--haut-fond); color: var(--haut-encre); border-color: var(--haut-bord); }
 .etiquette.neutre { background: var(--pale); color: var(--secondaire); border-color: var(--bordure-bouton); }
@@ -312,7 +322,8 @@ tr:last-child td { border-bottom: none; }
 .bouton {
   display: inline-flex; align-items: center; gap: 6px;
   background: var(--primaire); color: var(--sur-primaire); border: none;
-  border-radius: 10px; padding: 9px 18px; font-weight: 600; font-size: 14px;
+  border-radius: 12px; padding: 12px 22px; font-weight: 500; font-size: 15px;
+  letter-spacing: -0.01em;
   transition: background var(--transition), box-shadow var(--transition);
 }
 .bouton:hover { background: var(--primaire-doux); box-shadow: var(--ombre-repos); }
@@ -322,7 +333,7 @@ tr:last-child td { border-bottom: none; }
 }
 .bouton.secondaire:hover { background: var(--pale); box-shadow: var(--ombre-repos); }
 .bouton.discret {
-  background: none; border: none; color: var(--encre);
+  background: none; border: none; color: var(--accent);
   padding: 4px 6px; font-weight: 600; font-size: 13px;
   border-radius: 8px;
   /* Un soulignement discret rend le cliquable évident. */
@@ -332,20 +343,20 @@ tr:last-child td { border-bottom: none; }
   text-decoration-thickness: 1px;
   transition: background var(--transition), text-decoration-color var(--transition);
 }
-.bouton.discret:hover { background: var(--pale); text-decoration-color: var(--encre); }
+.bouton.discret:hover { background: none; color: var(--marine); text-decoration-color: var(--marine); }
 /* Le nom d'un élève dans une liste : un vrai lien, taille du texte courant. */
 td .bouton.discret { font-size: 14px; }
 .bouton.danger {
-  background: var(--surface); color: var(--haut-encre);
-  border: 1px solid var(--haut-bord); font-weight: 500;
+  background: var(--surface); color: var(--marine);
+  border: 1px solid var(--bordure); font-weight: 500;
 }
-.bouton.danger:hover { background: var(--haut-fond); }
+.bouton.danger:hover { background: var(--glacier-doux); }
 /* 9. Bouton fantôme : discret mais identifiable. */
 .bouton.fantome {
-  background: none; color: var(--encre);
-  border: 1px solid var(--lisere); font-weight: 500;
+  background: none; color: var(--accent);
+  border: none; font-weight: 500;
 }
-.bouton.fantome:hover { background: var(--carte-interne); }
+.bouton.fantome:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .rangee-boutons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
 
 /* Le bouton qui déplie la légende des étapes. */
@@ -366,23 +377,15 @@ td .bouton.discret { font-size: 14px; }
 }
 .info {
   background: var(--info-fond); color: var(--secondaire);
-  border-left: 2px solid var(--info-bord);
-  border-radius: 0 8px 8px 0;
+  border-radius: 12px;
   padding: 20px 24px;
   margin: 16px 0;
-  font-size: 14px;
-  line-height: 1.7;
-  box-shadow: var(--ombre-repos);
+  font-size: 15px;
+  line-height: 1.55;
 }
-.info::before { content: "◆"; display: block; color: var(--accent); font-size: 10px; margin-bottom: 6px; }
-.info strong {
-  font-family: "Fraunces", Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--info-titre);
-}
+.info strong { font-weight: 600; color: var(--info-titre); }
 .case { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; }
-.case input { margin-top: 4px; width: 16px; height: 16px; accent-color: var(--primaire); }
+.case input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--accent); }
 .case span { font-size: 14px; }
 .legende-champ {
   font-size: 11px; font-weight: 600;
@@ -395,19 +398,17 @@ td .bouton.discret { font-size: 14px; }
 .connexion { max-width: 760px; margin: 64px auto; padding: 0 32px; }
 .connexion .logo { font-size: 40px; }
 .connexion h1 {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(44px, 8vw, 64px);
-  font-weight: 400;
+  font-size: clamp(40px, 7vw, 56px);
+  font-weight: 600;
   letter-spacing: -0.03em;
+  line-height: 1.05;
   margin: 12px 0 8px;
 }
-.connexion h1 em, .marque em { font-style: italic; }
 .connexion .sous-titre {
-  font-size: 12px;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: 0.15em;
-  color: var(--meta);
+  font-size: 17px;
+  letter-spacing: -0.005em;
+  color: var(--sourdine);
+  margin-bottom: 48px;
 }
 .aiguille { transform-origin: 50% 50%; animation: rotation-aiguille 40s ease-in-out infinite; }
 @keyframes rotation-aiguille { to { transform: rotate(360deg); } }
@@ -417,55 +418,42 @@ td .bouton.discret { font-size: 14px; }
   padding-top: 20px;
 }
 .chapitre {
-  display: flex; align-items: baseline; gap: 10px;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
   margin: 0 0 16px;
 }
-.chapitre-no {
-  font-family: "Fraunces", Georgia, serif;
-  font-style: italic;
-  font-size: 20px;
-  font-weight: 400;
-  color: var(--accent);
-  flex-shrink: 0;
-}
 .chapitre-titre {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
   color: var(--encre-fort);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
-.points-suite { flex: 1; border-bottom: 1px dotted var(--bordure-bouton); margin: 0 4px 6px; }
-.chapitre-compte { font-size: 12px; color: var(--meta); white-space: nowrap; }
+.chapitre-compte { font-size: 13px; color: var(--meta); white-space: nowrap; }
 .compte-section { color: var(--meta); font-weight: 400; font-size: 12px; }
 .boutons-profils { display: flex; flex-wrap: wrap; gap: 12px; }
 .bouton-profil {
   position: relative;
   background: var(--surface);
-  border: 1px solid var(--lisere);
-  border-radius: 6px;
+  border: none;
+  border-radius: 12px;
   padding: 20px;
-  padding-right: 32px;
+  padding-right: 36px;
   text-align: left;
-  font-family: "Fraunces", Georgia, serif;
   font-size: 17px;
   color: var(--encre-fort);
-  font-weight: 500;
-  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: var(--ombre-repos);
+  transition: box-shadow var(--transition), transform var(--transition);
 }
 .bouton-profil:hover {
   box-shadow: var(--ombre-survol);
   transform: translateY(-1px);
-  border-color: var(--accent);
 }
 .bouton-profil .detail {
   display: block;
-  font-family: "Inter", sans-serif;
-  font-size: 12px;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: 0.08em;
+  font-size: 13px;
   font-weight: 400;
+  letter-spacing: -0.005em;
   color: var(--meta);
   margin-top: 4px;
 }
@@ -475,12 +463,11 @@ td .bouton.discret { font-size: 14px; }
   position: absolute; top: 12px; right: 12px;
   width: 6px; height: 6px; border-radius: 999px;
 }
-.groupe-profils.role-enseignant .bouton-profil::after { background: #7c3f00; }
-.groupe-profils.role-equipe .bouton-profil::after { background: #2d5016; }
-.groupe-profils.role-direction .bouton-profil::after { background: #2c4a6e; }
-:root[data-theme="sombre"] .groupe-profils.role-enseignant .bouton-profil::after { background: #c98a4b; }
-:root[data-theme="sombre"] .groupe-profils.role-equipe .bouton-profil::after { background: #7fa35b; }
-:root[data-theme="sombre"] .groupe-profils.role-direction .bouton-profil::after { background: #7e9cc0; }
+.groupe-profils.role-enseignant .bouton-profil::after { background: #a2c4db; }
+.groupe-profils.role-equipe .bouton-profil::after { background: #20599a; }
+.groupe-profils.role-direction .bouton-profil::after { background: #060709; }
+:root[data-theme="sombre"] .groupe-profils.role-equipe .bouton-profil::after { background: #6fa3d8; }
+:root[data-theme="sombre"] .groupe-profils.role-direction .bouton-profil::after { background: #f2f6fa; }
 
 /* ---- Fenêtre modale ---- */
 .voile {
@@ -515,7 +502,7 @@ td .bouton.discret { font-size: 14px; }
 .fermer:hover { background: var(--pale); color: var(--encre); }
 
 /* ---- Fiche de dossier (structure premium) ---- */
-.fiche-nom { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--encre-fort); }
+.fiche-nom { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; color: var(--encre-fort); }
 .fiche-meta { font-size: 13px; color: var(--meta); margin: 4px 0 0; }
 .fiche-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 0; }
 .fiche-sep { border: none; border-top: 1px solid var(--lisere); margin: 24px 0; }
@@ -787,6 +774,21 @@ td .bouton.discret { font-size: 14px; }
 .barre-valeur { font-size: 12px; font-weight: 400; fill: var(--encre); font-variant-numeric: tabular-nums; }
 .barre-nom { font-size: 11px; fill: var(--sourdine); }
 
+/* Répartitions en barres horizontales : une teinte, des étiquettes. */
+.repartition-total { margin: 0 0 12px; font-size: 13px; color: var(--sourdine); }
+.repartition-total .num { font-size: 22px; font-weight: 600; color: var(--encre-fort); margin-right: 4px; }
+.repartition { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.repartition-ligne { display: grid; grid-template-columns: 110px 1fr auto; align-items: center; gap: 12px; }
+.repartition-nom { font-size: 13px; color: var(--texte); }
+.repartition-piste {
+  height: 8px;
+  background: var(--pale);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.repartition-barre { display: block; height: 100%; border-radius: 999px; transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1); }
+.repartition-valeur { font-size: 13px; color: var(--sourdine); white-space: nowrap; }
+
 /* Les traits des graphiques suivent le thème. */
 .graphique path.seg { stroke: var(--surface); stroke-width: 2; }
 .graphique line.grille { stroke: var(--pale); }
@@ -814,18 +816,16 @@ td .bouton.discret { font-size: 14px; }
 .devise {
   margin-top: 64px;
   text-align: center;
-  font-family: "Fraunces", Georgia, serif;
-  font-style: italic;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--meta);
 }
 .ornement {
-  text-align: center;
-  color: var(--bordure-bouton);
-  letter-spacing: 10px;
+  height: 1px;
+  background: rgba(6, 7, 9, 0.06);
   margin: 24px 0;
-  font-size: 12px;
+  font-size: 0;
 }
+:root[data-theme="sombre"] .ornement { background: rgba(255, 255, 255, 0.08); }
 
 @media (max-width: 640px) {
   .page { padding: 24px 16px 64px; }

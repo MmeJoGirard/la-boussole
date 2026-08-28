@@ -1,70 +1,40 @@
-// Graphiques du tableau de bord : dessinés en SVG, sans librairie externe.
-// Palette validée pour l'accessibilité (daltonisme) avec le vérificateur
-// du guide de visualisation : ordre fixe bleu profond, terracotta,
-// sarcelle sauge, or sable.
+// Graphiques du tableau de bord : dessinés en SVG et en HTML, sans
+// librairie externe. Palette stricte de bleus : une répartition se lit
+// par la longueur des barres et ses étiquettes, jamais par la teinte —
+// c'est à la fois plus sobre et parfaitement lisible pour tout le monde.
 import { trouverEleve, STATUTS, TYPES_SIGNALEMENT, typesDe } from "./aides.js";
 
-// Chaque thème a sa propre palette, validée sur sa propre surface.
-const CATEGORIEL_CLAIR = ["#3568A8", "#C2621F", "#0D9488", "#BE8322"];
-const CATEGORIEL_SOMBRE = ["#5588DB", "#D0764A", "#1D9D8F", "#B8892F"];
-// Rampe ordinale monochrome (urgence 0 à 4) : le niveau 4 est toujours
-// le plus visible (le plus foncé en clair, le plus clair en sombre).
-// Rampe sépia : les bruns d'encre ancienne, du pâle au profond.
-const ORDINAL_CLAIR = ["#BCA684", "#9C8560", "#7B6442", "#584427", "#362810"];
-const ORDINAL_SOMBRE = ["#6B5637", "#8A7150", "#A98D6B", "#C7AC8A", "#E3D3B5"];
+const ACCENT = { clair: "#20599A", sombre: "#6FA3D8" };
+// Rampe ordinale de bleus (urgence 0 à 4), validée pour le daltonisme :
+// le niveau 4 est toujours le plus visible.
+const ORDINAL_CLAIR = ["#8FB7D6", "#5F94C2", "#3B76AC", "#20599A", "#153459"];
+const ORDINAL_SOMBRE = ["#3D5A78", "#4F7196", "#6389B4", "#84A9CE", "#A2C4DB"];
 
-// Un segment d'anneau (donut) entre deux angles, en coordonnées SVG.
-function arc(cx, cy, r1, r2, a0, a1) {
-  const p = (r, a) => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
-  const [x0, y0] = p(r2, a0), [x1, y1] = p(r2, a1);
-  const [x2, y2] = p(r1, a1), [x3, y3] = p(r1, a0);
-  const grand = a1 - a0 > Math.PI ? 1 : 0;
-  return `M ${x0} ${y0} A ${r2} ${r2} 0 ${grand} 1 ${x1} ${y1} L ${x2} ${y2} A ${r1} ${r1} 0 ${grand} 0 ${x3} ${y3} Z`;
-}
-
-export function Donut({ titre, note, donnees }) {
+// Répartition en barres horizontales : une seule teinte, l'étiquette à
+// gauche, la valeur et le pourcentage à droite.
+export function BarresH({ titre, note, donnees, couleur }) {
   const total = donnees.reduce((somme, d) => somme + d.valeur, 0);
-  let angle = -Math.PI / 2;
-  const segments = donnees
-    .filter((d) => d.valeur > 0)
-    .map((d) => {
-      const balayage = total ? (d.valeur / total) * Math.PI * 2 : 0;
-      const seg = { ...d, a0: angle, a1: angle + balayage };
-      angle += balayage;
-      return seg;
-    });
+  const max = Math.max(1, ...donnees.map((d) => d.valeur));
   return (
     <figure className="graphique" role="img" aria-label={`${titre} : ${donnees.map((d) => `${d.nom} ${d.valeur}`).join(", ")}`}>
       <figcaption>
         <strong>{titre}</strong>
         {note && <span className="aide">{note}</span>}
       </figcaption>
-      <div className="donut-ligne">
-        <svg viewBox="0 0 160 160" width="150" height="150" aria-hidden="true">
-          {segments.length === 1 ? (
-            <circle cx="80" cy="80" r="59" fill="none" stroke={segments[0].couleur} strokeWidth="18" />
-          ) : (
-            segments.map((s) => (
-              <path key={s.nom} className="seg" d={arc(80, 80, 50, 68, s.a0, s.a1)} fill={s.couleur}>
-                <title>{`${s.nom} : ${s.valeur} (${Math.round((s.valeur / total) * 100)} %)`}</title>
-              </path>
-            ))
-          )}
-          <text x="80" y="76" textAnchor="middle" className="donut-total">{total}</text>
-          <text x="80" y="94" textAnchor="middle" className="donut-libelle">au total</text>
-        </svg>
-        <ul className="legende">
-          {donnees.map((d) => (
-            <li key={d.nom}>
-              <span className="pastille-couleur" style={{ background: d.couleur }} aria-hidden="true" />
-              <span className="legende-nom">{d.nom}</span>
-              <span className="legende-valeur num">
-                {d.valeur}{total > 0 && d.valeur > 0 ? ` · ${Math.round((d.valeur / total) * 100)} %` : ""}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <p className="repartition-total"><span className="num">{total}</span> au total</p>
+      <ul className="repartition">
+        {donnees.map((d) => (
+          <li key={d.nom} className="repartition-ligne">
+            <span className="repartition-nom">{d.nom}</span>
+            <span className="repartition-piste" aria-hidden="true">
+              <span className="repartition-barre" style={{ width: `${(d.valeur / max) * 100}%`, background: couleur }} />
+            </span>
+            <span className="repartition-valeur num">
+              {d.valeur}{total > 0 ? ` · ${Math.round((d.valeur / total) * 100)} %` : ""}
+            </span>
+          </li>
+        ))}
+      </ul>
     </figure>
   );
 }
@@ -110,25 +80,23 @@ export function Barres({ titre, note, donnees }) {
 // signalements de l'année scolaire (cycles actifs et clos).
 export default function TableauDeBord({ db, sombre }) {
   const signalements = db.signalements;
-  const CATEGORIEL = sombre ? CATEGORIEL_SOMBRE : CATEGORIEL_CLAIR;
+  const accent = ACCENT[sombre ? "sombre" : "clair"];
   const ORDINAL = sombre ? ORDINAL_SOMBRE : ORDINAL_CLAIR;
 
-  const parType = TYPES_SIGNALEMENT.map((t, i) => ({
+  const parType = TYPES_SIGNALEMENT.map((t) => ({
     nom: t.charAt(0).toUpperCase() + t.slice(1),
     valeur: signalements.filter((s) => typesDe(s).includes(t)).length,
-    couleur: CATEGORIEL[i],
   }));
 
-  const parStatut = Object.entries(STATUTS).map(([cle, nom], i) => ({
+  const parStatut = Object.entries(STATUTS).map(([cle, nom]) => ({
     nom,
     valeur: signalements.filter((s) => s.statut === cle).length,
-    couleur: CATEGORIEL[i],
   }));
 
   const parAnnee = [7, 8, 9, 10, 11, 12].map((a) => ({
     nom: `${a}e`,
     valeur: signalements.filter((s) => trouverEleve(db, s.eleveId).annee === a).length,
-    couleur: sombre ? "#C7AC8A" : "#584427",
+    couleur: accent,
   }));
 
   const parUrgence = db.echelleUrgence.map((n) => ({
@@ -147,10 +115,10 @@ export default function TableauDeBord({ db, sombre }) {
       </p>
       <div className="grille-graphiques">
         <div className="panneau">
-          <Donut titre="Par type de signalement" note="Un signalement à types multiples compte dans chaque type coché" donnees={parType} />
+          <BarresH titre="Par type de signalement" note="Un signalement à types multiples compte dans chaque type coché" donnees={parType} couleur={accent} />
         </div>
         <div className="panneau">
-          <Donut titre="Par statut du dossier" donnees={parStatut} />
+          <BarresH titre="Par statut du dossier" donnees={parStatut} couleur={accent} />
         </div>
         <div className="panneau">
           <Barres titre="Par année scolaire" note="Nombre de signalements par niveau" donnees={parAnnee} />

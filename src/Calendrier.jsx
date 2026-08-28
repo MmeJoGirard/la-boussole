@@ -6,9 +6,11 @@ import { nomComplet, trouverEleve } from "./aides.js";
 // Couleurs reprises de la palette validée des graphiques :
 // bleu = signalements, sarcelle = interventions.
 const COULEURS = {
-  clair: { signalement: "#3568A8", intervention: "#0D9488" },
-  sombre: { signalement: "#5588DB", intervention: "#1D9D8F" },
+  clair: { signalement: "#20599A", intervention: "#A2C4DB" },
+  sombre: { signalement: "#6FA3D8", intervention: "#A2C4DB" },
 };
+// Le glacier est clair : ses pastilles portent un texte marine.
+const ENCRE_INTERVENTION = "#12293F";
 
 const MOIS = [
   "janvier", "février", "mars", "avril", "mai", "juin",
@@ -132,7 +134,7 @@ export default function Calendrier({ db, ouvrirDossier, sombre, eleveIds = null,
                 <span className="calendrier-numero num">{numero}</span>
                 <span className="calendrier-points">
                   {nbSign > 0 && <span className="point-evenement" style={{ background: COULEUR_SIGNALEMENT }}>{nbSign}</span>}
-                  {nbInter > 0 && <span className="point-evenement" style={{ background: COULEUR_INTERVENTION }}>{nbInter}</span>}
+                  {nbInter > 0 && <span className="point-evenement" style={{ background: COULEUR_INTERVENTION, color: ENCRE_INTERVENTION }}>{nbInter}</span>}
                 </span>
               </button>
             );
