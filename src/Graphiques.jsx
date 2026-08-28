@@ -4,9 +4,13 @@
 // sarcelle sauge, or sable.
 import { trouverEleve, STATUTS, TYPES_SIGNALEMENT, typesDe } from "./aides.js";
 
-const CATEGORIEL = ["#2F5AA8", "#DD7B4E", "#0D9488", "#C9922E"];
-// Rampe ordinale monochrome (urgence 0 à 4), du plus pâle au plus foncé.
-const ORDINAL_BLEU = ["#9DA9BB", "#7B8BA1", "#5A6E87", "#3A526D", "#1E3A55"];
+// Chaque thème a sa propre palette, validée sur sa propre surface.
+const CATEGORIEL_CLAIR = ["#2F5AA8", "#DD7B4E", "#0D9488", "#C9922E"];
+const CATEGORIEL_SOMBRE = ["#5588DB", "#D0764A", "#1D9D8F", "#B8892F"];
+// Rampe ordinale monochrome (urgence 0 à 4) : le niveau 4 est toujours
+// le plus visible (le plus foncé en clair, le plus clair en sombre).
+const ORDINAL_CLAIR = ["#9DA9BB", "#7B8BA1", "#5A6E87", "#3A526D", "#1E3A55"];
+const ORDINAL_SOMBRE = ["#54657D", "#71839B", "#8FA0B6", "#AFBDCF", "#D3DCE8"];
 
 // Un segment d'anneau (donut) entre deux angles, en coordonnées SVG.
 function arc(cx, cy, r1, r2, a0, a1) {
@@ -40,7 +44,7 @@ export function Donut({ titre, note, donnees }) {
             <circle cx="80" cy="80" r="59" fill="none" stroke={segments[0].couleur} strokeWidth="18" />
           ) : (
             segments.map((s) => (
-              <path key={s.nom} d={arc(80, 80, 50, 68, s.a0, s.a1)} fill={s.couleur} stroke="#ffffff" strokeWidth="2">
+              <path key={s.nom} className="seg" d={arc(80, 80, 50, 68, s.a0, s.a1)} fill={s.couleur}>
                 <title>{`${s.nom} : ${s.valeur} (${Math.round((s.valeur / total) * 100)} %)`}</title>
               </path>
             ))
@@ -81,9 +85,9 @@ export function Barres({ titre, note, donnees }) {
       </figcaption>
       <svg viewBox={`0 0 ${largeur} ${hauteur}`} style={{ width: "100%", height: "auto" }} aria-hidden="true">
         {[0.5, 1].map((f) => (
-          <line key={f} x1="0" x2={largeur} y1={basY - (basY - hautY) * f} y2={basY - (basY - hautY) * f} stroke="#f1f5f9" strokeWidth="1" />
+          <line key={f} x1="0" x2={largeur} y1={basY - (basY - hautY) * f} y2={basY - (basY - hautY) * f} className="grille" strokeWidth="1" />
         ))}
-        <line x1="0" x2={largeur} y1={basY} y2={basY} stroke="#e5e7eb" strokeWidth="1" />
+        <line x1="0" x2={largeur} y1={basY} y2={basY} className="base" strokeWidth="1" />
         {donnees.map((d, i) => {
           const h = (d.valeur / max) * (basY - hautY);
           const x = i * pas + (pas - largeurBarre) / 2;
@@ -103,8 +107,10 @@ export function Barres({ titre, note, donnees }) {
 
 // Le tableau de bord visuel : totaux et répartitions de tous les
 // signalements de l'année scolaire (cycles actifs et clos).
-export default function TableauDeBord({ db }) {
+export default function TableauDeBord({ db, sombre }) {
   const signalements = db.signalements;
+  const CATEGORIEL = sombre ? CATEGORIEL_SOMBRE : CATEGORIEL_CLAIR;
+  const ORDINAL = sombre ? ORDINAL_SOMBRE : ORDINAL_CLAIR;
 
   const parType = TYPES_SIGNALEMENT.map((t, i) => ({
     nom: t.charAt(0).toUpperCase() + t.slice(1),
@@ -121,13 +127,13 @@ export default function TableauDeBord({ db }) {
   const parAnnee = [7, 8, 9, 10, 11, 12].map((a) => ({
     nom: `${a}e`,
     valeur: signalements.filter((s) => trouverEleve(db, s.eleveId).annee === a).length,
-    couleur: "#334155",
+    couleur: sombre ? "#AFBDCF" : "#334155",
   }));
 
   const parUrgence = db.echelleUrgence.map((n) => ({
     nom: `${n.niveau}`,
     valeur: signalements.filter((s) => s.niveauUrgence === n.niveau).length,
-    couleur: ORDINAL_BLEU[n.niveau],
+    couleur: ORDINAL[n.niveau],
   }));
 
   const eed = signalements.filter((s) => s.caseEED).length;

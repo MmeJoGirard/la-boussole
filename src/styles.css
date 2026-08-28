@@ -8,9 +8,9 @@
   --primaire: #0f172a;
   --primaire-doux: #1e293b;
   --encre: #0f172a;
-  --texte: #374151; /* environ 9:1 sur blanc */
-  --secondaire: #475569; /* environ 7,5:1 sur blanc */
-  --sourdine: #64748b; /* environ 4,8:1, la norme AA */
+  --texte: #1f2937; /* environ 14:1 sur blanc */
+  --secondaire: #334155; /* environ 10:1 sur blanc */
+  --sourdine: #475569; /* environ 7,5:1 sur blanc */
   --bordure: #d8dee7;
   --pale: #f1f5f9;
   --accent-chaud: #dd7b4e;
@@ -18,10 +18,42 @@
   --moyen-fond: #f7efe1; --moyen-encre: #8a6420;
   --haut-fond: #f9ebe8; --haut-encre: #b0432f;
   --eed-fond: #ededf7; --eed-encre: #55519b;
+  --sur-primaire: #ffffff;
+  --verre: rgba(255, 255, 255, 0.8);
+  --voile-fond: rgba(15, 23, 42, 0.4);
+  --anneau: rgba(15, 23, 42, 0.35);
+  --lisere: transparent;
   --ombre-repos: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
   --ombre-survol: 0 2px 4px rgba(15, 23, 42, 0.06), 0 12px 24px rgba(15, 23, 42, 0.05);
   --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ---- Thème sombre (activé par le bouton de l'entête) ---- */
+:root[data-theme="sombre"] {
+  --fond: #0b1220;
+  --surface: #16202e;
+  --primaire: #e2e8f0;
+  --primaire-doux: #cbd5e1;
+  --encre: #f1f5f9;
+  --texte: #d7dee8;
+  --secondaire: #b3c0d0;
+  --sourdine: #8ea0b5;
+  --bordure: #334155;
+  --pale: #1e2a3a;
+  --sur-primaire: #0b1220;
+  --verre: rgba(11, 18, 32, 0.8);
+  --voile-fond: rgba(2, 6, 12, 0.65);
+  --anneau: rgba(226, 232, 240, 0.5);
+  --lisere: rgba(255, 255, 255, 0.07);
+  --ok-fond: #17301f; --ok-encre: #8fd3a8;
+  --moyen-fond: #34290f; --moyen-encre: #e6c079;
+  --haut-fond: #3b1d18; --haut-encre: #f19b8f;
+  --eed-fond: #262148; --eed-encre: #b7b1f2;
+  --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
+  --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+:root[data-theme="sombre"] .point-role.role-direction { background: #e2e8f0; }
+
 * { box-sizing: border-box; }
 body {
   margin: 0;
@@ -42,13 +74,13 @@ a { color: var(--encre); }
 /* Accessibilité : focus visible mais élégant. */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--anneau);
   border-radius: 8px;
 }
 
 /* ---- Entête : verre dépoli clair ---- */
 .entete {
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--verre);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--bordure);
@@ -70,7 +102,7 @@ a { color: var(--encre); }
 .entete .role {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--pale);
-  color: #475569;
+  color: var(--secondaire);
   border-radius: 999px;
   padding: 4px 14px;
   font-size: 13px;
@@ -92,7 +124,7 @@ a { color: var(--encre); }
   font-size: 13px;
   transition: background var(--transition), box-shadow var(--transition);
 }
-.bouton-entete:hover { background: #f9fafb; box-shadow: var(--ombre-repos); }
+.bouton-entete:hover { background: var(--pale); box-shadow: var(--ombre-repos); }
 
 /* ---- Mise en page ---- */
 .page { max-width: 1120px; margin: 0 auto; padding: 48px 32px 96px; }
@@ -109,6 +141,7 @@ a { color: var(--encre); }
   position: relative;
   background: var(--surface);
   border: none;
+  border: 1px solid var(--lisere);
   border-radius: 16px;
   padding: 32px;
   box-shadow: var(--ombre-repos);
@@ -130,11 +163,11 @@ a { color: var(--encre); }
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--encre);
-  opacity: 0.75;
+  opacity: 0.9;
 }
 .stat-icone {
   position: absolute; top: 24px; right: 24px;
-  color: var(--encre); opacity: 0.4;
+  color: var(--encre); opacity: 0.55;
   display: inline-flex;
 }
 .carte-stat.cliquable {
@@ -150,16 +183,17 @@ a { color: var(--encre); }
 .panneau {
   background: var(--surface);
   border: none;
+  border: 1px solid var(--lisere);
   border-radius: 16px;
   padding: 24px 32px;
   margin-bottom: 24px;
   box-shadow: var(--ombre-repos);
 }
 .callout-note {
-  background: var(--fond);
+  background: var(--pale);
   border-radius: 12px;
   padding: 16px 20px;
-  color: #475569;
+  color: var(--secondaire);
   margin: 0 0 24px;
 }
 
@@ -169,7 +203,7 @@ a { color: var(--encre); }
   display: block;
   font-size: 11px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.75;
+  color: var(--encre); opacity: 0.9;
   margin-bottom: 6px;
 }
 select, input[type="text"], input[type="search"], textarea {
@@ -188,7 +222,7 @@ textarea { width: 100%; resize: vertical; }
 /* ---- Tableaux ---- */
 .defile {
   overflow-x: auto;
-  border: none;
+  border: 1px solid var(--lisere);
   border-radius: 16px;
   background: var(--surface);
   box-shadow: var(--ombre-repos);
@@ -221,14 +255,14 @@ tr:last-child td { border-bottom: none; }
 .pastille {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 24px; height: 24px; padding: 0 7px;
-  border-radius: 999px; background: var(--primaire); color: #fff;
+  border-radius: 999px; background: var(--primaire); color: var(--sur-primaire);
   font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
 }
 
 /* ---- Boutons ---- */
 .bouton {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--primaire); color: #fff; border: none;
+  background: var(--primaire); color: var(--sur-primaire); border: none;
   border-radius: 10px; padding: 9px 18px; font-weight: 600; font-size: 14px;
   transition: background var(--transition), box-shadow var(--transition);
 }
@@ -237,7 +271,7 @@ tr:last-child td { border-bottom: none; }
   background: var(--surface); color: var(--encre);
   border: 1px solid var(--bordure); font-weight: 600;
 }
-.bouton.secondaire:hover { background: #f9fafb; box-shadow: var(--ombre-repos); }
+.bouton.secondaire:hover { background: var(--pale); box-shadow: var(--ombre-repos); }
 .bouton.discret {
   background: none; border: none; color: var(--encre);
   padding: 4px 6px; font-weight: 600; font-size: 13px;
@@ -269,7 +303,7 @@ tr:last-child td { border-bottom: none; }
   border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
 .info {
-  background: var(--pale); color: #475569;
+  background: var(--pale); color: var(--secondaire);
   border-radius: 12px; padding: 14px 18px; margin: 12px 0; font-size: 14px;
 }
 .case { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; }
@@ -278,7 +312,7 @@ tr:last-child td { border-bottom: none; }
 .legende-champ {
   font-size: 11px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.75;
+  color: var(--encre); opacity: 0.9;
   margin-bottom: 6px; padding: 0;
 }
 
@@ -298,7 +332,7 @@ tr:last-child td { border-bottom: none; }
   margin: 0 0 16px;
   font-size: 11px; font-weight: 500;
   text-transform: uppercase; letter-spacing: 0.08em;
-  color: var(--encre); opacity: 0.75;
+  color: var(--encre); opacity: 0.9;
 }
 .boutons-profils { display: flex; flex-wrap: wrap; gap: 8px; }
 .bouton-profil {
@@ -318,7 +352,7 @@ tr:last-child td { border-bottom: none; }
 /* ---- Fenêtre modale ---- */
 .voile {
   position: fixed; inset: 0;
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--voile-fond);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex; align-items: flex-start; justify-content: center;
@@ -397,11 +431,11 @@ tr:last-child td { border-bottom: none; }
   color: var(--secondaire);
   transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
-.chip-filtre:hover { color: var(--encre); background: #f9fafb; }
+.chip-filtre:hover { color: var(--encre); background: var(--pale); }
 .chip-filtre[aria-pressed="true"] {
   background: var(--primaire);
   border-color: var(--primaire);
-  color: #fff;
+  color: var(--sur-primaire);
 }
 
 /* ---- Légende des étapes ---- */
@@ -461,6 +495,11 @@ tr:last-child td { border-bottom: none; }
 .legende-valeur { color: var(--secondaire); font-weight: 600; }
 .barre-valeur { font-size: 12px; font-weight: 400; fill: var(--encre); font-variant-numeric: tabular-nums; }
 .barre-nom { font-size: 11px; fill: var(--sourdine); }
+
+/* Les traits des graphiques suivent le thème. */
+.graphique path.seg { stroke: var(--surface); stroke-width: 2; }
+.graphique line.grille { stroke: var(--pale); }
+.graphique line.base { stroke: var(--bordure); }
 
 /* Animation de dessin des graphiques au chargement. */
 @keyframes apparaitre-segment {

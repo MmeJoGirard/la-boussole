@@ -5,8 +5,10 @@ import { nomComplet, trouverEleve } from "./aides.js";
 // interventions. Cliquer sur une journée affiche son détail.
 // Couleurs reprises de la palette validée des graphiques :
 // bleu = signalements, sarcelle = interventions.
-const COULEUR_SIGNALEMENT = "#2F5AA8";
-const COULEUR_INTERVENTION = "#0D9488";
+const COULEURS = {
+  clair: { signalement: "#2F5AA8", intervention: "#0D9488" },
+  sombre: { signalement: "#5588DB", intervention: "#1D9D8F" },
+};
 
 const MOIS = [
   "janvier", "février", "mars", "avril", "mai", "juin",
@@ -18,7 +20,9 @@ const JOURS = ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"];
 // pour éviter les surprises de fuseau horaire.
 const decouper = (date) => date.slice(0, 10).split("-").map(Number);
 
-export default function Calendrier({ db, ouvrirDossier }) {
+export default function Calendrier({ db, ouvrirDossier, sombre }) {
+  const COULEUR_SIGNALEMENT = COULEURS[sombre ? "sombre" : "clair"].signalement;
+  const COULEUR_INTERVENTION = COULEURS[sombre ? "sombre" : "clair"].intervention;
   // Tous les événements datés, regroupés par jour.
   const evenements = useMemo(() => {
     const parJour = new Map();

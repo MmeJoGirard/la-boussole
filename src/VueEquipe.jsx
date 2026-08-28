@@ -32,7 +32,7 @@ function FiltreMultiple({ titre, options, actives, basculer }) {
 
 // Vue partagée par l'équipe (ERRÉ + éducation spécialisée) et la direction.
 // La direction a en plus l'onglet Journal d'audit.
-export default function VueEquipe({ db, utilisateur, actions, direction }) {
+export default function VueEquipe({ db, utilisateur, actions, direction, sombre }) {
   const [onglet, setOnglet] = useState("bord");
   const [fAnnees, setFAnnees] = useState([]);
   const [fEtapes, setFEtapes] = useState([]);
@@ -171,10 +171,10 @@ export default function VueEquipe({ db, utilisateur, actions, direction }) {
               </ol>
             )}
           </div>
-          <TableauDeBord db={db} />
+          <TableauDeBord db={db} sombre={sombre} />
         </>
       ) : onglet === "calendrier" ? (
-        <Calendrier db={db} ouvrirDossier={setDossierOuvert} />
+        <Calendrier db={db} ouvrirDossier={setDossierOuvert} sombre={sombre} />
       ) : onglet === "audit" && direction ? (
         <TableauAudit db={db} />
       ) : (

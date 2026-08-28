@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import donneesInitiales from "../donnees-fictives.json";
 import {
   maintenant, nomComplet, ROLES, estEquipe, estDirection, roleClasse,
@@ -7,7 +7,7 @@ import {
 import VueEnseignant from "./VueEnseignant.jsx";
 import VueEquipe from "./VueEquipe.jsx";
 import BoiteCourriels from "./BoiteCourriels.jsx";
-import { Mail, RotateCcw, LogOut } from "lucide-react";
+import { Mail, RotateCcw, LogOut, Moon, Sun } from "lucide-react";
 
 let compteurDemo = 0;
 
@@ -16,6 +16,21 @@ export default function App() {
   const [utilisateur, setUtilisateur] = useState(null);
   const [courriels, setCourriels] = useState([]);
   const [boiteOuverte, setBoiteOuverte] = useState(false);
+
+  // Thème clair ou sombre : le choix est mémorisé dans le navigateur.
+  const [sombre, setSombre] = useState(() => {
+    try { return localStorage.getItem("boussole-theme") === "sombre"; } catch { return false; }
+  });
+  useEffect(() => {
+    document.documentElement.dataset.theme = sombre ? "sombre" : "";
+    try { localStorage.setItem("boussole-theme", sombre ? "sombre" : "clair"); } catch { /* stockage indisponible : tant pis */ }
+  }, [sombre]);
+  const boutonTheme = (
+    <button className="bouton-entete" onClick={() => setSombre(!sombre)} aria-pressed={sombre}>
+      {sombre ? <Sun size={15} strokeWidth={1.5} aria-hidden="true" /> : <Moon size={15} strokeWidth={1.5} aria-hidden="true" />}
+      {sombre ? "Mode clair" : "Mode sombre"}
+    </button>
+  );
 
   // ------------------------------------------------------------------
   // Actions : chaque action modifie les données ET laisse une trace
@@ -268,6 +283,7 @@ export default function App() {
     ];
     return (
       <main className="connexion">
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>{boutonTheme}</div>
         <div className="logo" aria-hidden="true">🧭</div>
         <h1>La Boussole</h1>
         <p className="sous-titre">
@@ -308,6 +324,7 @@ export default function App() {
           {nomComplet(utilisateur)} · {ROLES[utilisateur.role]}
         </span>
         <span className="pousse">
+          {boutonTheme}
           <button className="bouton-entete" onClick={() => setBoiteOuverte(true)}>
             <Mail size={15} strokeWidth={1.5} aria-hidden="true" /> Courriels simulés ({courriels.length})
           </button>
@@ -323,7 +340,7 @@ export default function App() {
         {utilisateur.role === "enseignant" ? (
           <VueEnseignant db={db} utilisateur={utilisateur} actions={actions} />
         ) : (
-          <VueEquipe db={db} utilisateur={utilisateur} actions={actions} direction={estDirection(utilisateur)} />
+          <VueEquipe db={db} utilisateur={utilisateur} actions={actions} direction={estDirection(utilisateur)} sombre={sombre} />
         )}
       </div>
       {boiteOuverte && <BoiteCourriels courriels={courriels} fermer={() => setBoiteOuverte(false)} />}
