@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "donnees": "node generer-donnees.mjs"
+    "donnees": "node generer-donnees.mjs",
+    "deploy": "sh deployer.sh"
   },
   "dependencies": {
     "react": "^18.3.1",
