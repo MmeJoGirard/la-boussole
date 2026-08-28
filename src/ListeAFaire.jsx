@@ -23,6 +23,16 @@ export function tachesEnseignant(db, utilisateur, mesEleves) {
           date: s.date,
         });
       }
+      if (estAuteur && s.prochaineEtapeEnseignant) {
+        taches.push({
+          cle: `plan-${s.id}`,
+          categorie: "Mes prochaines étapes planifiées",
+          titre: `${s.prochaineEtapeEnseignant} · ${nomComplet(eleve)} (${eleve.groupe})`,
+          detail: "Planifiée au moment du signalement. Mettez à jour le signalement une fois faite.",
+          eleveId: eleve.id,
+          date: s.date,
+        });
+      }
       if (estAuteur && !s.dejaFait.rencontreEleve) {
         taches.push({
           cle: `ren-${s.id}`,

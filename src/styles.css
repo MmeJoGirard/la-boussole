@@ -371,6 +371,25 @@ td .bouton.discret { font-size: 14px; }
 .bouton-legende[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 /* ---- Formulaires ---- */
+/* Les boîtes du formulaire de signalement : une ligne verticale bleu
+   glacier guide la lecture, les numéros royaux jalonnent les champs. */
+.groupe-form {
+  border: none;
+  border-left: 3px solid var(--glacier);
+  background: var(--carte-interne);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px 12px 21px;
+  margin: 0 0 16px;
+}
+.groupe-form .champ:last-child { margin-bottom: 4px; }
+.no-champ {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
 .champ { margin-bottom: 16px; }
 .aide { display: block; font-size: 13px; color: var(--secondaire); margin-top: 4px; }
 .avertissement {

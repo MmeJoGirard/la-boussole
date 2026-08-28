@@ -100,6 +100,7 @@ export default function App() {
         communicationParents: formulaire.communicationParents || null,
       },
       autreInformation: formulaire.autreInformation,
+      prochaineEtapeEnseignant: formulaire.prochaineEtapeEnseignant || "",
       responsableId: null,
       prochaineEtape: "Vérification par l'équipe de la réussite",
       noteCloture: null,
@@ -161,11 +162,12 @@ export default function App() {
 
   // L'enseignant·e qui a signalé peut mettre à jour son signalement
   // (étape 2) : ce qui a été fait depuis, et une note de suivi.
-  const majSignalementAuteur = (signId, { rencontreEleve, communicationParents, note }) => {
+  const majSignalementAuteur = (signId, { rencontreEleve, communicationParents, note, prochaineEtapeEnseignant }) => {
     modifierSignalement(
       signId,
       (s) => ({
         ...s,
+        prochaineEtapeEnseignant: prochaineEtapeEnseignant !== undefined ? prochaineEtapeEnseignant : s.prochaineEtapeEnseignant,
         dejaFait: {
           rencontreEleve: rencontreEleve || s.dejaFait.rencontreEleve,
           communicationParents: communicationParents || s.dejaFait.communicationParents,

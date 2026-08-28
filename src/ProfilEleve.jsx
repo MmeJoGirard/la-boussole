@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { nomComplet, signalementsDe, trouverTuteur } from "./aides.js";
+import { nomComplet, signalementsDe, trouverTuteur, OPTIONS_ETAPE_ENSEIGNANT } from "./aides.js";
 import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 import { X } from "lucide-react";
 
@@ -15,6 +15,7 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, s
   const [majOuverte, setMajOuverte] = useState(null); // id du dossier en cours de mise à jour
   const [majRencontre, setMajRencontre] = useState(false);
   const [majParents, setMajParents] = useState("");
+  const [majEtape, setMajEtape] = useState("");
   const [majNote, setMajNote] = useState("");
 
   const ajouter = (signId) => {
@@ -29,6 +30,7 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, s
       rencontreEleve: majRencontre,
       communicationParents: majParents,
       note: majNote.trim(),
+      prochaineEtapeEnseignant: majEtape,
     });
     setMajOuverte(null);
     setMajRencontre(false);
@@ -113,6 +115,14 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, s
                       </select>
                     </div>
                     <div className="champ">
+                      <label htmlFor={`maj-etape-${s.id}`}>Ma prochaine étape (alimente ma liste « À faire »)</label>
+                      <select id={`maj-etape-${s.id}`} value={majEtape} onChange={(e) => setMajEtape(e.target.value)}>
+                        <option value="">Aucune (faite ou retirée)</option>
+                        {OPTIONS_ETAPE_ENSEIGNANT.filter((o) => o !== "Autre").map((o) => <option key={o} value={o}>{o}</option>)}
+                        {majEtape && !OPTIONS_ETAPE_ENSEIGNANT.includes(majEtape) && <option value={majEtape}>{majEtape}</option>}
+                      </select>
+                    </div>
+                    <div className="champ">
                       <label htmlFor={`maj-note-${s.id}`}>Note de suivi</label>
                       <textarea id={`maj-note-${s.id}`} rows="2" value={majNote} onChange={(e) => setMajNote(e.target.value)}
                         placeholder="Ce qui s'est passé depuis : le suivi a été fait, réaction de l'élève après l'intervention…" />
@@ -124,7 +134,7 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, s
                   </div>
                 ) : (
                   <div className="rangee-boutons">
-                    <button className="bouton secondaire" onClick={() => setMajOuverte(s.id)}>
+                    <button className="bouton secondaire" onClick={() => { setMajOuverte(s.id); setMajEtape(s.prochaineEtapeEnseignant || ""); }}>
                       Mettre à jour mon signalement
                     </button>
                   </div>

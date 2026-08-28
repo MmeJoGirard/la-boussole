@@ -24,6 +24,16 @@ export const STATUTS = {
 
 export const TYPES_SIGNALEMENT = ["motivation", "académique", "absentéisme", "autre"];
 
+// Prochaines étapes que l'enseignant·e peut se planifier au moment du
+// signalement : elles apparaissent dans sa liste « À faire ».
+export const OPTIONS_ETAPE_ENSEIGNANT = [
+  "Rencontrer l'élève",
+  "Communiquer avec les parents",
+  "Rencontrer les parents",
+  "En discuter avec l'équipe de la réussite",
+  "Autre",
+];
+
 export const PROCHAINES_ETAPES = [
   "Rencontre avec l'élève",
   "Rencontre de l'équipe de la réussite",
