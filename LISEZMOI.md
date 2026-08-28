@@ -65,6 +65,7 @@ Ce qu'elle contient, en mode démonstration (choix de profil au lieu du SSO, cou
 - **Calendrier** (ERRÉ, éducation spécialisée et direction) : vue mensuelle des signalements et des interventions, navigation entre les mois, détail cliquable de chaque journée avec lien direct vers le dossier.
 - **Vue direction** : tout ce qui précède, plus le journal d'audit complet et les suggestions de courriel aux parents.
 - **Réactif** : téléphone, tablette, ordinateur.
+- **Deux thèmes** : clair et sombre, bascule dans l'entête, choix mémorisé par le navigateur. Chaque thème a sa propre palette de graphiques, validée pour le daltonisme sur sa propre surface.
 
 ## Prochaine étape (phase 2 du plan)
 
