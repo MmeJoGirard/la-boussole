@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { X } from "lucide-react";
 import { nomComplet, coursDe, TYPES_SIGNALEMENT } from "./aides.js";
 
 // Le formulaire de signalement : tout est préprogrammé par des menus
@@ -58,7 +59,7 @@ export default function FormulaireSignalement({ db, utilisateur, actions, eleveI
       <form className="modale" onSubmit={soumettre}>
         <div className="modale-entete">
           <h2>Signaler un élève</h2>
-          <button type="button" className="fermer" onClick={fermer} aria-label="Fermer">✕</button>
+          <button type="button" className="fermer" onClick={fermer} aria-label="Fermer"><X size={16} aria-hidden="true" /></button>
         </div>
         <p className="sous-titre">
           En remplissant ce formulaire, je signale que l'élève semble montrer des signes qui m'inquiètent.
@@ -117,7 +118,7 @@ export default function FormulaireSignalement({ db, utilisateur, actions, eleveI
           {Number(urgence) === 4 && (
             <div className="avertissement">
               <strong>Danger imminent :</strong> déclenchez immédiatement le protocole d'urgence de l'école
-              et ne laissez pas l'élève seul. Boussole sert à documenter, pas à remplacer le protocole.
+              et ne laissez pas l'élève seul. La Boussole sert à documenter, pas à remplacer le protocole.
             </div>
           )}
         </div>

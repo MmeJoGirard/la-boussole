@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { nomComplet, trouverEleve, trouverMembre, trouverTuteur, PROCHAINES_ETAPES, ETAPES, typesDe } from "./aides.js";
 import { EtiquetteUrgence, EtiquetteStatut, Indicateur, EtiquetteES } from "./Etiquettes.jsx";
+import { X, FileText, Users, Shield, MessageSquare, Activity, Plus, Edit3, Mail, Phone } from "lucide-react";
 
 // La fiche complète d'un dossier : réservée à l'ERRÉ, à l'éducation
-// spécialisée et à la direction.
+// spécialisée et à la direction. Structure : identité, badges d'état,
+// sections ancrées par icônes, chronologies, puis la zone d'action.
 export default function FicheDossier({ db, signId, utilisateur, actions, direction, fermer }) {
   const s = db.signalements.find((x) => x.id === signId);
   const eleve = trouverEleve(db, s.eleveId);
@@ -57,42 +59,66 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
   return (
     <div className="voile" role="dialog" aria-modal="true" aria-label={`Dossier de ${nomComplet(eleve)}`}>
       <div className="modale">
+        {/* 2. Le bloc d'identité de l'élève. */}
         <div className="modale-entete">
-          <h2>{nomComplet(eleve)} {eleve.eed && <EtiquetteES />}</h2>
-          <button className="fermer" onClick={fermer} aria-label="Fermer">✕</button>
+          <div>
+            <h2 className="fiche-nom">{nomComplet(eleve)} {eleve.eed && <EtiquetteES />}</h2>
+            <p className="fiche-meta">
+              {eleve.annee}e année · groupe {eleve.groupe} · signalé le {s.date} par {nomComplet(auteur)}
+            </p>
+          </div>
+          <button className="fermer" onClick={fermer} aria-label="Fermer">
+            <X size={16} aria-hidden="true" />
+          </button>
         </div>
-        <p className="sous-titre">
-          {eleve.annee}e année · groupe {eleve.groupe} · signalé le {s.date} par {nomComplet(auteur)}
-        </p>
-        <p>
-          <EtiquetteStatut statut={s.statut} />{" "}
-          <EtiquetteUrgence niveau={s.niveauUrgence} echelle={db.echelleUrgence} />{" "}
+
+        {/* 3. Les badges d'état. */}
+        <div className="fiche-badges">
+          <EtiquetteStatut statut={s.statut} />
+          <EtiquetteUrgence niveau={s.niveauUrgence} echelle={db.echelleUrgence} />
           <span className="etiquette neutre" title={ETAPES.find((e) => e.n === s.niveauIntervention)?.description}>
             Étape {s.niveauIntervention}
-          </span>{" "}
+          </span>
           <Indicateur caVa={s.indicateurCaVa} equipe />
-          {s.caseEED && <> <span className="etiquette eed">Éducation spécialisée avisée</span></>}
-        </p>
+          {s.caseEED && <span className="etiquette eed">Éducation spécialisée avisée</span>}
+        </div>
 
-        <h3>Signalement</h3>
-        <p><strong>Type(s) :</strong> {typesDe(s).join(", ")} · <strong>Raisons :</strong> {s.raisons}</p>
-        <p className="aide">
-          Déjà fait par l'enseignant·e : {s.dejaFait.rencontreEleve ? "rencontre avec l'élève" : "pas encore de rencontre"} ·{" "}
-          {s.dejaFait.communicationParents ? `parents contactés (${s.dejaFait.communicationParents})` : "parents pas encore contactés"}
-          {s.autreInformation ? ` · ${s.autreInformation}` : ""}
-        </p>
+        <hr className="fiche-sep" />
 
-        <h3>Famille</h3>
-        <ul>
+        {/* 5. Le signalement, en bloc balayable. */}
+        <h3 className="section-fiche"><FileText size={14} strokeWidth={1.5} aria-hidden="true" /> Signalement</h3>
+        <div className="bloc-contenu">
+          <p><strong>Type(s) :</strong> {typesDe(s).join(", ")}</p>
+          <p><strong>Raisons :</strong> {s.raisons}</p>
+          <p>
+            <strong>Déjà fait par l'enseignant·e :</strong>{" "}
+            {s.dejaFait.rencontreEleve ? "rencontre avec l'élève" : "pas encore de rencontre"} ·{" "}
+            {s.dejaFait.communicationParents ? `parents contactés (${s.dejaFait.communicationParents})` : "parents pas encore contactés"}
+            {s.autreInformation ? ` · ${s.autreInformation}` : ""}
+          </p>
+        </div>
+
+        {/* La famille, en cartes de contact. */}
+        <h3 className="section-fiche"><Users size={14} strokeWidth={1.5} aria-hidden="true" /> Famille</h3>
+        <div className="grille-tuteurs">
           {eleve.famille.tuteurs.map((tid) => {
             const t = trouverTuteur(db, tid);
-            return <li key={tid}>{nomComplet(t)} ({t.lien}) · {t.courriel} · {t.telephone}</li>;
+            return (
+              <div key={tid} className="carte-tuteur">
+                <span className="tuteur-nom">{nomComplet(t)} <span className="tuteur-lien">({t.lien})</span></span>
+                <span className="tuteur-coordonnees">
+                  <Mail size={13} strokeWidth={1.5} aria-hidden="true" /> {t.courriel}
+                  <Phone size={13} strokeWidth={1.5} aria-hidden="true" /> {t.telephone}
+                </span>
+              </div>
+            );
           })}
-        </ul>
+        </div>
 
-        <h3>Plan de sécurité et adaptations</h3>
+        {/* Plan de sécurité et adaptations. */}
+        <h3 className="section-fiche"><Shield size={14} strokeWidth={1.5} aria-hidden="true" /> Plan de sécurité et adaptations</h3>
         {planOuvert ? (
-          <div className="panneau">
+          <div className="zone-action" style={{ marginTop: 0 }}>
             <div className="champ">
               <label htmlFor="plan-securite">Plan de sécurité</label>
               <textarea id="plan-securite" rows="3" value={planSecurite} onChange={(e) => setPlanSecurite(e.target.value)}
@@ -110,49 +136,67 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           </div>
         ) : (
           <>
-            <p><strong>Plan de sécurité :</strong> {s.planSecurite || "Aucun pour l'instant."}</p>
-            <p><strong>Adaptations :</strong> {s.adaptations || "Aucune pour l'instant."}</p>
+            <div className="bloc-contenu">
+              <p><strong>Plan de sécurité :</strong> {s.planSecurite || "Aucun pour l'instant."}</p>
+              <p><strong>Adaptations :</strong> {s.adaptations || "Aucune pour l'instant."}</p>
+            </div>
             {!clos && (
-              <div className="rangee-boutons">
-                <button className="bouton secondaire" onClick={() => { setPlanSecurite(s.planSecurite || ""); setAdaptations(s.adaptations || ""); setPlanOuvert(true); }}>
-                  Modifier le plan et les adaptations
+              <div className="rangee-boutons" style={{ marginTop: 12 }}>
+                <button className="bouton fantome" onClick={() => { setPlanSecurite(s.planSecurite || ""); setAdaptations(s.adaptations || ""); setPlanOuvert(true); }}>
+                  <Edit3 size={14} strokeWidth={1.5} aria-hidden="true" /> Modifier le plan et les adaptations
                 </button>
               </div>
             )}
           </>
         )}
 
-        <h3>Observations des enseignants ({s.observations.length})</h3>
-        {s.observations.length === 0 && <p className="sous-titre">Aucune observation pour l'instant.</p>}
-        <ul className="journal">
-          {s.observations.map((o, i) => (
-            <li key={i}>
-              <span className="qui">{nomComplet(trouverMembre(db, o.auteurId))}</span>{" "}
-              <span className="quand">{o.date}</span>
-              <br />{o.texte}
-            </li>
-          ))}
-        </ul>
+        {/* 6. Les observations, en ligne du temps. */}
+        <h3 className="section-fiche"><MessageSquare size={14} strokeWidth={1.5} aria-hidden="true" /> Observations des enseignants · {s.observations.length}</h3>
+        {s.observations.length === 0 ? (
+          <p className="fiche-meta">Aucune observation pour l'instant.</p>
+        ) : (
+          <ol className="ligne-temps">
+            {s.observations.map((o, i) => (
+              <li key={i} className="lt-item">
+                <span className="lt-point" aria-hidden="true" />
+                <span className="lt-entete">
+                  <span className="lt-auteur">{nomComplet(trouverMembre(db, o.auteurId))}</span>
+                  <span className="lt-date">{o.date}</span>
+                </span>
+                <p className="lt-texte">{o.texte}</p>
+              </li>
+            ))}
+          </ol>
+        )}
 
-        <h3>Interventions ({s.interventions.length})</h3>
-        <ul className="journal">
-          {s.interventions.map((inter, i) => (
-            <li key={i}>
-              <span className="qui">Étape {inter.niveau} · {inter.type}</span>{" "}
-              <span className="quand">{inter.date} · {nomComplet(trouverMembre(db, inter.responsableId))}</span>
-              <br />{inter.note}
-            </li>
-          ))}
-        </ul>
+        {/* Les interventions, même ligne du temps, avec la pastille d'étape. */}
+        <h3 className="section-fiche"><Activity size={14} strokeWidth={1.5} aria-hidden="true" /> Interventions · {s.interventions.length}</h3>
+        {s.interventions.length === 0 ? (
+          <p className="fiche-meta">Aucune intervention pour l'instant.</p>
+        ) : (
+          <ol className="ligne-temps">
+            {s.interventions.map((inter, i) => (
+              <li key={i} className="lt-item">
+                <span className="lt-point" aria-hidden="true" />
+                <span className="lt-entete">
+                  <span className="pill-etape">Étape {inter.niveau} · {inter.type}</span>
+                  <span className="lt-date">{inter.date} · {nomComplet(trouverMembre(db, inter.responsableId))}</span>
+                </span>
+                <p className="lt-texte">{inter.note}</p>
+              </li>
+            ))}
+          </ol>
+        )}
 
         {clos ? (
-          <div className="info">
+          <div className="info" style={{ marginTop: 24 }}>
             <strong>Cycle clos.</strong> Note de clôture : {s.noteCloture}
           </div>
         ) : (
           <>
-            <div className="panneau">
-              <h3 style={{ marginTop: 0 }}>Ajouter une intervention</h3>
+            {/* 7. La zone d'action : ajouter une intervention. */}
+            <div className="zone-action">
+              <h3 className="zone-action-titre"><Plus size={16} aria-hidden="true" /> Ajouter une intervention</h3>
               <div className="filtres">
                 <div>
                   <label htmlFor="type-inter">Type</label>
@@ -170,7 +214,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
               <p className="aide">{ETAPES.find((e) => e.n === Number(etapeIntervention))?.description}</p>
               <div className="champ">
                 <label htmlFor="note-inter">Note de suivi</label>
-                <textarea id="note-inter" rows="2" value={noteIntervention} onChange={(e) => setNoteIntervention(e.target.value)}
+                <textarea id="note-inter" rows="3" value={noteIntervention} onChange={(e) => setNoteIntervention(e.target.value)}
                   placeholder="Ce qui a été fait, ce qui est convenu…" />
               </div>
               <div className="filtres">
@@ -188,6 +232,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
                   </select>
                 </div>
               </div>
+              {/* 8. Trois intentions, trois styles de bouton. */}
               <div className="rangee-boutons">
                 <button className="bouton" onClick={ajouterIntervention}>Enregistrer l'intervention</button>
                 {!direction && s.statut !== "transfere_direction" && (
@@ -207,8 +252,8 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
             </div>
 
             {courrielOuvert && (
-              <div className="panneau">
-                <h3 style={{ marginTop: 0 }}>Suggestion de courriel aux parents</h3>
+              <div className="zone-action">
+                <h3 className="zone-action-titre"><Mail size={16} aria-hidden="true" /> Suggestion de courriel aux parents</h3>
                 <p className="aide">Le texte est proposé automatiquement : relisez-le et adaptez-le avant l'envoi (simulé en mode démo).</p>
                 <div className="champ">
                   <label htmlFor="objet-parents">Objet</label>
@@ -223,15 +268,15 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
             )}
 
             {clotureOuverte && (
-              <div className="panneau">
-                <h3 style={{ marginTop: 0 }}>Clore le cycle d'intervention</h3>
+              <div className="zone-action">
+                <h3 className="zone-action-titre"><Shield size={16} aria-hidden="true" /> Clore le cycle d'intervention</h3>
                 <p className="aide">
                   Réservé à l'ERRÉ, à l'éducation spécialisée et à la direction. La note de clôture est obligatoire;
                   l'enseignant·e qui a fait le signalement en est avisé·e par courriel.
                 </p>
                 <div className="champ">
                   <label htmlFor="note-cloture">Note de clôture</label>
-                  <textarea id="note-cloture" rows="2" value={noteCloture} onChange={(e) => setNoteCloture(e.target.value)}
+                  <textarea id="note-cloture" rows="3" value={noteCloture} onChange={(e) => setNoteCloture(e.target.value)}
                     placeholder="Pourquoi le cycle se termine : situation stabilisée, plan en place…" />
                 </div>
                 <button className="bouton danger" onClick={clore}>Confirmer la clôture</button>

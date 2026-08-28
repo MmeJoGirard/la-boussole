@@ -17,10 +17,11 @@
   --bordure: #d8dee7;
   --pale: #f1f5f9;
   --accent-chaud: #dd7b4e;
-  --ok-fond: #eaf3ee; --ok-encre: #2e6b4f;
-  --moyen-fond: #f7efe1; --moyen-encre: #8a6420;
-  --haut-fond: #f9ebe8; --haut-encre: #b0432f;
-  --eed-fond: #ededf7; --eed-encre: #55519b;
+  --ok-fond: #dcfce7; --ok-encre: #166534; --ok-bord: #86efac;
+  --moyen-fond: #fef3c7; --moyen-encre: #92400e; --moyen-bord: #fcd34d;
+  --haut-fond: #fee2e2; --haut-encre: #991b1b; --haut-bord: #fca5a5;
+  --eed-fond: #ededf7; --eed-encre: #55519b; --eed-bord: #c9c5ec;
+  --pill-fond: #eff6ff; --pill-encre: #1e40af;
   --sur-primaire: #ffffff;
   --verre: rgba(255, 255, 255, 0.8);
   --voile-fond: rgba(15, 23, 42, 0.4);
@@ -53,10 +54,11 @@
   --voile-fond: rgba(2, 6, 12, 0.65);
   --anneau: rgba(226, 232, 240, 0.5);
   --lisere: rgba(255, 255, 255, 0.07);
-  --ok-fond: #17301f; --ok-encre: #8fd3a8;
-  --moyen-fond: #34290f; --moyen-encre: #e6c079;
-  --haut-fond: #3b1d18; --haut-encre: #f19b8f;
-  --eed-fond: #262148; --eed-encre: #b7b1f2;
+  --ok-fond: #14351f; --ok-encre: #86efac; --ok-bord: #14532d;
+  --moyen-fond: #362a0c; --moyen-encre: #fcd34d; --moyen-bord: #92400e;
+  --haut-fond: #3b1414; --haut-encre: #fca5a5; --haut-bord: #7f1d1d;
+  --eed-fond: #262148; --eed-encre: #b7b1f2; --eed-bord: #4c46a1;
+  --pill-fond: #1c2c4a; --pill-encre: #93c5fd;
   --ombre-repos: 0 1px 2px rgba(0, 0, 0, 0.25), 0 4px 12px rgba(0, 0, 0, 0.2);
   --ombre-survol: 0 2px 4px rgba(0, 0, 0, 0.3), 0 12px 24px rgba(0, 0, 0, 0.25);
   --carte-interne: #1b2634;
@@ -240,7 +242,11 @@ select, input[type="text"], input[type="search"], textarea {
   transition: box-shadow var(--transition);
 }
 select:hover, input:hover, textarea:hover { box-shadow: var(--ombre-repos); }
-textarea { width: 100%; resize: vertical; }
+select:focus-visible, input:focus-visible, textarea:focus-visible {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+textarea { width: 100%; resize: vertical; min-height: 96px; }
 
 /* ---- Tableaux ---- */
 .defile {
@@ -267,14 +273,15 @@ tr:last-child td { border-bottom: none; }
 
 /* ---- Étiquettes ---- */
 .etiquette {
-  display: inline-block; border-radius: 999px; padding: 3px 12px;
+  display: inline-block; border-radius: 999px; padding: 4px 10px;
   font-size: 12px; font-weight: 500; white-space: nowrap;
+  border: 1px solid transparent;
 }
-.etiquette.ok { background: var(--ok-fond); color: var(--ok-encre); }
-.etiquette.moyen { background: var(--moyen-fond); color: var(--moyen-encre); }
-.etiquette.haut { background: var(--haut-fond); color: var(--haut-encre); }
-.etiquette.neutre { background: var(--pale); color: var(--secondaire); }
-.etiquette.eed { background: var(--eed-fond); color: var(--eed-encre); }
+.etiquette.ok { background: var(--ok-fond); color: var(--ok-encre); border-color: var(--ok-bord); }
+.etiquette.moyen { background: var(--moyen-fond); color: var(--moyen-encre); border-color: var(--moyen-bord); }
+.etiquette.haut { background: var(--haut-fond); color: var(--haut-encre); border-color: var(--haut-bord); }
+.etiquette.neutre { background: var(--pale); color: var(--secondaire); border-color: var(--bordure-bouton); }
+.etiquette.eed { background: var(--eed-fond); color: var(--eed-encre); border-color: var(--eed-bord); }
 .pastille {
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 24px; height: 24px; padding: 0 7px;
@@ -311,10 +318,16 @@ tr:last-child td { border-bottom: none; }
 td .bouton.discret { font-size: 14px; }
 .bouton.danger {
   background: var(--surface); color: var(--haut-encre);
-  border: 1px solid #ecccc5; font-weight: 600;
+  border: 1px solid var(--haut-bord); font-weight: 500;
 }
 .bouton.danger:hover { background: var(--haut-fond); }
-.rangee-boutons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+/* 9. Bouton fantôme : discret mais identifiable. */
+.bouton.fantome {
+  background: none; color: var(--encre);
+  border: 1px solid var(--lisere); font-weight: 500;
+}
+.bouton.fantome:hover { background: var(--carte-interne); }
+.rangee-boutons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
 
 /* Le bouton qui déplie la légende des étapes. */
 .bouton-legende {
@@ -393,29 +406,109 @@ td .bouton.discret { font-size: 14px; }
 .voile {
   position: fixed; inset: 0;
   background: var(--voile-fond);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex; align-items: flex-start; justify-content: center;
   padding: 48px 24px; z-index: 50; overflow-y: auto;
 }
 .modale {
-  background: var(--fond);
+  background: var(--surface);
   border-radius: 16px;
-  max-width: 780px; width: 100%;
-  padding: 32px;
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08), 0 24px 64px rgba(15, 23, 42, 0.12);
+  max-width: 720px; width: 100%;
+  padding: 32px 40px;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12), 0 4px 8px rgba(15, 23, 42, 0.04);
 }
+/* Sur fond blanc, les panneaux internes prennent la deuxième couche. */
+.modale .panneau { background: var(--carte-interne); border-color: var(--lisere); box-shadow: none; }
 .modale-entete { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
 .modale-entete h2 { flex: 1; }
 .fermer {
-  background: var(--surface);
-  border: 1px solid var(--bordure);
-  border-radius: 10px;
-  width: 36px; height: 36px; font-size: 15px; line-height: 1;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
   color: var(--secondaire);
   transition: background var(--transition);
 }
-.fermer:hover { background: #f9fafb; color: var(--encre); }
+.fermer svg { stroke-width: 2; }
+.fermer:hover { background: var(--pale); color: var(--encre); }
+
+/* ---- Fiche de dossier (structure premium) ---- */
+.fiche-nom { font-size: 26px; font-weight: 700; letter-spacing: -0.02em; color: var(--encre-fort); }
+.fiche-meta { font-size: 13px; color: var(--meta); margin: 4px 0 0; }
+.fiche-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 0; }
+.fiche-sep { border: none; border-top: 1px solid var(--lisere); margin: 24px 0; }
+.section-fiche {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--sourdine);
+  margin: 32px 0 12px;
+}
+.section-fiche svg { color: var(--sourdine); flex-shrink: 0; }
+.bloc-contenu {
+  background: var(--carte-interne);
+  border: 1px solid var(--lisere);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+.bloc-contenu p { margin: 0 0 8px; color: var(--secondaire); }
+.bloc-contenu p:last-child { margin-bottom: 0; }
+.bloc-contenu strong { color: var(--encre); font-weight: 600; }
+.grille-tuteurs { display: flex; flex-direction: column; gap: 8px; }
+.carte-tuteur {
+  background: var(--carte-interne);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.tuteur-nom { font-weight: 600; color: var(--encre); }
+.tuteur-lien { font-weight: 400; color: var(--meta); }
+.tuteur-coordonnees {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-size: 13px; color: var(--meta);
+}
+.tuteur-coordonnees svg { flex-shrink: 0; }
+
+/* Ligne du temps des observations et interventions. */
+.ligne-temps { list-style: none; margin: 0; padding: 0 0 0 6px; position: relative; }
+.ligne-temps::before {
+  content: ""; position: absolute; left: 4px; top: 6px; bottom: 6px;
+  width: 2px; background: var(--lisere);
+}
+.lt-item { position: relative; padding: 0 0 20px 22px; }
+.lt-item:last-child { padding-bottom: 0; }
+.lt-point {
+  position: absolute; left: 0; top: 5px;
+  width: 10px; height: 10px; border-radius: 999px;
+  background: #3b82f6;
+  box-shadow: 0 0 0 3px var(--surface);
+}
+.lt-entete { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lt-auteur { font-weight: 600; font-size: 14px; color: var(--encre); }
+.lt-date { font-size: 12px; color: var(--meta); }
+.lt-texte { margin: 4px 0 0; font-size: 14px; color: var(--secondaire); line-height: 1.55; }
+.pill-etape {
+  background: var(--pill-fond); color: var(--pill-encre);
+  font-weight: 500; font-size: 12px;
+  padding: 3px 8px; border-radius: 6px;
+}
+
+/* La zone d'action : ajouter une intervention, clore, courriel. */
+.zone-action {
+  background: var(--fond);
+  border: 1px solid var(--lisere);
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 32px;
+}
+.zone-action-titre {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 600; color: var(--encre);
+  margin: 0 0 16px;
+}
+.zone-action-titre svg { stroke-width: 2; color: var(--encre); }
 
 /* ---- Courriels simulés ---- */
 .courriel {

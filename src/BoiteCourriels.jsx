@@ -1,3 +1,5 @@
+import { X } from "lucide-react";
+
 // En mode démo, aucun courriel réel n'est envoyé : tout arrive ici.
 // En production, ces messages partiront automatiquement (Edge Function
 // Supabase + service d'envoi de courriels).
@@ -7,7 +9,7 @@ export default function BoiteCourriels({ courriels, fermer }) {
       <div className="modale">
         <div className="modale-entete">
           <h2>Courriels simulés ({courriels.length})</h2>
-          <button className="fermer" onClick={fermer} aria-label="Fermer">✕</button>
+          <button className="fermer" onClick={fermer} aria-label="Fermer"><X size={16} aria-hidden="true" /></button>
         </div>
         <p className="sous-titre">
           En mode démonstration, les courriels automatiques s'affichent ici au lieu d'être envoyés.

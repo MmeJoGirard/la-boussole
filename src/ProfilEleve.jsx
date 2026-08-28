@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { nomComplet, signalementsDe, trouverTuteur } from "./aides.js";
 import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
+import { X } from "lucide-react";
 
 // Le profil d'un élève, vu par un enseignant : identité, famille,
 // NOMBRE de signalements, et pour chaque dossier actif, seulement
@@ -40,7 +41,7 @@ export default function ProfilEleve({ db, eleve, utilisateur, actions, fermer, s
       <div className="modale">
         <div className="modale-entete">
           <h2>{nomComplet(eleve)} {eleve.eed && <EtiquetteES />}</h2>
-          <button className="fermer" onClick={fermer} aria-label="Fermer">✕</button>
+          <button className="fermer" onClick={fermer} aria-label="Fermer"><X size={16} aria-hidden="true" /></button>
         </div>
         <p className="sous-titre">
           {eleve.annee}e année · groupe {eleve.groupe} · {eleve.anneeScolaire}, semestre {eleve.semestre} · {eleve.courriel}
