@@ -1,0 +1,3687 @@
+{
+  "genereLe": "2026-08-27",
+  "avertissement": "Données entièrement fictives, générées pour la démonstration. Aucune vraie personne.",
+  "ecole": {
+    "nom": "École secondaire des Rivières (fictive)",
+    "conseil": "Conseil scolaire de démonstration",
+    "anneeScolaire": "2026-2027",
+    "semestre": 1
+  },
+  "echelleUrgence": [
+    {
+      "niveau": 0,
+      "libelle": "Information",
+      "indicateurs": "Événement sans risque apparent; note à conserver.",
+      "interventionAttendue": "Documenter et fermer, ou surveiller."
+    },
+    {
+      "niveau": 1,
+      "libelle": "Faible",
+      "indicateurs": "Signal isolé, changement léger, difficulté ponctuelle.",
+      "interventionAttendue": "Vérification et suivi dans les prochains jours."
+    },
+    {
+      "niveau": 2,
+      "libelle": "Modéré",
+      "indicateurs": "Signaux répétés, absentéisme, détresse ou comportement qui s'intensifie.",
+      "interventionAttendue": "Intervention dans la journée ou le prochain jour scolaire; aviser la personne responsable."
+    },
+    {
+      "niveau": 3,
+      "libelle": "Élevé",
+      "indicateurs": "Risque sérieux pour l'élève ou autrui, menace crédible, forte détresse, perte de contrôle.",
+      "interventionAttendue": "Intervention immédiate de la direction ou de l'équipe désignée; évaluation et plan de sécurité."
+    },
+    {
+      "niveau": 4,
+      "libelle": "Critique (danger imminent)",
+      "indicateurs": "Violence en cours, arme, blessure grave, intention immédiate de se faire du mal ou de faire du mal à autrui.",
+      "interventionAttendue": "Déclencher immédiatement le protocole d'urgence; ne pas laisser l'élève seul; contacter les services d'urgence selon le protocole."
+    }
+  ],
+  "personnel": [
+    {
+      "id": "pers-001",
+      "prenom": "Léa",
+      "nom": "Cissé",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "lea.cisse@conseil-demo.ca",
+      "matiere": "Français",
+      "annees": [
+        7
+      ]
+    },
+    {
+      "id": "pers-002",
+      "prenom": "Tariq",
+      "nom": "Kouassi",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "tariq.kouassi@conseil-demo.ca",
+      "matiere": "Français",
+      "annees": [
+        8
+      ]
+    },
+    {
+      "id": "pers-003",
+      "prenom": "Félix",
+      "nom": "Ben Salem",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "felix.ben-salem@conseil-demo.ca",
+      "matiere": "Mathématiques",
+      "annees": [
+        7
+      ]
+    },
+    {
+      "id": "pers-004",
+      "prenom": "Patrick",
+      "nom": "Aubin",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "patrick.aubin@conseil-demo.ca",
+      "matiere": "Mathématiques",
+      "annees": [
+        8
+      ]
+    },
+    {
+      "id": "pers-005",
+      "prenom": "Tariq",
+      "nom": "Tran",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "tariq.tran@conseil-demo.ca",
+      "matiere": "Histoire-Géographie",
+      "annees": [
+        7
+      ]
+    },
+    {
+      "id": "pers-006",
+      "prenom": "Mamadou",
+      "nom": "Tran",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "mamadou.tran@conseil-demo.ca",
+      "matiere": "Histoire-Géographie",
+      "annees": [
+        8
+      ]
+    },
+    {
+      "id": "pers-007",
+      "prenom": "Félix",
+      "nom": "Bakayoko",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "felix.bakayoko@conseil-demo.ca",
+      "matiere": "Éducation physique",
+      "annees": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": "pers-008",
+      "prenom": "Thierno",
+      "nom": "Charbonneau",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "thierno.charbonneau@conseil-demo.ca",
+      "matiere": "Arts",
+      "annees": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": "pers-009",
+      "prenom": "Charles-Éric",
+      "nom": "Charbonneau",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "charles-eric.charbonneau@conseil-demo.ca",
+      "matiere": "Français",
+      "annees": [
+        9
+      ]
+    },
+    {
+      "id": "pers-010",
+      "prenom": "Aïcha",
+      "nom": "Vachon",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "aicha.vachon@conseil-demo.ca",
+      "matiere": "Français",
+      "annees": [
+        10
+      ]
+    },
+    {
+      "id": "pers-011",
+      "prenom": "Léa",
+      "nom": "Villeneuve",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "lea.villeneuve@conseil-demo.ca",
+      "matiere": "Français",
+      "annees": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "pers-012",
+      "prenom": "Camille",
+      "nom": "Lacroix",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "camille.lacroix@conseil-demo.ca",
+      "matiere": "Mathématiques",
+      "annees": [
+        9
+      ]
+    },
+    {
+      "id": "pers-013",
+      "prenom": "Rosalie",
+      "nom": "Cissé",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "rosalie.cisse@conseil-demo.ca",
+      "matiere": "Mathématiques",
+      "annees": [
+        10
+      ]
+    },
+    {
+      "id": "pers-014",
+      "prenom": "Bintou",
+      "nom": "Bakayoko",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "bintou.bakayoko@conseil-demo.ca",
+      "matiere": "Mathématiques",
+      "annees": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "pers-015",
+      "prenom": "Étienne",
+      "nom": "Cissé",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "etienne.cisse@conseil-demo.ca",
+      "matiere": "Géographie",
+      "annees": [
+        9,
+        12
+      ]
+    },
+    {
+      "id": "pers-016",
+      "prenom": "Marguerite",
+      "nom": "Vachon",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "marguerite.vachon@conseil-demo.ca",
+      "matiere": "Histoire",
+      "annees": [
+        10,
+        11
+      ]
+    },
+    {
+      "id": "pers-017",
+      "prenom": "Maya",
+      "nom": "Traoré",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "maya.traore@conseil-demo.ca",
+      "matiere": "Éducation physique",
+      "annees": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": "pers-018",
+      "prenom": "Yasmine",
+      "nom": "Tran",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "yasmine.tran@conseil-demo.ca",
+      "matiere": "Éducation physique",
+      "annees": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "pers-019",
+      "prenom": "Delphine",
+      "nom": "El Amrani",
+      "genre": "F",
+      "role": "enseignant",
+      "courriel": "delphine.el-amrani@conseil-demo.ca",
+      "matiere": "Arts",
+      "annees": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": "pers-020",
+      "prenom": "Marc-Antoine",
+      "nom": "Thériault",
+      "genre": "M",
+      "role": "enseignant",
+      "courriel": "marc-antoine.theriault@conseil-demo.ca",
+      "matiere": "Arts",
+      "annees": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "pers-021",
+      "prenom": "Khadija",
+      "nom": "Desrosiers",
+      "genre": "F",
+      "role": "erre",
+      "courriel": "khadija.desrosiers@conseil-demo.ca"
+    },
+    {
+      "id": "pers-022",
+      "prenom": "Adjoua",
+      "nom": "Ben Salem",
+      "genre": "F",
+      "role": "erre",
+      "courriel": "adjoua.ben-salem@conseil-demo.ca"
+    },
+    {
+      "id": "pers-023",
+      "prenom": "Amina",
+      "nom": "Desrosiers",
+      "genre": "F",
+      "role": "educ_specialisee",
+      "courriel": "amina.desrosiers@conseil-demo.ca"
+    },
+    {
+      "id": "pers-024",
+      "prenom": "Juliette",
+      "nom": "Nguyen",
+      "genre": "F",
+      "role": "educ_specialisee",
+      "courriel": "juliette.nguyen@conseil-demo.ca"
+    },
+    {
+      "id": "pers-025",
+      "prenom": "Océane",
+      "nom": "Lacroix",
+      "genre": "F",
+      "role": "educ_specialisee",
+      "courriel": "oceane.lacroix@conseil-demo.ca"
+    },
+    {
+      "id": "pers-026",
+      "prenom": "Camille",
+      "nom": "Sanogo",
+      "genre": "F",
+      "role": "direction",
+      "courriel": "camille.sanogo@conseil-demo.ca"
+    },
+    {
+      "id": "pers-027",
+      "prenom": "Hakim",
+      "nom": "Traoré",
+      "genre": "M",
+      "role": "direction_adjointe",
+      "courriel": "hakim.traore@conseil-demo.ca"
+    },
+    {
+      "id": "pers-028",
+      "prenom": "Juliette",
+      "nom": "Kouassi",
+      "genre": "F",
+      "role": "direction_adjointe",
+      "courriel": "juliette.kouassi@conseil-demo.ca"
+    }
+  ],
+  "eleves": [
+    {
+      "id": "elev-030",
+      "prenom": "Nathan",
+      "nom": "Racine",
+      "genre": "M",
+      "annee": 7,
+      "groupe": "7A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "nathan.racine@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-029"
+        ]
+      }
+    },
+    {
+      "id": "elev-033",
+      "prenom": "Gabrielle",
+      "nom": "Villeneuve",
+      "genre": "F",
+      "annee": 7,
+      "groupe": "7B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "gabrielle.villeneuve@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-031",
+          "tut-032"
+        ]
+      }
+    },
+    {
+      "id": "elev-036",
+      "prenom": "Océane",
+      "nom": "Cissé",
+      "genre": "F",
+      "annee": 7,
+      "groupe": "7A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "oceane.cisse@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-034",
+          "tut-035"
+        ]
+      }
+    },
+    {
+      "id": "elev-039",
+      "prenom": "Mamadou",
+      "nom": "Jean-Baptiste",
+      "genre": "M",
+      "annee": 7,
+      "groupe": "7B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "mamadou.jean-baptiste@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-037",
+          "tut-038"
+        ]
+      }
+    },
+    {
+      "id": "elev-042",
+      "prenom": "Ousmane",
+      "nom": "Kouassi",
+      "genre": "M",
+      "annee": 7,
+      "groupe": "7A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "ousmane.kouassi@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-040",
+          "tut-041"
+        ]
+      }
+    },
+    {
+      "id": "elev-045",
+      "prenom": "Émilie",
+      "nom": "Traoré",
+      "genre": "F",
+      "annee": 7,
+      "groupe": "7B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "emilie.traore@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-043",
+          "tut-044"
+        ]
+      }
+    },
+    {
+      "id": "elev-048",
+      "prenom": "Noah",
+      "nom": "Sanogo",
+      "genre": "M",
+      "annee": 7,
+      "groupe": "7A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "noah.sanogo@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-046",
+          "tut-047"
+        ]
+      }
+    },
+    {
+      "id": "elev-051",
+      "prenom": "Naomie",
+      "nom": "El Amrani",
+      "genre": "F",
+      "annee": 7,
+      "groupe": "7B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "naomie.el-amrani@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-049",
+          "tut-050"
+        ]
+      }
+    },
+    {
+      "id": "elev-053",
+      "prenom": "Élodie",
+      "nom": "Villeneuve",
+      "genre": "F",
+      "annee": 7,
+      "groupe": "7A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "elodie.villeneuve@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-052"
+        ]
+      }
+    },
+    {
+      "id": "elev-055",
+      "prenom": "Didier",
+      "nom": "Larocque",
+      "genre": "M",
+      "annee": 8,
+      "groupe": "8A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "didier.larocque@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-054"
+        ]
+      }
+    },
+    {
+      "id": "elev-058",
+      "prenom": "Fanta",
+      "nom": "Larocque",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "fanta.larocque@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-056",
+          "tut-057"
+        ]
+      }
+    },
+    {
+      "id": "elev-061",
+      "prenom": "Renaud",
+      "nom": "Cissé",
+      "genre": "M",
+      "annee": 8,
+      "groupe": "8A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "renaud.cisse@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-059",
+          "tut-060"
+        ]
+      }
+    },
+    {
+      "id": "elev-064",
+      "prenom": "Gabrielle",
+      "nom": "Bergeron",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "gabrielle.bergeron@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-062",
+          "tut-063"
+        ]
+      }
+    },
+    {
+      "id": "elev-066",
+      "prenom": "Koffi",
+      "nom": "Kouassi",
+      "genre": "M",
+      "annee": 8,
+      "groupe": "8A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "koffi.kouassi@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-065"
+        ]
+      }
+    },
+    {
+      "id": "elev-068",
+      "prenom": "Juliette",
+      "nom": "Deschamps",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "juliette.deschamps@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-067"
+        ]
+      }
+    },
+    {
+      "id": "elev-071",
+      "prenom": "Élodie",
+      "nom": "Nguyen",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "elodie.nguyen@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-069",
+          "tut-070"
+        ]
+      }
+    },
+    {
+      "id": "elev-074",
+      "prenom": "Maya",
+      "nom": "Vachon",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8B",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "maya.vachon@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-072",
+          "tut-073"
+        ]
+      }
+    },
+    {
+      "id": "elev-077",
+      "prenom": "Gabrielle",
+      "nom": "Diallo",
+      "genre": "F",
+      "annee": 8,
+      "groupe": "8A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "gabrielle.diallo@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-075",
+          "tut-076"
+        ]
+      }
+    },
+    {
+      "id": "elev-080",
+      "prenom": "Xavier",
+      "nom": "Sauvé",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "xavier.sauve@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-078",
+          "tut-079"
+        ]
+      }
+    },
+    {
+      "id": "elev-083",
+      "prenom": "Wadih",
+      "nom": "Ouellette",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "wadih.ouellette@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-081",
+          "tut-082"
+        ]
+      }
+    },
+    {
+      "id": "elev-086",
+      "prenom": "Patrick",
+      "nom": "Diallo",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "patrick.diallo@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-084",
+          "tut-085"
+        ]
+      }
+    },
+    {
+      "id": "elev-088",
+      "prenom": "Amina",
+      "nom": "Zerhouni",
+      "genre": "F",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "amina.zerhouni@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-087"
+        ]
+      }
+    },
+    {
+      "id": "elev-090",
+      "prenom": "Émilie",
+      "nom": "Mbala",
+      "genre": "F",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "emilie.mbala@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-089"
+        ]
+      }
+    },
+    {
+      "id": "elev-093",
+      "prenom": "Youssef",
+      "nom": "Ouellette",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "youssef.ouellette@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-091",
+          "tut-092"
+        ]
+      }
+    },
+    {
+      "id": "elev-096",
+      "prenom": "Moussa",
+      "nom": "Vachon",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "moussa.vachon@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-094",
+          "tut-095"
+        ]
+      }
+    },
+    {
+      "id": "elev-098",
+      "prenom": "Félix",
+      "nom": "Bationo",
+      "genre": "M",
+      "annee": 9,
+      "groupe": "9A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "felix.bationo@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-097"
+        ]
+      }
+    },
+    {
+      "id": "elev-100",
+      "prenom": "William",
+      "nom": "N'Guessan",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "william.n-guessan@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-099"
+        ]
+      }
+    },
+    {
+      "id": "elev-103",
+      "prenom": "Koffi",
+      "nom": "Pierre-Louis",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "koffi.pierre-louis@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-101",
+          "tut-102"
+        ]
+      }
+    },
+    {
+      "id": "elev-106",
+      "prenom": "Camille",
+      "nom": "Charbonneau",
+      "genre": "F",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "camille.charbonneau@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-104",
+          "tut-105"
+        ]
+      }
+    },
+    {
+      "id": "elev-109",
+      "prenom": "Noah",
+      "nom": "Desrosiers",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "noah.desrosiers@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-107",
+          "tut-108"
+        ]
+      }
+    },
+    {
+      "id": "elev-111",
+      "prenom": "Étienne",
+      "nom": "Lalonde",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "etienne.lalonde@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-110"
+        ]
+      }
+    },
+    {
+      "id": "elev-113",
+      "prenom": "Karim",
+      "nom": "Thériault",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "karim.theriault@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-112"
+        ]
+      }
+    },
+    {
+      "id": "elev-115",
+      "prenom": "Émile",
+      "nom": "Thériault",
+      "genre": "M",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "emile.theriault@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-114"
+        ]
+      }
+    },
+    {
+      "id": "elev-117",
+      "prenom": "Chloé",
+      "nom": "Séguin",
+      "genre": "F",
+      "annee": 10,
+      "groupe": "10A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "chloe.seguin@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-116"
+        ]
+      }
+    },
+    {
+      "id": "elev-120",
+      "prenom": "Linh",
+      "nom": "Meilleur",
+      "genre": "F",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "linh.meilleur@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-118",
+          "tut-119"
+        ]
+      }
+    },
+    {
+      "id": "elev-122",
+      "prenom": "Khadija",
+      "nom": "Desrosiers",
+      "genre": "F",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "khadija.desrosiers@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-121"
+        ]
+      }
+    },
+    {
+      "id": "elev-124",
+      "prenom": "Émile",
+      "nom": "Thériault",
+      "genre": "M",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "emile.theriault2@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-123"
+        ]
+      }
+    },
+    {
+      "id": "elev-127",
+      "prenom": "Fanta",
+      "nom": "Chidiac",
+      "genre": "F",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "fanta.chidiac@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-125",
+          "tut-126"
+        ]
+      }
+    },
+    {
+      "id": "elev-130",
+      "prenom": "Fanta",
+      "nom": "Tran",
+      "genre": "F",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "fanta.tran@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-128",
+          "tut-129"
+        ]
+      }
+    },
+    {
+      "id": "elev-132",
+      "prenom": "Nathan",
+      "nom": "Kamara",
+      "genre": "M",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "nathan.kamara@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-131"
+        ]
+      }
+    },
+    {
+      "id": "elev-134",
+      "prenom": "Félix",
+      "nom": "Lefebvre",
+      "genre": "M",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "felix.lefebvre@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-133"
+        ]
+      }
+    },
+    {
+      "id": "elev-137",
+      "prenom": "Moussa",
+      "nom": "Aubin",
+      "genre": "M",
+      "annee": 11,
+      "groupe": "11A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "moussa.aubin@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-135",
+          "tut-136"
+        ]
+      }
+    },
+    {
+      "id": "elev-140",
+      "prenom": "Élodie",
+      "nom": "Boucher",
+      "genre": "F",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "elodie.boucher@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-138",
+          "tut-139"
+        ]
+      }
+    },
+    {
+      "id": "elev-143",
+      "prenom": "Maya",
+      "nom": "Ouellette",
+      "genre": "F",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "maya.ouellette@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-141",
+          "tut-142"
+        ]
+      }
+    },
+    {
+      "id": "elev-145",
+      "prenom": "Patrick",
+      "nom": "Cissé",
+      "genre": "M",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "patrick.cisse@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-144"
+        ]
+      }
+    },
+    {
+      "id": "elev-148",
+      "prenom": "Loïc",
+      "nom": "Sauvé",
+      "genre": "M",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "loic.sauve@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-146",
+          "tut-147"
+        ]
+      }
+    },
+    {
+      "id": "elev-151",
+      "prenom": "Thierno",
+      "nom": "Lefebvre",
+      "genre": "M",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "thierno.lefebvre@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-149",
+          "tut-150"
+        ]
+      }
+    },
+    {
+      "id": "elev-154",
+      "prenom": "Gabriel",
+      "nom": "Racine",
+      "genre": "M",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "gabriel.racine@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "recomposee",
+        "tuteurs": [
+          "tut-152",
+          "tut-153"
+        ]
+      }
+    },
+    {
+      "id": "elev-157",
+      "prenom": "Josiane",
+      "nom": "Diallo",
+      "genre": "F",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "josiane.diallo@eleves-demo.ca",
+      "eed": true,
+      "famille": {
+        "type": "deux_parents",
+        "tuteurs": [
+          "tut-155",
+          "tut-156"
+        ]
+      }
+    },
+    {
+      "id": "elev-159",
+      "prenom": "Chloé",
+      "nom": "N'Guessan",
+      "genre": "F",
+      "annee": 12,
+      "groupe": "12A",
+      "anneeScolaire": "2026-2027",
+      "semestre": 1,
+      "courriel": "chloe.n-guessan@eleves-demo.ca",
+      "eed": false,
+      "famille": {
+        "type": "monoparentale",
+        "tuteurs": [
+          "tut-158"
+        ]
+      }
+    }
+  ],
+  "tuteurs": [
+    {
+      "id": "tut-029",
+      "prenom": "Fanta",
+      "nom": "Racine",
+      "lien": "mère",
+      "courriel": "fanta.racine@courriel-demo.ca",
+      "telephone": "613-555-0971"
+    },
+    {
+      "id": "tut-031",
+      "prenom": "Maya",
+      "nom": "Villeneuve",
+      "lien": "mère",
+      "courriel": "maya.villeneuve@courriel-demo.ca",
+      "telephone": "613-555-0125"
+    },
+    {
+      "id": "tut-032",
+      "prenom": "Étienne",
+      "nom": "Villeneuve",
+      "lien": "père",
+      "courriel": "etienne.villeneuve@courriel-demo.ca",
+      "telephone": "613-555-0976"
+    },
+    {
+      "id": "tut-034",
+      "prenom": "Naomie",
+      "nom": "Cissé",
+      "lien": "mère",
+      "courriel": "naomie.cisse@courriel-demo.ca",
+      "telephone": "613-555-0503"
+    },
+    {
+      "id": "tut-035",
+      "prenom": "Wadih",
+      "nom": "Cissé",
+      "lien": "père",
+      "courriel": "wadih.cisse@courriel-demo.ca",
+      "telephone": "613-555-0296"
+    },
+    {
+      "id": "tut-037",
+      "prenom": "Josiane",
+      "nom": "Jean-Baptiste",
+      "lien": "mère",
+      "courriel": "josiane.jean-baptiste@courriel-demo.ca",
+      "telephone": "613-555-0387"
+    },
+    {
+      "id": "tut-038",
+      "prenom": "Zachary",
+      "nom": "Jean-Baptiste",
+      "lien": "père",
+      "courriel": "zachary.jean-baptiste@courriel-demo.ca",
+      "telephone": "613-555-0301"
+    },
+    {
+      "id": "tut-040",
+      "prenom": "Chloé",
+      "nom": "Kouassi",
+      "lien": "mère",
+      "courriel": "chloe.kouassi@courriel-demo.ca",
+      "telephone": "613-555-0400"
+    },
+    {
+      "id": "tut-041",
+      "prenom": "Elias",
+      "nom": "Lacroix",
+      "lien": "beau-père",
+      "courriel": "elias.lacroix@courriel-demo.ca",
+      "telephone": "613-555-0906"
+    },
+    {
+      "id": "tut-043",
+      "prenom": "Adjoua",
+      "nom": "Traoré",
+      "lien": "mère",
+      "courriel": "adjoua.traore@courriel-demo.ca",
+      "telephone": "613-555-0749"
+    },
+    {
+      "id": "tut-044",
+      "prenom": "Ibrahim",
+      "nom": "Pierre-Louis",
+      "lien": "beau-père",
+      "courriel": "ibrahim.pierre-louis@courriel-demo.ca",
+      "telephone": "613-555-0614"
+    },
+    {
+      "id": "tut-046",
+      "prenom": "Aïcha",
+      "nom": "Sanogo",
+      "lien": "mère",
+      "courriel": "aicha.sanogo@courriel-demo.ca",
+      "telephone": "613-555-0683"
+    },
+    {
+      "id": "tut-047",
+      "prenom": "Rachid",
+      "nom": "Sanogo",
+      "lien": "père",
+      "courriel": "rachid.sanogo@courriel-demo.ca",
+      "telephone": "613-555-0247"
+    },
+    {
+      "id": "tut-049",
+      "prenom": "Adjoua",
+      "nom": "El Amrani",
+      "lien": "mère",
+      "courriel": "adjoua.el-amrani@courriel-demo.ca",
+      "telephone": "613-555-0371"
+    },
+    {
+      "id": "tut-050",
+      "prenom": "Jean-Daniel",
+      "nom": "El Amrani",
+      "lien": "père",
+      "courriel": "jean-daniel.el-amrani@courriel-demo.ca",
+      "telephone": "613-555-0860"
+    },
+    {
+      "id": "tut-052",
+      "prenom": "Noémie",
+      "nom": "Villeneuve",
+      "lien": "mère",
+      "courriel": "noemie.villeneuve@courriel-demo.ca",
+      "telephone": "613-555-0918"
+    },
+    {
+      "id": "tut-054",
+      "prenom": "Josiane",
+      "nom": "Larocque",
+      "lien": "père",
+      "courriel": "josiane.larocque@courriel-demo.ca",
+      "telephone": "613-555-0181"
+    },
+    {
+      "id": "tut-056",
+      "prenom": "Clara",
+      "nom": "Larocque",
+      "lien": "mère",
+      "courriel": "clara.larocque@courriel-demo.ca",
+      "telephone": "613-555-0941"
+    },
+    {
+      "id": "tut-057",
+      "prenom": "Renaud",
+      "nom": "Larocque",
+      "lien": "père",
+      "courriel": "renaud.larocque@courriel-demo.ca",
+      "telephone": "613-555-0196"
+    },
+    {
+      "id": "tut-059",
+      "prenom": "Khadija",
+      "nom": "Cissé",
+      "lien": "mère",
+      "courriel": "khadija.cisse@courriel-demo.ca",
+      "telephone": "613-555-0301"
+    },
+    {
+      "id": "tut-060",
+      "prenom": "Karim",
+      "nom": "Tran",
+      "lien": "père",
+      "courriel": "karim.tran@courriel-demo.ca",
+      "telephone": "613-555-0909"
+    },
+    {
+      "id": "tut-062",
+      "prenom": "Awa",
+      "nom": "Bergeron",
+      "lien": "mère",
+      "courriel": "awa.bergeron@courriel-demo.ca",
+      "telephone": "613-555-0402"
+    },
+    {
+      "id": "tut-063",
+      "prenom": "Nathan",
+      "nom": "Okou",
+      "lien": "beau-père",
+      "courriel": "nathan.okou@courriel-demo.ca",
+      "telephone": "613-555-0193"
+    },
+    {
+      "id": "tut-065",
+      "prenom": "Bintou",
+      "nom": "Kouassi",
+      "lien": "mère",
+      "courriel": "bintou.kouassi@courriel-demo.ca",
+      "telephone": "613-555-0851"
+    },
+    {
+      "id": "tut-067",
+      "prenom": "Delphine",
+      "nom": "Deschamps",
+      "lien": "père",
+      "courriel": "delphine.deschamps@courriel-demo.ca",
+      "telephone": "613-555-0275"
+    },
+    {
+      "id": "tut-069",
+      "prenom": "Khadija",
+      "nom": "Nguyen",
+      "lien": "mère",
+      "courriel": "khadija.nguyen@courriel-demo.ca",
+      "telephone": "613-555-0789"
+    },
+    {
+      "id": "tut-070",
+      "prenom": "Thierno",
+      "nom": "Bakayoko",
+      "lien": "père",
+      "courriel": "thierno.bakayoko@courriel-demo.ca",
+      "telephone": "613-555-0391"
+    },
+    {
+      "id": "tut-072",
+      "prenom": "Camille",
+      "nom": "Vachon",
+      "lien": "mère",
+      "courriel": "camille.vachon@courriel-demo.ca",
+      "telephone": "613-555-0180"
+    },
+    {
+      "id": "tut-073",
+      "prenom": "Marc-Antoine",
+      "nom": "Charbonneau",
+      "lien": "père",
+      "courriel": "marc-antoine.charbonneau@courriel-demo.ca",
+      "telephone": "613-555-0710"
+    },
+    {
+      "id": "tut-075",
+      "prenom": "Anaïs",
+      "nom": "Diallo",
+      "lien": "mère",
+      "courriel": "anais.diallo@courriel-demo.ca",
+      "telephone": "613-555-0902"
+    },
+    {
+      "id": "tut-076",
+      "prenom": "Wadih",
+      "nom": "Boucher",
+      "lien": "père",
+      "courriel": "wadih.boucher@courriel-demo.ca",
+      "telephone": "613-555-0892"
+    },
+    {
+      "id": "tut-078",
+      "prenom": "Camille",
+      "nom": "Sauvé",
+      "lien": "mère",
+      "courriel": "camille.sauve@courriel-demo.ca",
+      "telephone": "613-555-0979"
+    },
+    {
+      "id": "tut-079",
+      "prenom": "Mathis",
+      "nom": "Pierre-Louis",
+      "lien": "père",
+      "courriel": "mathis.pierre-louis@courriel-demo.ca",
+      "telephone": "613-555-0599"
+    },
+    {
+      "id": "tut-081",
+      "prenom": "Marguerite",
+      "nom": "Ouellette",
+      "lien": "mère",
+      "courriel": "marguerite.ouellette@courriel-demo.ca",
+      "telephone": "613-555-0579"
+    },
+    {
+      "id": "tut-082",
+      "prenom": "Didier",
+      "nom": "Racine",
+      "lien": "beau-père",
+      "courriel": "didier.racine@courriel-demo.ca",
+      "telephone": "613-555-0604"
+    },
+    {
+      "id": "tut-084",
+      "prenom": "Mariama",
+      "nom": "Diallo",
+      "lien": "mère",
+      "courriel": "mariama.diallo@courriel-demo.ca",
+      "telephone": "613-555-0490"
+    },
+    {
+      "id": "tut-085",
+      "prenom": "Samuel",
+      "nom": "El Amrani",
+      "lien": "beau-père",
+      "courriel": "samuel.el-amrani@courriel-demo.ca",
+      "telephone": "613-555-0619"
+    },
+    {
+      "id": "tut-087",
+      "prenom": "Rosalie",
+      "nom": "Zerhouni",
+      "lien": "mère",
+      "courriel": "rosalie.zerhouni@courriel-demo.ca",
+      "telephone": "613-555-0493"
+    },
+    {
+      "id": "tut-089",
+      "prenom": "Océane",
+      "nom": "Mbala",
+      "lien": "mère",
+      "courriel": "oceane.mbala@courriel-demo.ca",
+      "telephone": "613-555-0300"
+    },
+    {
+      "id": "tut-091",
+      "prenom": "Mélissa",
+      "nom": "Ouellette",
+      "lien": "mère",
+      "courriel": "melissa.ouellette@courriel-demo.ca",
+      "telephone": "613-555-0340"
+    },
+    {
+      "id": "tut-092",
+      "prenom": "Émile",
+      "nom": "Desrosiers",
+      "lien": "beau-père",
+      "courriel": "emile.desrosiers@courriel-demo.ca",
+      "telephone": "613-555-0624"
+    },
+    {
+      "id": "tut-094",
+      "prenom": "Esther",
+      "nom": "Vachon",
+      "lien": "mère",
+      "courriel": "esther.vachon@courriel-demo.ca",
+      "telephone": "613-555-0690"
+    },
+    {
+      "id": "tut-095",
+      "prenom": "Didier",
+      "nom": "Vachon",
+      "lien": "père",
+      "courriel": "didier.vachon@courriel-demo.ca",
+      "telephone": "613-555-0963"
+    },
+    {
+      "id": "tut-097",
+      "prenom": "Juliette",
+      "nom": "Bationo",
+      "lien": "père",
+      "courriel": "juliette.bationo@courriel-demo.ca",
+      "telephone": "613-555-0520"
+    },
+    {
+      "id": "tut-099",
+      "prenom": "Sofia",
+      "nom": "N'Guessan",
+      "lien": "mère",
+      "courriel": "sofia.n-guessan@courriel-demo.ca",
+      "telephone": "613-555-0628"
+    },
+    {
+      "id": "tut-101",
+      "prenom": "Salima",
+      "nom": "Pierre-Louis",
+      "lien": "mère",
+      "courriel": "salima.pierre-louis@courriel-demo.ca",
+      "telephone": "613-555-0702"
+    },
+    {
+      "id": "tut-102",
+      "prenom": "Thierno",
+      "nom": "Jean-Baptiste",
+      "lien": "père",
+      "courriel": "thierno.jean-baptiste@courriel-demo.ca",
+      "telephone": "613-555-0983"
+    },
+    {
+      "id": "tut-104",
+      "prenom": "Fatoumata",
+      "nom": "Charbonneau",
+      "lien": "mère",
+      "courriel": "fatoumata.charbonneau@courriel-demo.ca",
+      "telephone": "613-555-0526"
+    },
+    {
+      "id": "tut-105",
+      "prenom": "Sékou",
+      "nom": "Charbonneau",
+      "lien": "père",
+      "courriel": "sekou.charbonneau@courriel-demo.ca",
+      "telephone": "613-555-0240"
+    },
+    {
+      "id": "tut-107",
+      "prenom": "Camille",
+      "nom": "Desrosiers",
+      "lien": "mère",
+      "courriel": "camille.desrosiers@courriel-demo.ca",
+      "telephone": "613-555-0959"
+    },
+    {
+      "id": "tut-108",
+      "prenom": "Antoine",
+      "nom": "Desrosiers",
+      "lien": "père",
+      "courriel": "antoine.desrosiers@courriel-demo.ca",
+      "telephone": "613-555-0530"
+    },
+    {
+      "id": "tut-110",
+      "prenom": "Élodie",
+      "nom": "Lalonde",
+      "lien": "mère",
+      "courriel": "elodie.lalonde@courriel-demo.ca",
+      "telephone": "613-555-0650"
+    },
+    {
+      "id": "tut-112",
+      "prenom": "Aïcha",
+      "nom": "Thériault",
+      "lien": "mère",
+      "courriel": "aicha.theriault@courriel-demo.ca",
+      "telephone": "613-555-0378"
+    },
+    {
+      "id": "tut-114",
+      "prenom": "Rosalie",
+      "nom": "Thériault",
+      "lien": "père",
+      "courriel": "rosalie.theriault@courriel-demo.ca",
+      "telephone": "613-555-0801"
+    },
+    {
+      "id": "tut-116",
+      "prenom": "Marguerite",
+      "nom": "Séguin",
+      "lien": "mère",
+      "courriel": "marguerite.seguin@courriel-demo.ca",
+      "telephone": "613-555-0951"
+    },
+    {
+      "id": "tut-118",
+      "prenom": "Khadija",
+      "nom": "Meilleur",
+      "lien": "mère",
+      "courriel": "khadija.meilleur@courriel-demo.ca",
+      "telephone": "613-555-0784"
+    },
+    {
+      "id": "tut-119",
+      "prenom": "Koffi",
+      "nom": "Cissé",
+      "lien": "beau-père",
+      "courriel": "koffi.cisse@courriel-demo.ca",
+      "telephone": "613-555-0703"
+    },
+    {
+      "id": "tut-121",
+      "prenom": "Camille",
+      "nom": "Desrosiers",
+      "lien": "père",
+      "courriel": "camille.desrosiers2@courriel-demo.ca",
+      "telephone": "613-555-0245"
+    },
+    {
+      "id": "tut-123",
+      "prenom": "Nadia",
+      "nom": "Thériault",
+      "lien": "mère",
+      "courriel": "nadia.theriault@courriel-demo.ca",
+      "telephone": "613-555-0718"
+    },
+    {
+      "id": "tut-125",
+      "prenom": "Linh",
+      "nom": "Chidiac",
+      "lien": "mère",
+      "courriel": "linh.chidiac@courriel-demo.ca",
+      "telephone": "613-555-0802"
+    },
+    {
+      "id": "tut-126",
+      "prenom": "Marc-Antoine",
+      "nom": "Chidiac",
+      "lien": "père",
+      "courriel": "marc-antoine.chidiac@courriel-demo.ca",
+      "telephone": "613-555-0780"
+    },
+    {
+      "id": "tut-128",
+      "prenom": "Khadija",
+      "nom": "Tran",
+      "lien": "mère",
+      "courriel": "khadija.tran@courriel-demo.ca",
+      "telephone": "613-555-0752"
+    },
+    {
+      "id": "tut-129",
+      "prenom": "Jean-Daniel",
+      "nom": "Ouellette",
+      "lien": "père",
+      "courriel": "jean-daniel.ouellette@courriel-demo.ca",
+      "telephone": "613-555-0511"
+    },
+    {
+      "id": "tut-131",
+      "prenom": "Awa",
+      "nom": "Kamara",
+      "lien": "mère",
+      "courriel": "awa.kamara@courriel-demo.ca",
+      "telephone": "613-555-0834"
+    },
+    {
+      "id": "tut-133",
+      "prenom": "Noémie",
+      "nom": "Lefebvre",
+      "lien": "père",
+      "courriel": "noemie.lefebvre@courriel-demo.ca",
+      "telephone": "613-555-0768"
+    },
+    {
+      "id": "tut-135",
+      "prenom": "Amina",
+      "nom": "Aubin",
+      "lien": "mère",
+      "courriel": "amina.aubin@courriel-demo.ca",
+      "telephone": "613-555-0588"
+    },
+    {
+      "id": "tut-136",
+      "prenom": "Antoine",
+      "nom": "Nguyen",
+      "lien": "beau-père",
+      "courriel": "antoine.nguyen@courriel-demo.ca",
+      "telephone": "613-555-0800"
+    },
+    {
+      "id": "tut-138",
+      "prenom": "Maya",
+      "nom": "Boucher",
+      "lien": "mère",
+      "courriel": "maya.boucher@courriel-demo.ca",
+      "telephone": "613-555-0762"
+    },
+    {
+      "id": "tut-139",
+      "prenom": "Thierno",
+      "nom": "Bélanger",
+      "lien": "père",
+      "courriel": "thierno.belanger@courriel-demo.ca",
+      "telephone": "613-555-0375"
+    },
+    {
+      "id": "tut-141",
+      "prenom": "Aïcha",
+      "nom": "Ouellette",
+      "lien": "mère",
+      "courriel": "aicha.ouellette@courriel-demo.ca",
+      "telephone": "613-555-0480"
+    },
+    {
+      "id": "tut-142",
+      "prenom": "Elias",
+      "nom": "Meilleur",
+      "lien": "beau-père",
+      "courriel": "elias.meilleur@courriel-demo.ca",
+      "telephone": "613-555-0609"
+    },
+    {
+      "id": "tut-144",
+      "prenom": "Delphine",
+      "nom": "Cissé",
+      "lien": "mère",
+      "courriel": "delphine.cisse@courriel-demo.ca",
+      "telephone": "613-555-0372"
+    },
+    {
+      "id": "tut-146",
+      "prenom": "Naomie",
+      "nom": "Sauvé",
+      "lien": "mère",
+      "courriel": "naomie.sauve@courriel-demo.ca",
+      "telephone": "613-555-0645"
+    },
+    {
+      "id": "tut-147",
+      "prenom": "Émile",
+      "nom": "Séguin",
+      "lien": "beau-père",
+      "courriel": "emile.seguin@courriel-demo.ca",
+      "telephone": "613-555-0330"
+    },
+    {
+      "id": "tut-149",
+      "prenom": "Gabrielle",
+      "nom": "Lefebvre",
+      "lien": "mère",
+      "courriel": "gabrielle.lefebvre@courriel-demo.ca",
+      "telephone": "613-555-0185"
+    },
+    {
+      "id": "tut-150",
+      "prenom": "Didier",
+      "nom": "Séguin",
+      "lien": "beau-père",
+      "courriel": "didier.seguin@courriel-demo.ca",
+      "telephone": "613-555-0480"
+    },
+    {
+      "id": "tut-152",
+      "prenom": "Aïcha",
+      "nom": "Racine",
+      "lien": "mère",
+      "courriel": "aicha.racine@courriel-demo.ca",
+      "telephone": "613-555-0255"
+    },
+    {
+      "id": "tut-153",
+      "prenom": "Youssef",
+      "nom": "Kouassi",
+      "lien": "beau-père",
+      "courriel": "youssef.kouassi@courriel-demo.ca",
+      "telephone": "613-555-0367"
+    },
+    {
+      "id": "tut-155",
+      "prenom": "Chloé",
+      "nom": "Diallo",
+      "lien": "mère",
+      "courriel": "chloe.diallo@courriel-demo.ca",
+      "telephone": "613-555-0834"
+    },
+    {
+      "id": "tut-156",
+      "prenom": "Ousmane",
+      "nom": "Mbala",
+      "lien": "père",
+      "courriel": "ousmane.mbala@courriel-demo.ca",
+      "telephone": "613-555-0973"
+    },
+    {
+      "id": "tut-158",
+      "prenom": "Aïcha",
+      "nom": "N'Guessan",
+      "lien": "père",
+      "courriel": "aicha.n-guessan@courriel-demo.ca",
+      "telephone": "613-555-0148"
+    }
+  ],
+  "cours": [
+    {
+      "id": "cours-160",
+      "matiere": "Français",
+      "annee": 7,
+      "groupe": "7A",
+      "enseignantId": "pers-001"
+    },
+    {
+      "id": "cours-161",
+      "matiere": "Mathématiques",
+      "annee": 7,
+      "groupe": "7A",
+      "enseignantId": "pers-003"
+    },
+    {
+      "id": "cours-162",
+      "matiere": "Histoire-Géographie",
+      "annee": 7,
+      "groupe": "7A",
+      "enseignantId": "pers-005"
+    },
+    {
+      "id": "cours-163",
+      "matiere": "Éducation physique",
+      "annee": 7,
+      "groupe": "7A",
+      "enseignantId": "pers-007"
+    },
+    {
+      "id": "cours-164",
+      "matiere": "Arts",
+      "annee": 7,
+      "groupe": "7A",
+      "enseignantId": "pers-008"
+    },
+    {
+      "id": "cours-165",
+      "matiere": "Français",
+      "annee": 7,
+      "groupe": "7B",
+      "enseignantId": "pers-001"
+    },
+    {
+      "id": "cours-166",
+      "matiere": "Mathématiques",
+      "annee": 7,
+      "groupe": "7B",
+      "enseignantId": "pers-003"
+    },
+    {
+      "id": "cours-167",
+      "matiere": "Histoire-Géographie",
+      "annee": 7,
+      "groupe": "7B",
+      "enseignantId": "pers-005"
+    },
+    {
+      "id": "cours-168",
+      "matiere": "Éducation physique",
+      "annee": 7,
+      "groupe": "7B",
+      "enseignantId": "pers-007"
+    },
+    {
+      "id": "cours-169",
+      "matiere": "Arts",
+      "annee": 7,
+      "groupe": "7B",
+      "enseignantId": "pers-008"
+    },
+    {
+      "id": "cours-170",
+      "matiere": "Français",
+      "annee": 8,
+      "groupe": "8A",
+      "enseignantId": "pers-002"
+    },
+    {
+      "id": "cours-171",
+      "matiere": "Mathématiques",
+      "annee": 8,
+      "groupe": "8A",
+      "enseignantId": "pers-004"
+    },
+    {
+      "id": "cours-172",
+      "matiere": "Histoire-Géographie",
+      "annee": 8,
+      "groupe": "8A",
+      "enseignantId": "pers-006"
+    },
+    {
+      "id": "cours-173",
+      "matiere": "Éducation physique",
+      "annee": 8,
+      "groupe": "8A",
+      "enseignantId": "pers-007"
+    },
+    {
+      "id": "cours-174",
+      "matiere": "Arts",
+      "annee": 8,
+      "groupe": "8A",
+      "enseignantId": "pers-008"
+    },
+    {
+      "id": "cours-175",
+      "matiere": "Français",
+      "annee": 8,
+      "groupe": "8B",
+      "enseignantId": "pers-002"
+    },
+    {
+      "id": "cours-176",
+      "matiere": "Mathématiques",
+      "annee": 8,
+      "groupe": "8B",
+      "enseignantId": "pers-004"
+    },
+    {
+      "id": "cours-177",
+      "matiere": "Histoire-Géographie",
+      "annee": 8,
+      "groupe": "8B",
+      "enseignantId": "pers-006"
+    },
+    {
+      "id": "cours-178",
+      "matiere": "Éducation physique",
+      "annee": 8,
+      "groupe": "8B",
+      "enseignantId": "pers-007"
+    },
+    {
+      "id": "cours-179",
+      "matiere": "Arts",
+      "annee": 8,
+      "groupe": "8B",
+      "enseignantId": "pers-008"
+    },
+    {
+      "id": "cours-180",
+      "matiere": "Français",
+      "annee": 9,
+      "groupe": "9A",
+      "enseignantId": "pers-009"
+    },
+    {
+      "id": "cours-181",
+      "matiere": "Mathématiques",
+      "annee": 9,
+      "groupe": "9A",
+      "enseignantId": "pers-012"
+    },
+    {
+      "id": "cours-182",
+      "matiere": "Géographie",
+      "annee": 9,
+      "groupe": "9A",
+      "enseignantId": "pers-015"
+    },
+    {
+      "id": "cours-183",
+      "matiere": "Éducation physique",
+      "annee": 9,
+      "groupe": "9A",
+      "enseignantId": "pers-017"
+    },
+    {
+      "id": "cours-184",
+      "matiere": "Français",
+      "annee": 10,
+      "groupe": "10A",
+      "enseignantId": "pers-010"
+    },
+    {
+      "id": "cours-185",
+      "matiere": "Mathématiques",
+      "annee": 10,
+      "groupe": "10A",
+      "enseignantId": "pers-013"
+    },
+    {
+      "id": "cours-186",
+      "matiere": "Histoire",
+      "annee": 10,
+      "groupe": "10A",
+      "enseignantId": "pers-016"
+    },
+    {
+      "id": "cours-187",
+      "matiere": "Éducation physique",
+      "annee": 10,
+      "groupe": "10A",
+      "enseignantId": "pers-017"
+    },
+    {
+      "id": "cours-188",
+      "matiere": "Français",
+      "annee": 11,
+      "groupe": "11A",
+      "enseignantId": "pers-011"
+    },
+    {
+      "id": "cours-189",
+      "matiere": "Mathématiques",
+      "annee": 11,
+      "groupe": "11A",
+      "enseignantId": "pers-014"
+    },
+    {
+      "id": "cours-190",
+      "matiere": "Histoire",
+      "annee": 11,
+      "groupe": "11A",
+      "enseignantId": "pers-016"
+    },
+    {
+      "id": "cours-191",
+      "matiere": "Arts",
+      "annee": 11,
+      "groupe": "11A",
+      "enseignantId": "pers-020"
+    },
+    {
+      "id": "cours-192",
+      "matiere": "Français",
+      "annee": 12,
+      "groupe": "12A",
+      "enseignantId": "pers-011"
+    },
+    {
+      "id": "cours-193",
+      "matiere": "Mathématiques",
+      "annee": 12,
+      "groupe": "12A",
+      "enseignantId": "pers-014"
+    },
+    {
+      "id": "cours-194",
+      "matiere": "Géographie",
+      "annee": 12,
+      "groupe": "12A",
+      "enseignantId": "pers-015"
+    },
+    {
+      "id": "cours-195",
+      "matiere": "Arts",
+      "annee": 12,
+      "groupe": "12A",
+      "enseignantId": "pers-020"
+    }
+  ],
+  "signalements": [
+    {
+      "id": "sign-196",
+      "eleveId": "elev-086",
+      "auteurId": "pers-012",
+      "date": "2026-09-08",
+      "types": [
+        "motivation"
+      ],
+      "niveauUrgence": 0,
+      "urgenceLibelle": "Information",
+      "caseEED": true,
+      "niveauIntervention": 1,
+      "statut": "nouveau",
+      "indicateurCaVa": true,
+      "raisons": "Baisse marquée des résultats depuis la rentrée. Devoirs incomplets ou non remis.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "téléphone"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-023",
+      "prochaineEtape": "Communication aux parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "Temps supplémentaire pour les évaluations. Consignes reprises individuellement. Place assise près de l'enseignant·e.",
+      "observations": [
+        {
+          "auteurId": "pers-009",
+          "date": "2026-09-08",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        },
+        {
+          "auteurId": "pers-015",
+          "date": "2026-09-08",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-09-10",
+          "responsableId": "pers-023",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        }
+      ]
+    },
+    {
+      "id": "sign-197",
+      "eleveId": "elev-074",
+      "auteurId": "pers-006",
+      "date": "2026-09-10",
+      "types": [
+        "académique",
+        "absentéisme"
+      ],
+      "niveauUrgence": 0,
+      "urgenceLibelle": "Information",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "nouveau",
+      "indicateurCaVa": false,
+      "raisons": "Se met à l'écart du groupe, participe très peu, semble fatigué·e en classe.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "courriel"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-025",
+      "prochaineEtape": "Rencontre avec les parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-008",
+          "date": "2026-09-10",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        },
+        {
+          "auteurId": "pers-007",
+          "date": "2026-09-10",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Communication aux parents",
+          "date": "2026-09-14",
+          "responsableId": "pers-025",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        }
+      ]
+    },
+    {
+      "id": "sign-198",
+      "eleveId": "elev-130",
+      "auteurId": "pers-014",
+      "date": "2026-09-14",
+      "types": [
+        "absentéisme"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "nouveau",
+      "indicateurCaVa": true,
+      "raisons": "Trois absences non motivées cette semaine, arrive souvent en retard.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-021",
+      "prochaineEtape": "Référence à la direction",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-011",
+          "date": "2026-09-14",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        },
+        {
+          "auteurId": "pers-016",
+          "date": "2026-09-14",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec les parents",
+          "date": "2026-09-15",
+          "responsableId": "pers-021",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        }
+      ]
+    },
+    {
+      "id": "sign-199",
+      "eleveId": "elev-066",
+      "auteurId": "pers-004",
+      "date": "2026-09-15",
+      "types": [
+        "autre"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "nouveau",
+      "indicateurCaVa": true,
+      "raisons": "Changement d'attitude soudain, réactions vives avec les pairs.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "courriel"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-024",
+      "prochaineEtape": "Rencontre avec l'élève",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-006",
+          "date": "2026-09-15",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        },
+        {
+          "auteurId": "pers-002",
+          "date": "2026-09-15",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-09-17",
+          "responsableId": "pers-024",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        }
+      ]
+    },
+    {
+      "id": "sign-200",
+      "eleveId": "elev-117",
+      "auteurId": "pers-016",
+      "date": "2026-09-17",
+      "types": [
+        "motivation"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Difficulté à se concentrer, oublie régulièrement son matériel.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-025",
+      "prochaineEtape": "Rencontre de l'équipe de la réussite",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-013",
+          "date": "2026-09-17",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        },
+        {
+          "auteurId": "pers-017",
+          "date": "2026-09-17",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-09-21",
+          "responsableId": "pers-025",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        }
+      ]
+    },
+    {
+      "id": "sign-201",
+      "eleveId": "elev-093",
+      "auteurId": "pers-012",
+      "date": "2026-09-21",
+      "types": [
+        "académique"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Résultats sous la note de passage aux deux dernières évaluations.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": "courriel"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-022",
+      "prochaineEtape": "Communication aux parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-009",
+          "date": "2026-09-21",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        },
+        {
+          "auteurId": "pers-015",
+          "date": "2026-09-21",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Communication aux parents",
+          "date": "2026-09-22",
+          "responsableId": "pers-022",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        }
+      ]
+    },
+    {
+      "id": "sign-202",
+      "eleveId": "elev-053",
+      "auteurId": "pers-003",
+      "date": "2026-09-22",
+      "types": [
+        "absentéisme"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Semble découragé·e, dit ouvertement que « ça ne sert à rien ».",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-022",
+      "prochaineEtape": "Rencontre avec les parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-001",
+          "date": "2026-09-22",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        },
+        {
+          "auteurId": "pers-005",
+          "date": "2026-09-22",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec les parents",
+          "date": "2026-09-24",
+          "responsableId": "pers-022",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        }
+      ]
+    },
+    {
+      "id": "sign-203",
+      "eleveId": "elev-033",
+      "auteurId": "pers-005",
+      "date": "2026-09-24",
+      "types": [
+        "autre"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Isolement remarqué à la cafétéria et lors des travaux d'équipe.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-021",
+      "prochaineEtape": "Référence à la direction",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-008",
+          "date": "2026-09-24",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        },
+        {
+          "auteurId": "pers-003",
+          "date": "2026-09-24",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-09-28",
+          "responsableId": "pers-021",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        }
+      ]
+    },
+    {
+      "id": "sign-204",
+      "eleveId": "elev-134",
+      "auteurId": "pers-016",
+      "date": "2026-09-28",
+      "types": [
+        "motivation"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Baisse marquée des résultats depuis la rentrée. Devoirs incomplets ou non remis.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": "courriel"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-025",
+      "prochaineEtape": "Rencontre avec l'élève",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-014",
+          "date": "2026-09-28",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        },
+        {
+          "auteurId": "pers-011",
+          "date": "2026-09-28",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-09-29",
+          "responsableId": "pers-025",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        }
+      ]
+    },
+    {
+      "id": "sign-205",
+      "eleveId": "elev-061",
+      "auteurId": "pers-004",
+      "date": "2026-09-29",
+      "types": [
+        "académique",
+        "absentéisme"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": false,
+      "niveauIntervention": 1,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Se met à l'écart du groupe, participe très peu, semble fatigué·e en classe.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-025",
+      "prochaineEtape": "Rencontre de l'équipe de la réussite",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-008",
+          "date": "2026-09-29",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        },
+        {
+          "auteurId": "pers-007",
+          "date": "2026-09-29",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Communication aux parents",
+          "date": "2026-10-01",
+          "responsableId": "pers-025",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        }
+      ]
+    },
+    {
+      "id": "sign-206",
+      "eleveId": "elev-140",
+      "auteurId": "pers-020",
+      "date": "2026-10-01",
+      "types": [
+        "absentéisme"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Trois absences non motivées cette semaine, arrive souvent en retard.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-024",
+      "prochaineEtape": "Communication aux parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-014",
+          "date": "2026-10-01",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        },
+        {
+          "auteurId": "pers-011",
+          "date": "2026-10-01",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-05",
+          "responsableId": "pers-024",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-06",
+          "responsableId": "pers-024",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        }
+      ]
+    },
+    {
+      "id": "sign-207",
+      "eleveId": "elev-045",
+      "auteurId": "pers-003",
+      "date": "2026-10-05",
+      "types": [
+        "autre",
+        "motivation"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Changement d'attitude soudain, réactions vives avec les pairs.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-022",
+      "prochaineEtape": "Rencontre avec les parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-007",
+          "date": "2026-10-05",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        },
+        {
+          "auteurId": "pers-001",
+          "date": "2026-10-05",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-06",
+          "responsableId": "pers-022",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-08",
+          "responsableId": "pers-022",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        }
+      ]
+    },
+    {
+      "id": "sign-208",
+      "eleveId": "elev-109",
+      "auteurId": "pers-017",
+      "date": "2026-10-06",
+      "types": [
+        "motivation",
+        "académique"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Difficulté à se concentrer, oublie régulièrement son matériel.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-022",
+      "prochaineEtape": "Référence à la direction",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-013",
+          "date": "2026-10-06",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        },
+        {
+          "auteurId": "pers-016",
+          "date": "2026-10-06",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-08",
+          "responsableId": "pers-022",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        },
+        {
+          "niveau": 2,
+          "type": "Communication aux parents",
+          "date": "2026-10-13",
+          "responsableId": "pers-022",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        }
+      ]
+    },
+    {
+      "id": "sign-209",
+      "eleveId": "elev-055",
+      "auteurId": "pers-004",
+      "date": "2026-10-08",
+      "types": [
+        "académique",
+        "absentéisme"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Résultats sous la note de passage aux deux dernières évaluations.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-025",
+      "prochaineEtape": "Rencontre avec l'élève",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-002",
+          "date": "2026-10-08",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        },
+        {
+          "auteurId": "pers-007",
+          "date": "2026-10-08",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Communication aux parents",
+          "date": "2026-10-13",
+          "responsableId": "pers-025",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-15",
+          "responsableId": "pers-025",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        }
+      ]
+    },
+    {
+      "id": "sign-210",
+      "eleveId": "elev-090",
+      "auteurId": "pers-012",
+      "date": "2026-10-13",
+      "types": [
+        "absentéisme"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Semble découragé·e, dit ouvertement que « ça ne sert à rien ».",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-022",
+      "prochaineEtape": "Rencontre de l'équipe de la réussite",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-009",
+          "date": "2026-10-13",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        },
+        {
+          "auteurId": "pers-015",
+          "date": "2026-10-13",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-15",
+          "responsableId": "pers-022",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-19",
+          "responsableId": "pers-022",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        }
+      ]
+    },
+    {
+      "id": "sign-211",
+      "eleveId": "elev-151",
+      "auteurId": "pers-014",
+      "date": "2026-10-15",
+      "types": [
+        "autre"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 2,
+      "statut": "pris_en_charge",
+      "indicateurCaVa": false,
+      "raisons": "Isolement remarqué à la cafétéria et lors des travaux d'équipe.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "téléphone"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-021",
+      "prochaineEtape": "Communication aux parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-011",
+          "date": "2026-10-15",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        },
+        {
+          "auteurId": "pers-020",
+          "date": "2026-10-15",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-19",
+          "responsableId": "pers-021",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-20",
+          "responsableId": "pers-021",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        }
+      ]
+    },
+    {
+      "id": "sign-212",
+      "eleveId": "elev-159",
+      "auteurId": "pers-015",
+      "date": "2026-10-19",
+      "types": [
+        "motivation"
+      ],
+      "niveauUrgence": 2,
+      "urgenceLibelle": "Modéré",
+      "caseEED": false,
+      "niveauIntervention": 3,
+      "statut": "transfere_direction",
+      "indicateurCaVa": false,
+      "raisons": "Baisse marquée des résultats depuis la rentrée. Devoirs incomplets ou non remis.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-027",
+      "prochaineEtape": "Rencontre avec les parents",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-014",
+          "date": "2026-10-19",
+          "texte": "De mon côté, l'élève va bien dans mon groupe, participe normalement."
+        },
+        {
+          "auteurId": "pers-020",
+          "date": "2026-10-19",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-20",
+          "responsableId": "pers-027",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        },
+        {
+          "niveau": 2,
+          "type": "Communication aux parents",
+          "date": "2026-10-22",
+          "responsableId": "pers-027",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        },
+        {
+          "niveau": 3,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        }
+      ]
+    },
+    {
+      "id": "sign-213",
+      "eleveId": "elev-154",
+      "auteurId": "pers-020",
+      "date": "2026-10-20",
+      "types": [
+        "académique",
+        "absentéisme"
+      ],
+      "niveauUrgence": 3,
+      "urgenceLibelle": "Élevé",
+      "caseEED": false,
+      "niveauIntervention": 3,
+      "statut": "transfere_direction",
+      "indicateurCaVa": false,
+      "raisons": "Se met à l'écart du groupe, participe très peu, semble fatigué·e en classe.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "responsableId": "pers-027",
+      "prochaineEtape": "Référence à la direction",
+      "noteCloture": null,
+      "planSecurite": "Personne-ressource identifiée (ERRÉ). L'élève sait où se présenter en cas de détresse. Vérification quotidienne discrète pendant deux semaines. Parents informés du plan.",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-014",
+          "date": "2026-10-20",
+          "texte": "J'ai remarqué de la fatigue en après-midi, mais bonne attitude générale."
+        },
+        {
+          "auteurId": "pers-015",
+          "date": "2026-10-20",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Communication aux parents",
+          "date": "2026-10-22",
+          "responsableId": "pers-027",
+          "note": "Courriel envoyé aux parents avec proposition de rencontre."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        },
+        {
+          "niveau": 3,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        }
+      ]
+    },
+    {
+      "id": "sign-214",
+      "eleveId": "elev-080",
+      "auteurId": "pers-012",
+      "date": "2026-10-22",
+      "types": [
+        "absentéisme"
+      ],
+      "niveauUrgence": 3,
+      "urgenceLibelle": "Élevé",
+      "caseEED": true,
+      "niveauIntervention": 3,
+      "statut": "clos",
+      "indicateurCaVa": true,
+      "raisons": "Trois absences non motivées cette semaine, arrive souvent en retard.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "courriel"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-027",
+      "prochaineEtape": null,
+      "noteCloture": "Situation stabilisée après rencontre avec les parents. Suivi terminé.",
+      "planSecurite": "Personne-ressource identifiée (ERRÉ). L'élève sait où se présenter en cas de détresse. Vérification quotidienne discrète pendant deux semaines. Parents informés du plan.",
+      "adaptations": "Temps supplémentaire pour les évaluations. Consignes reprises individuellement. Place assise près de l'enseignant·e.",
+      "observations": [
+        {
+          "auteurId": "pers-009",
+          "date": "2026-10-22",
+          "texte": "Situation semblable chez moi. J'appuie le signalement."
+        },
+        {
+          "auteurId": "pers-015",
+          "date": "2026-10-22",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec les parents",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "L'élève accepte de passer à la récupération deux midis par semaine."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        },
+        {
+          "niveau": 3,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-26",
+          "responsableId": "pers-027",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        }
+      ]
+    },
+    {
+      "id": "sign-215",
+      "eleveId": "elev-039",
+      "auteurId": "pers-007",
+      "date": "2026-10-26",
+      "types": [
+        "autre"
+      ],
+      "niveauUrgence": 3,
+      "urgenceLibelle": "Élevé",
+      "caseEED": false,
+      "niveauIntervention": 3,
+      "statut": "clos",
+      "indicateurCaVa": true,
+      "raisons": "Changement d'attitude soudain, réactions vives avec les pairs.",
+      "dejaFait": {
+        "rencontreEleve": true,
+        "communicationParents": "téléphone"
+      },
+      "autreInformation": "",
+      "responsableId": "pers-028",
+      "prochaineEtape": null,
+      "noteCloture": "Situation stabilisée après rencontre avec les parents. Suivi terminé.",
+      "planSecurite": "Personne-ressource identifiée (ERRÉ). L'élève sait où se présenter en cas de détresse. Vérification quotidienne discrète pendant deux semaines. Parents informés du plan.",
+      "adaptations": "",
+      "observations": [
+        {
+          "auteurId": "pers-005",
+          "date": "2026-10-26",
+          "texte": "L'élève m'a confié avoir de la difficulté à la maison, sans détails."
+        },
+        {
+          "auteurId": "pers-001",
+          "date": "2026-10-26",
+          "texte": "Même constat dans mon cours : peu de participation, travaux remis en retard."
+        }
+      ],
+      "interventions": [
+        {
+          "niveau": 1,
+          "type": "Rencontre avec l'élève",
+          "date": "2026-10-26",
+          "responsableId": "pers-028",
+          "note": "Rencontre faite avec l'élève. Plan de rattrapage établi, suivi dans deux semaines."
+        },
+        {
+          "niveau": 2,
+          "type": "Rencontre de l'équipe de la réussite",
+          "date": "2026-10-26",
+          "responsableId": "pers-028",
+          "note": "Appel à la maison, message laissé. Deuxième tentative prévue jeudi."
+        },
+        {
+          "niveau": 3,
+          "type": "Communication aux parents",
+          "date": "2026-10-26",
+          "responsableId": "pers-028",
+          "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
+        }
+      ]
+    }
+  ],
+  "audit": [
+    {
+      "date": "2026-09-08T08:10:00",
+      "utilisateurId": "pers-012",
+      "action": "connexion",
+      "details": "Camille Lacroix s'est connecté·e."
+    },
+    {
+      "date": "2026-09-08T08:16:00",
+      "utilisateurId": "pers-012",
+      "action": "signalement_cree",
+      "details": "Signalement sign-196 créé pour l'élève elev-086."
+    },
+    {
+      "date": "2026-09-10T08:13:00",
+      "utilisateurId": "pers-006",
+      "action": "connexion",
+      "details": "Mamadou Tran s'est connecté·e."
+    },
+    {
+      "date": "2026-09-10T08:19:00",
+      "utilisateurId": "pers-006",
+      "action": "signalement_cree",
+      "details": "Signalement sign-197 créé pour l'élève elev-074."
+    },
+    {
+      "date": "2026-09-10T10:30:00",
+      "utilisateurId": "pers-023",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre de l'équipe de la réussite) au dossier sign-196."
+    },
+    {
+      "date": "2026-09-14T08:16:00",
+      "utilisateurId": "pers-014",
+      "action": "connexion",
+      "details": "Bintou Bakayoko s'est connecté·e."
+    },
+    {
+      "date": "2026-09-14T08:22:00",
+      "utilisateurId": "pers-014",
+      "action": "signalement_cree",
+      "details": "Signalement sign-198 créé pour l'élève elev-130."
+    },
+    {
+      "date": "2026-09-14T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Communication aux parents) au dossier sign-197."
+    },
+    {
+      "date": "2026-09-15T08:19:00",
+      "utilisateurId": "pers-004",
+      "action": "connexion",
+      "details": "Patrick Aubin s'est connecté·e."
+    },
+    {
+      "date": "2026-09-15T08:25:00",
+      "utilisateurId": "pers-004",
+      "action": "signalement_cree",
+      "details": "Signalement sign-199 créé pour l'élève elev-066."
+    },
+    {
+      "date": "2026-09-15T10:30:00",
+      "utilisateurId": "pers-021",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec les parents) au dossier sign-198."
+    },
+    {
+      "date": "2026-09-17T08:22:00",
+      "utilisateurId": "pers-016",
+      "action": "connexion",
+      "details": "Marguerite Vachon s'est connecté·e."
+    },
+    {
+      "date": "2026-09-17T08:28:00",
+      "utilisateurId": "pers-016",
+      "action": "signalement_cree",
+      "details": "Signalement sign-200 créé pour l'élève elev-117."
+    },
+    {
+      "date": "2026-09-17T10:30:00",
+      "utilisateurId": "pers-024",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec l'élève) au dossier sign-199."
+    },
+    {
+      "date": "2026-09-21T08:25:00",
+      "utilisateurId": "pers-012",
+      "action": "connexion",
+      "details": "Camille Lacroix s'est connecté·e."
+    },
+    {
+      "date": "2026-09-21T08:31:00",
+      "utilisateurId": "pers-012",
+      "action": "signalement_cree",
+      "details": "Signalement sign-201 créé pour l'élève elev-093."
+    },
+    {
+      "date": "2026-09-21T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre de l'équipe de la réussite) au dossier sign-200."
+    },
+    {
+      "date": "2026-09-22T08:28:00",
+      "utilisateurId": "pers-003",
+      "action": "connexion",
+      "details": "Félix Ben Salem s'est connecté·e."
+    },
+    {
+      "date": "2026-09-22T08:34:00",
+      "utilisateurId": "pers-003",
+      "action": "signalement_cree",
+      "details": "Signalement sign-202 créé pour l'élève elev-053."
+    },
+    {
+      "date": "2026-09-22T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Communication aux parents) au dossier sign-201."
+    },
+    {
+      "date": "2026-09-24T08:31:00",
+      "utilisateurId": "pers-005",
+      "action": "connexion",
+      "details": "Tariq Tran s'est connecté·e."
+    },
+    {
+      "date": "2026-09-24T08:37:00",
+      "utilisateurId": "pers-005",
+      "action": "signalement_cree",
+      "details": "Signalement sign-203 créé pour l'élève elev-033."
+    },
+    {
+      "date": "2026-09-24T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec les parents) au dossier sign-202."
+    },
+    {
+      "date": "2026-09-28T08:34:00",
+      "utilisateurId": "pers-016",
+      "action": "connexion",
+      "details": "Marguerite Vachon s'est connecté·e."
+    },
+    {
+      "date": "2026-09-28T08:40:00",
+      "utilisateurId": "pers-016",
+      "action": "signalement_cree",
+      "details": "Signalement sign-204 créé pour l'élève elev-134."
+    },
+    {
+      "date": "2026-09-28T10:30:00",
+      "utilisateurId": "pers-021",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec l'élève) au dossier sign-203."
+    },
+    {
+      "date": "2026-09-29T08:37:00",
+      "utilisateurId": "pers-004",
+      "action": "connexion",
+      "details": "Patrick Aubin s'est connecté·e."
+    },
+    {
+      "date": "2026-09-29T08:43:00",
+      "utilisateurId": "pers-004",
+      "action": "signalement_cree",
+      "details": "Signalement sign-205 créé pour l'élève elev-061."
+    },
+    {
+      "date": "2026-09-29T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre de l'équipe de la réussite) au dossier sign-204."
+    },
+    {
+      "date": "2026-10-01T08:40:00",
+      "utilisateurId": "pers-020",
+      "action": "connexion",
+      "details": "Marc-Antoine Thériault s'est connecté·e."
+    },
+    {
+      "date": "2026-10-01T08:46:00",
+      "utilisateurId": "pers-020",
+      "action": "signalement_cree",
+      "details": "Signalement sign-206 créé pour l'élève elev-140."
+    },
+    {
+      "date": "2026-10-01T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Communication aux parents) au dossier sign-205."
+    },
+    {
+      "date": "2026-10-05T08:44:00",
+      "utilisateurId": "pers-003",
+      "action": "connexion",
+      "details": "Félix Ben Salem s'est connecté·e."
+    },
+    {
+      "date": "2026-10-05T08:50:00",
+      "utilisateurId": "pers-003",
+      "action": "signalement_cree",
+      "details": "Signalement sign-207 créé pour l'élève elev-045."
+    },
+    {
+      "date": "2026-10-05T10:30:00",
+      "utilisateurId": "pers-024",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec les parents) au dossier sign-206."
+    },
+    {
+      "date": "2026-10-06T08:48:00",
+      "utilisateurId": "pers-017",
+      "action": "connexion",
+      "details": "Maya Traoré s'est connecté·e."
+    },
+    {
+      "date": "2026-10-06T08:54:00",
+      "utilisateurId": "pers-017",
+      "action": "signalement_cree",
+      "details": "Signalement sign-208 créé pour l'élève elev-109."
+    },
+    {
+      "date": "2026-10-06T10:30:00",
+      "utilisateurId": "pers-024",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre avec l'élève) au dossier sign-206."
+    },
+    {
+      "date": "2026-10-06T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec l'élève) au dossier sign-207."
+    },
+    {
+      "date": "2026-10-08T08:12:00",
+      "utilisateurId": "pers-004",
+      "action": "connexion",
+      "details": "Patrick Aubin s'est connecté·e."
+    },
+    {
+      "date": "2026-10-08T08:18:00",
+      "utilisateurId": "pers-004",
+      "action": "signalement_cree",
+      "details": "Signalement sign-209 créé pour l'élève elev-055."
+    },
+    {
+      "date": "2026-10-08T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre de l'équipe de la réussite) au dossier sign-207."
+    },
+    {
+      "date": "2026-10-08T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre de l'équipe de la réussite) au dossier sign-208."
+    },
+    {
+      "date": "2026-10-13T08:16:00",
+      "utilisateurId": "pers-012",
+      "action": "connexion",
+      "details": "Camille Lacroix s'est connecté·e."
+    },
+    {
+      "date": "2026-10-13T08:22:00",
+      "utilisateurId": "pers-012",
+      "action": "signalement_cree",
+      "details": "Signalement sign-210 créé pour l'élève elev-090."
+    },
+    {
+      "date": "2026-10-13T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Communication aux parents) au dossier sign-208."
+    },
+    {
+      "date": "2026-10-13T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Communication aux parents) au dossier sign-209."
+    },
+    {
+      "date": "2026-10-15T08:20:00",
+      "utilisateurId": "pers-014",
+      "action": "connexion",
+      "details": "Bintou Bakayoko s'est connecté·e."
+    },
+    {
+      "date": "2026-10-15T08:26:00",
+      "utilisateurId": "pers-014",
+      "action": "signalement_cree",
+      "details": "Signalement sign-211 créé pour l'élève elev-151."
+    },
+    {
+      "date": "2026-10-15T10:30:00",
+      "utilisateurId": "pers-025",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre avec les parents) au dossier sign-209."
+    },
+    {
+      "date": "2026-10-15T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec les parents) au dossier sign-210."
+    },
+    {
+      "date": "2026-10-19T08:24:00",
+      "utilisateurId": "pers-015",
+      "action": "connexion",
+      "details": "Étienne Cissé s'est connecté·e."
+    },
+    {
+      "date": "2026-10-19T08:30:00",
+      "utilisateurId": "pers-015",
+      "action": "signalement_cree",
+      "details": "Signalement sign-212 créé pour l'élève elev-159."
+    },
+    {
+      "date": "2026-10-19T10:30:00",
+      "utilisateurId": "pers-022",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre avec l'élève) au dossier sign-210."
+    },
+    {
+      "date": "2026-10-19T10:30:00",
+      "utilisateurId": "pers-021",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec l'élève) au dossier sign-211."
+    },
+    {
+      "date": "2026-10-20T08:29:00",
+      "utilisateurId": "pers-020",
+      "action": "connexion",
+      "details": "Marc-Antoine Thériault s'est connecté·e."
+    },
+    {
+      "date": "2026-10-20T08:35:00",
+      "utilisateurId": "pers-020",
+      "action": "signalement_cree",
+      "details": "Signalement sign-213 créé pour l'élève elev-154."
+    },
+    {
+      "date": "2026-10-20T10:30:00",
+      "utilisateurId": "pers-021",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre de l'équipe de la réussite) au dossier sign-211."
+    },
+    {
+      "date": "2026-10-20T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre de l'équipe de la réussite) au dossier sign-212."
+    },
+    {
+      "date": "2026-10-22T08:34:00",
+      "utilisateurId": "pers-012",
+      "action": "connexion",
+      "details": "Camille Lacroix s'est connecté·e."
+    },
+    {
+      "date": "2026-10-22T08:40:00",
+      "utilisateurId": "pers-012",
+      "action": "signalement_cree",
+      "details": "Signalement sign-214 créé pour l'élève elev-080."
+    },
+    {
+      "date": "2026-10-22T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Communication aux parents) au dossier sign-212."
+    },
+    {
+      "date": "2026-10-22T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Communication aux parents) au dossier sign-213."
+    },
+    {
+      "date": "2026-10-26T08:39:00",
+      "utilisateurId": "pers-007",
+      "action": "connexion",
+      "details": "Félix Bakayoko s'est connecté·e."
+    },
+    {
+      "date": "2026-10-26T08:45:00",
+      "utilisateurId": "pers-007",
+      "action": "signalement_cree",
+      "details": "Signalement sign-215 créé pour l'élève elev-039."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 3 (Rencontre avec les parents) au dossier sign-212."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre avec les parents) au dossier sign-213."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 3 (Rencontre avec l'élève) au dossier sign-213."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec les parents) au dossier sign-214."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre avec l'élève) au dossier sign-214."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-027",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 3 (Rencontre de l'équipe de la réussite) au dossier sign-214."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-028",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 1 (Rencontre avec l'élève) au dossier sign-215."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-028",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 2 (Rencontre de l'équipe de la réussite) au dossier sign-215."
+    },
+    {
+      "date": "2026-10-26T10:30:00",
+      "utilisateurId": "pers-028",
+      "action": "intervention_ajoutee",
+      "details": "Intervention de niveau 3 (Communication aux parents) au dossier sign-215."
+    }
+  ]
+}

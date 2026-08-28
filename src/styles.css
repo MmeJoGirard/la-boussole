@@ -1,0 +1,318 @@
+/* Boussole : palette bleu et gris, moderne et professionnelle. */
+:root {
+  --bleu: #1f4e8c;
+  --bleu-fonce: #16406f;
+  --bleu-pale: #e4edf8;
+  --fond: #f4f6f9;
+  --surface: #ffffff;
+  --encre: #1b2430;
+  --gris: #46586c; /* assez foncé pour un contraste d'au moins 7:1 sur blanc */
+  --ligne: #d7dfe9;
+  --ok-fond: #e1f0e6; --ok-encre: #1f6b3a;
+  --moyen-fond: #fcefd9; --moyen-encre: #8a5a12;
+  --haut-fond: #f9e2e0; --haut-encre: #a0342c;
+  --eed-fond: #e9e4f8; --eed-encre: #4c3a8c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: "Public Sans", "Segoe UI", -apple-system, sans-serif;
+  font-size: 16px; /* taille de base d'au moins 16 px pour la lisibilité */
+  line-height: 1.6;
+}
+h1, h2, h3, h4 { font-family: "Archivo", "Public Sans", sans-serif; line-height: 1.2; }
+h1 { font-size: 22px; margin: 0; }
+h2 { font-size: 20px; margin: 0 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 8px; }
+button { font: inherit; cursor: pointer; }
+a { color: var(--bleu); }
+
+/* Accessibilité : focus toujours visible. */
+:focus-visible { outline: 3px solid var(--bleu); outline-offset: 2px; border-radius: 4px; }
+
+/* ---- Entête ---- */
+.entete {
+  background: var(--bleu);
+  color: #fff;
+  padding: 10px 16px;
+}
+/* Code couleur des rôles : bleu pâle enseignants (texte foncé pour le
+   contraste), bleu moyen ERRÉ et éducation spécialisée, bleu foncé direction. */
+.entete.role-enseignant { background: #cfe1f5; color: #14395f; }
+.entete.role-enseignant .role { background: rgba(20, 57, 95, 0.12); }
+.entete.role-enseignant .bouton-entete {
+  background: rgba(20, 57, 95, 0.06);
+  color: #14395f;
+  border-color: rgba(20, 57, 95, 0.45);
+}
+.entete.role-enseignant .bouton-entete:hover { background: rgba(20, 57, 95, 0.14); }
+.entete.role-equipe { background: #3d6fb0; }
+.entete.role-direction { background: #16406f; }
+.entete {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.entete .marque { display: flex; align-items: center; gap: 8px; font-family: "Archivo", sans-serif; font-weight: 700; font-size: 18px; }
+.entete .role { background: rgba(255,255,255,0.18); border-radius: 999px; padding: 2px 12px; font-size: 13px; }
+.entete .pousse { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.bouton-entete {
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13.5px;
+}
+.bouton-entete:hover { background: rgba(255,255,255,0.26); }
+
+/* ---- Mise en page ---- */
+.page { max-width: 1080px; margin: 0 auto; padding: 20px 16px 64px; }
+.sous-titre { color: var(--gris); margin: 2px 0 16px; }
+.grille-cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0 20px; }
+.carte-stat {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.carte-stat .valeur { font-family: "Archivo", sans-serif; font-size: 26px; font-weight: 700; color: var(--bleu); font-variant-numeric: tabular-nums; }
+.carte-stat .nom { font-size: 13px; color: var(--gris); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.panneau {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+/* ---- Filtres ---- */
+.filtres { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 14px; }
+.filtres label, .champ label { display: block; font-size: 13px; font-weight: 600; color: var(--gris); margin-bottom: 3px; }
+select, input[type="text"], input[type="search"], textarea {
+  font: inherit;
+  border: 1px solid var(--ligne);
+  border-radius: 8px;
+  padding: 7px 10px;
+  background: #fff;
+  color: var(--encre);
+  max-width: 100%;
+}
+textarea { width: 100%; resize: vertical; }
+
+/* ---- Tableaux ---- */
+.defile { overflow-x: auto; border: 1px solid var(--ligne); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th {
+  text-align: left; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--gris); background: var(--bleu-pale);
+  padding: 10px 12px; border-bottom: 1px solid var(--ligne); white-space: nowrap;
+}
+td { padding: 10px 12px; border-bottom: 1px solid var(--ligne); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---- Étiquettes ---- */
+.etiquette {
+  display: inline-block; border-radius: 999px; padding: 2px 10px;
+  font-size: 12.5px; font-weight: 600; white-space: nowrap;
+}
+.etiquette.ok { background: var(--ok-fond); color: var(--ok-encre); }
+.etiquette.moyen { background: var(--moyen-fond); color: var(--moyen-encre); }
+.etiquette.haut { background: var(--haut-fond); color: var(--haut-encre); }
+.etiquette.neutre { background: var(--ligne); color: var(--gris); }
+.etiquette.eed { background: var(--eed-fond); color: var(--eed-encre); }
+.pastille {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 22px; padding: 0 6px;
+  border-radius: 999px; background: var(--bleu); color: #fff;
+  font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+
+/* ---- Boutons ---- */
+.bouton {
+  background: var(--bleu); color: #fff; border: none;
+  border-radius: 8px; padding: 8px 16px; font-weight: 600; font-size: 14px;
+}
+.bouton:hover { background: var(--bleu-fonce); }
+.bouton.secondaire { background: var(--surface); color: var(--bleu); border: 1px solid var(--bleu); }
+.bouton.secondaire:hover { background: var(--bleu-pale); }
+.bouton.discret { background: none; border: none; color: var(--bleu); padding: 4px 6px; text-decoration: underline; font-weight: 600; font-size: 13.5px; }
+.bouton.danger { background: var(--surface); color: var(--haut-encre); border: 1px solid var(--haut-encre); }
+.bouton.danger:hover { background: var(--haut-fond); }
+.rangee-boutons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+/* ---- Formulaires ---- */
+.champ { margin-bottom: 14px; }
+.aide { display: block; font-size: 13.5px; color: var(--gris); margin-top: 3px; }
+.avertissement {
+  background: var(--haut-fond); color: var(--haut-encre);
+  border-left: 4px solid var(--haut-encre);
+  border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; font-size: 14px;
+}
+.info {
+  background: var(--bleu-pale); color: var(--bleu-fonce);
+  border-left: 4px solid var(--bleu);
+  border-radius: 0 8px 8px 0; padding: 10px 14px; margin: 10px 0; font-size: 14px;
+}
+.case { display: flex; align-items: flex-start; gap: 8px; margin: 8px 0; }
+.case input { margin-top: 4px; width: 16px; height: 16px; }
+.case span { font-size: 14.5px; }
+
+/* ---- Écran de connexion ---- */
+.connexion { max-width: 720px; margin: 40px auto; padding: 0 16px; }
+.connexion .logo { font-size: 40px; }
+.connexion h1 { font-size: 30px; margin: 6px 0; }
+.groupe-profils { margin-top: 20px; }
+.groupe-profils h3 { margin-bottom: 8px; color: var(--gris); text-transform: uppercase; font-size: 12.5px; letter-spacing: 0.06em; }
+.boutons-profils { display: flex; flex-wrap: wrap; gap: 8px; }
+.bouton-profil {
+  background: var(--surface); border: 1px solid var(--ligne); border-radius: 10px;
+  padding: 8px 14px; text-align: left; font-size: 14px;
+}
+.bouton-profil:hover { border-color: var(--bleu); background: var(--bleu-pale); }
+.bouton-profil .detail { display: block; font-size: 13px; color: var(--gris); }
+
+/* ---- Fenêtre modale ---- */
+.voile {
+  position: fixed; inset: 0; background: rgba(20, 30, 44, 0.55);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 16px; z-index: 50; overflow-y: auto;
+}
+.modale {
+  background: var(--fond); border-radius: 14px; max-width: 760px; width: 100%;
+  padding: 20px; box-shadow: 0 18px 50px rgba(0,0,0,0.3);
+}
+.modale-entete { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.modale-entete h2 { flex: 1; }
+.fermer {
+  background: var(--surface); border: 1px solid var(--ligne); border-radius: 8px;
+  width: 34px; height: 34px; font-size: 16px; line-height: 1;
+}
+
+/* ---- Courriels simulés ---- */
+.courriel {
+  background: var(--surface); border: 1px solid var(--ligne); border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+.courriel .meta { font-size: 12.5px; color: var(--gris); margin-bottom: 4px; }
+.courriel .objet { font-weight: 700; margin-bottom: 4px; }
+.courriel .corps { font-size: 14px; white-space: pre-wrap; }
+
+/* ---- Historique dans une fiche ---- */
+.journal { list-style: none; padding: 0; margin: 8px 0; }
+.journal li { border-left: 3px solid var(--bleu-pale); padding: 4px 0 4px 12px; margin-bottom: 8px; }
+.journal .qui { font-weight: 600; font-size: 13.5px; }
+.journal .quand { color: var(--gris); font-size: 12.5px; }
+
+/* ---- Onglets (direction) ---- */
+.onglets { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+.onglet {
+  background: var(--surface); border: 1px solid var(--ligne); border-radius: 999px;
+  padding: 7px 16px; font-size: 14px; font-weight: 600; color: var(--gris);
+}
+.onglet[aria-selected="true"] { background: var(--bleu); border-color: var(--bleu); color: #fff; }
+
+/* ---- Code couleur des rôles à l'écran de connexion ---- */
+.groupe-profils { border-left: 5px solid var(--ligne); padding-left: 14px; border-radius: 3px; }
+.groupe-profils.role-enseignant { border-left-color: #9dbfe6; }
+.groupe-profils.role-enseignant .bouton-profil { background: #e9f1fa; }
+.groupe-profils.role-equipe { border-left-color: #3d6fb0; }
+.groupe-profils.role-equipe .bouton-profil { background: #dbe7f4; }
+.groupe-profils.role-direction { border-left-color: #16406f; }
+.groupe-profils.role-direction .bouton-profil { background: #ccdcef; }
+
+/* ---- Cartes de totaux cliquables ---- */
+.carte-stat.cliquable { text-align: left; cursor: pointer; font: inherit; }
+.carte-stat.cliquable:hover { border-color: var(--bleu); background: var(--bleu-pale); }
+
+/* ---- Filtres à sélection multiple ---- */
+.filtre-multiple { border: none; padding: 0; margin: 0; }
+.legende-champ { font-size: 13px; font-weight: 600; color: var(--gris); margin-bottom: 4px; padding: 0; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip-filtre {
+  background: var(--surface);
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--gris);
+}
+.chip-filtre:hover { border-color: var(--bleu); }
+.chip-filtre[aria-pressed="true"] {
+  background: var(--bleu);
+  border-color: var(--bleu);
+  color: #fff;
+}
+
+/* ---- Légende des étapes du suivi ---- */
+.liste-etapes { margin: 10px 0 0; padding-left: 20px; }
+.liste-etapes li { margin-bottom: 6px; font-size: 14.5px; }
+
+/* ---- Calendrier ---- */
+.calendrier-entete { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.calendrier { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendrier-jour-nom {
+  text-align: center; font-size: 12.5px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--gris);
+  padding: 4px 0;
+}
+.calendrier-case {
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: 8px;
+  min-height: 64px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font: inherit;
+}
+.calendrier-case.vide { background: none; border: none; }
+.calendrier-case:not(.vide):hover { border-color: var(--bleu); background: var(--bleu-pale); }
+.calendrier-case[aria-pressed="true"] { border: 2px solid var(--bleu); background: var(--bleu-pale); }
+.calendrier-numero { font-size: 13.5px; font-weight: 600; color: var(--gris); }
+.calendrier-points { display: flex; gap: 4px; flex-wrap: wrap; }
+.point-evenement {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 5px;
+  border-radius: 999px; color: #fff;
+  font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+.legende-calendrier { display: flex; gap: 18px; margin-bottom: 10px; }
+.legende-calendrier li { padding: 0; }
+@media (max-width: 640px) {
+  .calendrier-case { min-height: 48px; padding: 4px; }
+  .point-evenement { min-width: 16px; height: 16px; font-size: 10.5px; }
+}
+
+/* ---- Graphiques du tableau de bord ---- */
+.grille-graphiques { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.graphique { margin: 0; }
+.graphique figcaption { margin-bottom: 10px; }
+.graphique figcaption strong { font-family: "Archivo", sans-serif; font-size: 15px; }
+.donut-ligne { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.donut-total { font-family: "Archivo", sans-serif; font-size: 26px; font-weight: 700; fill: var(--encre); }
+.donut-libelle { font-size: 11px; fill: var(--gris); }
+.legende { list-style: none; padding: 0; margin: 0; flex: 1; min-width: 150px; }
+.legende li { display: flex; align-items: center; gap: 8px; padding: 3px 0; font-size: 13.5px; }
+.pastille-couleur { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.legende-nom { flex: 1; }
+.legende-valeur { color: var(--gris); font-weight: 600; }
+.barre-valeur { font-size: 12px; font-weight: 600; fill: var(--encre); font-variant-numeric: tabular-nums; }
+.barre-nom { font-size: 11.5px; fill: var(--gris); }
+
+@media (max-width: 640px) {
+  body { font-size: 15px; }
+  .page { padding: 14px 10px 48px; }
+  th, td { padding: 8px 9px; }
+}
