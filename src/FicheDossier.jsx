@@ -29,10 +29,19 @@ function MarqueurSection({ no, titre, compte, sansFilet }) {
 // La fiche complète d'un dossier : réservée à l'ERRÉ, à l'éducation
 // spécialisée et à la direction. Structure : identité, badges d'état,
 // sections ancrées par icônes, chronologies, puis la zone d'action.
-export default function FicheDossier({ db, signId, utilisateur, actions, direction, fermer }) {
+export default function FicheDossier({ db, signId, utilisateur, actions, direction, fermer, changerDossier }) {
   const s = db.signalements.find((x) => x.id === signId);
   const eleve = trouverEleve(db, s.eleveId);
   const auteur = trouverMembre(db, s.auteurId);
+
+  // Les autres signalements du même élève : on affiche le rang du dossier
+  // courant (« 2e signalement ») et des liens vers les précédents.
+  const tousLesSignalements = db.signalements
+    .filter((x) => x.eleveId === s.eleveId)
+    .sort((a, b) => a.date.localeCompare(b.date) || a.id.localeCompare(b.id));
+  const rang = tousLesSignalements.findIndex((x) => x.id === s.id) + 1;
+  const autresSignalements = tousLesSignalements.filter((x) => x.id !== s.id);
+  const ordinal = (n) => (n === 1 ? "1er" : `${n}e`);
 
   const [noteIntervention, setNoteIntervention] = useState("");
   const [typeIntervention, setTypeIntervention] = useState(PROCHAINES_ETAPES[0]);
@@ -104,7 +113,20 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
           </span>
           <Indicateur caVa={s.indicateurCaVa} equipe />
           {s.caseEED && <span className="etiquette eed" title="Le service à l'intention des élèves en difficulté a été avisé par courriel">ES avisé</span>}
+          {tousLesSignalements.length > 1 && (
+            <span className="etiquette moyen">{ordinal(rang)} signalement pour cet élève</span>
+          )}
         </div>
+
+        {autresSignalements.length > 0 && changerDossier && (
+          <div className="fiche-anterieurs">
+            {autresSignalements.map((a) => (
+              <button key={a.id} className="bouton discret" onClick={() => changerDossier(a.id)}>
+                Voir le {ordinal(tousLesSignalements.findIndex((x) => x.id === a.id) + 1)} signalement · {dateEditoriale(a.date)}{a.statut === "clos" ? " (clos)" : ""}
+              </button>
+            ))}
+          </div>
+        )}
 
         <MarqueurSection
           no="01"
@@ -244,7 +266,7 @@ export default function FicheDossier({ db, signId, utilisateur, actions, directi
                 <div>
                   <label htmlFor="type-inter">Type</label>
                   <select id="type-inter" value={typeIntervention} onChange={(e) => setTypeIntervention(e.target.value)}>
-                    {PROCHAINES_ETAPES.filter((p) => p !== "Référence à la direction").map((p) => <option key={p}>{p}</option>)}
+                    {[...PROCHAINES_ETAPES.filter((p) => p !== "Référence à la direction"), "Autre"].map((p) => <option key={p}>{p}</option>)}
                   </select>
                 </div>
                 <div>

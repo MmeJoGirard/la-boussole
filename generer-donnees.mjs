@@ -322,6 +322,37 @@ const signalements = elevesSignales.map((eleve, i) => {
   };
 });
 
+// Un deuxième signalement pour un élève dont le premier cycle est clos :
+// la démo montre ainsi le lien « voir le 1er signalement ».
+const premierClos = signalements.find((x) => x.statut === "clos");
+if (premierClos) {
+  const eleve = eleves.find((e) => e.id === premierClos.eleveId);
+  signalements.push({
+    id: id("sign"),
+    eleveId: eleve.id,
+    auteurId: profsDeLEleve(eleve)[0],
+    date: "2026-11-02",
+    types: ["académique"],
+    niveauUrgence: 1,
+    urgenceLibelle: ECHELLE_URGENCE[1].libelle,
+    caseEED: eleve.eed,
+    niveauIntervention: 1,
+    statut: "nouveau",
+    indicateurCaVa: false,
+    raisons: "Nouvelles difficultés observées depuis la fin du premier cycle. Deuxième cycle de suivi ouvert.",
+    dejaFait: { rencontreEleve: false, communicationParents: null },
+    autreInformation: "",
+    prochaineEtapeEnseignant: "",
+    responsableId: null,
+    prochaineEtape: "Vérification par l'équipe de la réussite",
+    noteCloture: null,
+    planSecurite: "",
+    adaptations: "",
+    observations: [],
+    interventions: [],
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Journal d'audit : un échantillon d'entrées pour la démo
 // ---------------------------------------------------------------------------

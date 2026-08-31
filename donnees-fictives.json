@@ -3236,6 +3236,35 @@
           "note": "Rencontre de l'équipe de la réussite : ajustements d'échéanciers convenus."
         }
       ]
+    },
+    {
+      "id": "sign-216",
+      "eleveId": "elev-080",
+      "auteurId": "pers-009",
+      "date": "2026-11-02",
+      "types": [
+        "académique"
+      ],
+      "niveauUrgence": 1,
+      "urgenceLibelle": "Faible",
+      "caseEED": true,
+      "niveauIntervention": 1,
+      "statut": "nouveau",
+      "indicateurCaVa": false,
+      "raisons": "Nouvelles difficultés observées depuis la fin du premier cycle. Deuxième cycle de suivi ouvert.",
+      "dejaFait": {
+        "rencontreEleve": false,
+        "communicationParents": null
+      },
+      "autreInformation": "",
+      "prochaineEtapeEnseignant": "",
+      "responsableId": null,
+      "prochaineEtape": "Vérification par l'équipe de la réussite",
+      "noteCloture": null,
+      "planSecurite": "",
+      "adaptations": "",
+      "observations": [],
+      "interventions": []
     }
   ],
   "audit": [
@@ -3682,6 +3711,18 @@
       "utilisateurId": "pers-028",
       "action": "intervention_ajoutee",
       "details": "Intervention de niveau 3 (Communication aux parents) au dossier sign-215."
+    },
+    {
+      "date": "2026-11-02T08:44:00",
+      "utilisateurId": "pers-009",
+      "action": "connexion",
+      "details": "Charles-Éric Charbonneau s'est connecté·e."
+    },
+    {
+      "date": "2026-11-02T08:50:00",
+      "utilisateurId": "pers-009",
+      "action": "signalement_cree",
+      "details": "Signalement sign-216 créé pour l'élève elev-080."
     }
   ]
 }

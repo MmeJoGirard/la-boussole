@@ -552,6 +552,7 @@ td .bouton.discret { font-size: 14px; }
 .fiche-nom { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; color: var(--encre-fort); }
 .fiche-meta { font-size: 13px; color: var(--meta); margin: 4px 0 0; }
 .fiche-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 0; }
+.fiche-anterieurs { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
 .fiche-sep { border: none; border-top: 1px solid var(--lisere); margin: 24px 0; }
 .section-fiche {
   display: flex; align-items: center; gap: 6px;

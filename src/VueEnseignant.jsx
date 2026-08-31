@@ -3,7 +3,6 @@ import { nomComplet, coursDe, elevesDe, signalementsDe, ETAPES } from "./aides.j
 import { Indicateur, EtiquetteES } from "./Etiquettes.jsx";
 import FormulaireSignalement from "./FormulaireSignalement.jsx";
 import ProfilEleve from "./ProfilEleve.jsx";
-import Calendrier from "./Calendrier.jsx";
 import Chronologie from "./Chronologie.jsx";
 import ListeAFaire, { tachesEnseignant } from "./ListeAFaire.jsx";
 import { Barres } from "./Graphiques.jsx";
@@ -149,7 +148,6 @@ export default function VueEnseignant({ db, utilisateur, actions, sombre }) {
         <button role="tab" aria-selected={onglet === "afaire"} className="onglet" onClick={() => setOnglet("afaire")}>À faire{taches.length > 0 ? ` · ${taches.length}` : ""}</button>
         <button role="tab" aria-selected={onglet === "kanban"} className="onglet" onClick={() => setOnglet("kanban")}>Kanban</button>
         <button role="tab" aria-selected={onglet === "dossiers"} className="onglet" onClick={() => setOnglet("dossiers")}>Dossiers</button>
-        <button role="tab" aria-selected={onglet === "calendrier"} className="onglet" onClick={() => setOnglet("calendrier")}>Calendrier</button>
         <button role="tab" aria-selected={onglet === "chronologie"} className="onglet" onClick={() => setOnglet("chronologie")}>Chronologie</button>
       </div>
 
@@ -236,16 +234,6 @@ export default function VueEnseignant({ db, utilisateur, actions, sombre }) {
           dossierActif={dossierActif}
           aContribuer={aContribuer}
           surProfil={setProfil}
-        />
-      )}
-
-      {onglet === "calendrier" && (
-        <Calendrier
-          db={db}
-          sombre={sombre}
-          eleveIds={mesEleves.map((e) => e.id)}
-          confidentiel
-          ouvrirDossier={(ev) => setProfil(db.eleves.find((x) => x.id === ev.eleveId))}
         />
       )}
 

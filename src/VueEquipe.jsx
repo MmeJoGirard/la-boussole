@@ -4,7 +4,6 @@ import { EtiquetteUrgence, EtiquetteStatut, Indicateur, EtiquetteES } from "./Et
 import FicheDossier from "./FicheDossier.jsx";
 import TableauAudit from "./TableauAudit.jsx";
 import TableauDeBord from "./Graphiques.jsx";
-import Calendrier from "./Calendrier.jsx";
 import Kanban from "./Kanban.jsx";
 import Chronologie from "./Chronologie.jsx";
 import ListeAFaire, { tachesEquipe } from "./ListeAFaire.jsx";
@@ -152,7 +151,6 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
         <button role="tab" aria-selected={onglet === "afaire"} className="onglet" onClick={() => setOnglet("afaire")}>À faire{taches.length > 0 ? ` · ${taches.length}` : ""}</button>
         <button role="tab" aria-selected={onglet === "kanban"} className="onglet" onClick={() => setOnglet("kanban")}>Kanban</button>
         <button role="tab" aria-selected={onglet === "dossiers"} className="onglet" onClick={() => setOnglet("dossiers")}>Dossiers</button>
-        <button role="tab" aria-selected={onglet === "calendrier"} className="onglet" onClick={() => setOnglet("calendrier")}>Calendrier</button>
         <button role="tab" aria-selected={onglet === "chronologie"} className="onglet" onClick={() => setOnglet("chronologie")}>Chronologie</button>
         {direction && (
           <button role="tab" aria-selected={onglet === "audit"} className="onglet" onClick={() => setOnglet("audit")}>Journal d'audit</button>
@@ -193,8 +191,6 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
         />
       ) : onglet === "kanban" ? (
         <Kanban db={db} ouvrirDossier={setDossierOuvert} />
-      ) : onglet === "calendrier" ? (
-        <Calendrier db={db} ouvrirDossier={(ev) => setDossierOuvert(ev.signId)} sombre={sombre} />
       ) : onglet === "chronologie" ? (
         <Chronologie db={db} ouvrirDossier={(ev) => setDossierOuvert(ev.signId)} sombre={sombre} />
       ) : onglet === "audit" && direction ? (
@@ -276,8 +272,10 @@ export default function VueEquipe({ db, utilisateur, actions, direction, sombre 
 
       {dossierOuvert && (
         <FicheDossier
+          key={dossierOuvert}
           db={db} signId={dossierOuvert} utilisateur={utilisateur} actions={actions}
           direction={direction} fermer={() => setDossierOuvert(null)}
+          changerDossier={setDossierOuvert}
         />
       )}
     </>

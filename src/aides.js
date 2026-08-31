@@ -36,6 +36,7 @@ export const OPTIONS_ETAPE_ENSEIGNANT = [
 
 export const PROCHAINES_ETAPES = [
   "Rencontre avec l'élève",
+  "Rencontre avec l'enseignant·e",
   "Rencontre de l'équipe de la réussite",
   "Communication aux parents",
   "Rencontre avec les parents",
